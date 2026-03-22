@@ -13,11 +13,11 @@ sections:
       title: ''
       subtitle: ''
       text: |
-        <div style="display:flex;gap:8px;justify-content:center;overflow:hidden;max-height:300px;margin:-2rem 0 0 0;">
-          <img src="/media/hero/AT8PASYNNERNTS0045-29-40cor_composite.jpg" alt="免疫荧光" style="height:300px;object-fit:cover;border-radius:8px;">
-          <img src="/media/hero/AT8TS1021-21-40SNCOTHT.jpg" alt="免疫组化" style="height:300px;object-fit:cover;border-radius:8px;">
-          <img src="/media/hero/uncmtdpp61-29-40cor.jpg" alt="脑组织染色" style="height:300px;object-fit:cover;border-radius:8px;">
-          <img src="/media/hero/hp61-20-10-1.jpg" alt="免疫组化" style="height:300px;object-fit:cover;border-radius:8px;">
+        <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:-2rem auto 0 auto;max-width:1200px;">
+          <img src="/media/hero/AT8PASYNNERNTS0045-29-40cor_composite.jpg" alt="免疫荧光 — 多通道IF染色" style="height:280px;flex:1 1 200px;object-fit:cover;border-radius:8px;min-width:0;">
+          <img src="/media/hero/AT8TS1021-21-40SNCOTHT.jpg" alt="免疫组化 — AT8/SNC/OTH" style="height:280px;flex:1 1 200px;object-fit:cover;border-radius:8px;min-width:0;">
+          <img src="/media/hero/uncmtdpp61-29-40cor.jpg" alt="脑组织染色" style="height:280px;flex:1 1 200px;object-fit:cover;border-radius:8px;min-width:0;">
+          <img src="/media/hero/hp61-20-10-1.jpg" alt="免疫组化 — 脑切片" style="height:280px;flex:1 1 150px;object-fit:cover;border-radius:8px;min-width:0;">
         </div>
     design:
       columns: '1'

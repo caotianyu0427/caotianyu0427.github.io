@@ -13,11 +13,11 @@ sections:
       title: ''
       subtitle: ''
       text: |
-        <div style="display:flex;gap:8px;justify-content:center;overflow:hidden;max-height:300px;margin:-2rem 0 0 0;">
-          <img src="/media/hero/AT8PASYNNERNTS0045-29-40cor_composite.jpg" alt="Immunofluorescence" style="height:300px;object-fit:cover;border-radius:8px;">
-          <img src="/media/hero/AT8TS1021-21-40SNCOTHT.jpg" alt="Immunohistochemistry" style="height:300px;object-fit:cover;border-radius:8px;">
-          <img src="/media/hero/uncmtdpp61-29-40cor.jpg" alt="Brain staining" style="height:300px;object-fit:cover;border-radius:8px;">
-          <img src="/media/hero/hp61-20-10-1.jpg" alt="Immunohistochemistry" style="height:300px;object-fit:cover;border-radius:8px;">
+        <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:-2rem auto 0 auto;max-width:1200px;">
+          <img src="/media/hero/AT8PASYNNERNTS0045-29-40cor_composite.jpg" alt="Immunofluorescence — multi-channel IF staining" style="height:280px;flex:1 1 200px;object-fit:cover;border-radius:8px;min-width:0;">
+          <img src="/media/hero/AT8TS1021-21-40SNCOTHT.jpg" alt="Immunohistochemistry — AT8/SNC/OTH" style="height:280px;flex:1 1 200px;object-fit:cover;border-radius:8px;min-width:0;">
+          <img src="/media/hero/uncmtdpp61-29-40cor.jpg" alt="Brain tissue staining" style="height:280px;flex:1 1 200px;object-fit:cover;border-radius:8px;min-width:0;">
+          <img src="/media/hero/hp61-20-10-1.jpg" alt="Immunohistochemistry — brain section" style="height:280px;flex:1 1 150px;object-fit:cover;border-radius:8px;min-width:0;">
         </div>
     design:
       columns: '1'
