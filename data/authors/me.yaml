@@ -1,0 +1,114 @@
+schema: hugoblox/author/v1
+slug: me
+is_owner: true
+name:
+  display: Tianyu Cao (曹天雨)
+  given: Tianyu
+  family: Cao
+  alternate: '曹天雨'
+  pronunciation: ''
+  pronouns: he/him
+postnominals:
+  - M.D.
+status:
+  icon: "🧬"
+role: Postdoctoral Fellow
+bio: |
+  Postdoctoral Fellow at Johns Hopkins School of Medicine studying TDP-43 loss of function
+  and developing splicing-based therapies for ALS and frontotemporal dementia.
+
+affiliations:
+  - name: Johns Hopkins School of Medicine
+    url: https://www.hopkinsmedicine.org/pathology
+  - name: Wong Lab
+    url: https://labs.pathology.jhu.edu/wong/
+
+links:
+  - icon: at-symbol
+    url: mailto:tcao6@jh.edu
+    label: E-mail Me
+  - icon: academicons/google-scholar
+    url: https://scholar.google.com/citations?user=JfIynKUAAAAJ
+  - icon: academicons/orcid
+    url: https://orcid.org/0000-0002-5299-847X
+  - icon: brands/github
+    url: https://github.com/caotianyu0427
+
+interests:
+  - TDP-43 & Cryptic Exon Biology
+  - AAV-based Gene Therapy
+  - ALS / Frontotemporal Dementia
+  - Splicing-based Therapeutics
+  - Multi-proteinopathy (Tau / α-Synuclein)
+
+education:
+  - degree: Postdoctoral Fellow, Department of Pathology
+    institution: Johns Hopkins School of Medicine
+    start: 2023-07-01
+    summary: |
+      Advisor: Prof. Philip Wong. Developing splicing-based therapies for TDP-43–related neurodegeneration. Demonstrated neuronal rescue via AAV-delivered chimeric TDP-43 repressor (CTR) in mouse models.
+  - degree: Research Trainee, Department of Pathology
+    institution: Johns Hopkins School of Medicine
+    start: 2019-09-01
+    end: 2021-06-30
+    summary: |
+      Research training in molecular neuropathology under Prof. Philip Wong.
+  - degree: M.D. and Residency, Clinical Science of Integrative Medicine
+    institution: Beijing University of Chinese Medicine
+    start: 2018-09-01
+    end: 2023-06-30
+    summary: |
+      Received Excellent Doctoral Thesis award. Research on traditional medicine approaches to neurological diseases.
+  - degree: B.M., Medicine
+    institution: Beijing University of Chinese Medicine
+    start: 2013-09-01
+    end: 2018-06-30
+  - degree: Exchange Student, School of Biological Science
+    institution: Nanyang Technological University
+    start: 2015-01-01
+    end: 2015-06-30
+
+experience:
+  - role: Postdoctoral Fellow
+    org: Johns Hopkins School of Medicine, Department of Pathology
+    start: 2023-07-01
+    summary: |
+      Wong Lab. PI: Prof. Philip Wong.
+      Developing chimeric therapeutic protein (CTR) for TDP-43 splicing rescue.
+      Advancing AAV-based delivery using transferrin receptor–targeted capsids.
+  - role: Research Trainee
+    org: Johns Hopkins School of Medicine, Department of Pathology
+    start: 2019-09-01
+    end: 2021-06-30
+    summary: |
+      Studied TDP-43 loss of function and cryptic exon inclusion in neurodegeneration.
+
+skills:
+  - name: Research Expertise
+    items:
+      - label: Molecular & Cellular Neuroscience
+        level: 5
+      - label: AAV Gene Therapy
+        level: 5
+      - label: Mouse Behavioral Models
+        level: 4
+      - label: RNA Splicing Analysis
+        level: 5
+
+awards:
+  - title: Baltimore Brain Series Award
+    awarder: Baltimore Brain Series
+    date: "2024-01-01"
+    icon: hero/trophy
+  - title: Winner, Basic Research Category, Pathology Young Investigators' Day
+    awarder: Johns Hopkins University
+    date: "2020-01-01"
+    icon: hero/trophy
+  - title: Excellent Doctoral Thesis
+    awarder: Beijing University of Chinese Medicine
+    date: "2023-06-01"
+    icon: hero/academic-cap
+  - title: First Prize, Data Analysis and Modeling Competition
+    awarder: Beijing University of Chinese Medicine
+    date: "2020-06-01"
+    icon: hero/trophy

@@ -1,0 +1,33 @@
+en:
+  languageCode: en-us
+  contentDir: content/en
+  title: "Tianyu Cao (曹天雨)"
+  params:
+    description: "Tianyu Cao (曹天雨) - Postdoctoral Fellow at Johns Hopkins School of Medicine."
+
+zh:
+  languageCode: zh-Hans
+  contentDir: content/zh
+  title: "曹天雨 Tianyu Cao"
+  params:
+    description: "曹天雨 - 约翰霍普金斯大学医学院博士后研究员。"
+  menu:
+    main:
+      - name: 关于
+        url: /zh/
+        weight: 10
+      - name: 研究方向
+        url: /zh/#research
+        weight: 20
+      - name: 学术论文
+        url: /zh/#publications
+        weight: 30
+      - name: 荣誉奖项
+        url: /zh/#awards
+        weight: 40
+      - name: 简历
+        url: /zh/#cv
+        weight: 50
+      - name: 联系方式
+        url: /zh/#contact
+        weight: 60
