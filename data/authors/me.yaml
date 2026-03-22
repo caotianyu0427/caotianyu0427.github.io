@@ -19,20 +19,23 @@ bio: |
 
 affiliations:
   - name: Johns Hopkins School of Medicine
-    url: https://www.hopkinsmedicine.org/pathology
+    url: https://pathology.jhu.edu/
   - name: Wong Lab
     url: https://labs.pathology.jhu.edu/wong/
 
 links:
   - icon: at-symbol
     url: mailto:tcao6@jh.edu
-    label: E-mail Me
+    label: tcao6@jh.edu
   - icon: academicons/google-scholar
     url: https://scholar.google.com/citations?user=JfIynKUAAAAJ
+    label: Google Scholar
   - icon: academicons/orcid
     url: https://orcid.org/0000-0002-5299-847X
+    label: ORCID
   - icon: brands/github
     url: https://github.com/caotianyu0427
+    label: GitHub
 
 interests:
   - TDP-43 & Cryptic Exon Biology

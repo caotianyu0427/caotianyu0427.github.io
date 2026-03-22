@@ -13,11 +13,11 @@ sections:
       title: ''
       subtitle: ''
       text: |
-        <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:-2rem auto 0 auto;max-width:1200px;">
-          <img src="/media/hero/AT8PASYNNERNTS0045-29-40cor_composite.jpg" alt="免疫荧光 — 多通道IF染色" style="height:280px;flex:1 1 200px;object-fit:cover;border-radius:8px;min-width:0;">
-          <img src="/media/hero/AT8TS1021-21-40SNCOTHT.jpg" alt="免疫组化 — AT8/SNC/OTH" style="height:280px;flex:1 1 200px;object-fit:cover;border-radius:8px;min-width:0;">
-          <img src="/media/hero/uncmtdpp61-29-40cor.jpg" alt="脑组织染色" style="height:280px;flex:1 1 200px;object-fit:cover;border-radius:8px;min-width:0;">
-          <img src="/media/hero/hp61-20-10-1.jpg" alt="免疫组化 — 脑切片" style="height:280px;flex:1 1 150px;object-fit:cover;border-radius:8px;min-width:0;">
+        <div style="display:flex;gap:8px;justify-content:center;margin:-2rem auto 0 auto;max-width:100%;overflow-x:auto;">
+          <img src="/media/hero/AT8PASYNNERNTS0045-29-40cor_composite.jpg" alt="免疫荧光" style="height:260px;flex-shrink:0;object-fit:cover;border-radius:8px;">
+          <img src="/media/hero/AT8TS1021-21-40SNCOTHT.jpg" alt="免疫组化" style="height:260px;flex-shrink:0;object-fit:cover;border-radius:8px;">
+          <img src="/media/hero/uncmtdpp61-29-40cor.jpg" alt="脑组织染色" style="height:260px;flex-shrink:0;object-fit:cover;border-radius:8px;">
+          <img src="/media/hero/hp61-20-10-1.jpg" alt="免疫组化" style="height:260px;flex-shrink:0;object-fit:cover;border-radius:8px;">
         </div>
     design:
       columns: '1'
@@ -32,12 +32,14 @@ sections:
 
         我的长期目标是成为一名独立研究者，致力于开发针对 ALS（肌萎缩侧索硬化症）和 FTD（额颞叶痴呆）的剪接调控疗法，同时揭示 TDP-43 功能障碍与 tau 蛋白及 α-突触核蛋白病理之间的交互机制。
 
-        **eRA Commons:** Tianyu &nbsp;|&nbsp; **实验室:** [Wong Lab](https://labs.pathology.jhu.edu/wong/) &nbsp;|&nbsp; **院系:** [病理学系，约翰霍普金斯大学医学院](https://www.hopkinsmedicine.org/pathology)
+        **eRA Commons:** Tianyu &nbsp;|&nbsp; **实验室:** [Wong Lab](https://labs.pathology.jhu.edu/wong/) &nbsp;|&nbsp; **院系:** [病理学系，约翰霍普金斯大学医学院](https://pathology.jhu.edu/)
+
+        [Google Scholar](https://scholar.google.com/citations?user=JfIynKUAAAAJ) &nbsp;·&nbsp; [ORCID](https://orcid.org/0000-0002-5299-847X) &nbsp;·&nbsp; [GitHub](https://github.com/caotianyu0427) &nbsp;·&nbsp; [邮箱: tcao6@jh.edu](mailto:tcao6@jh.edu)
       button:
         text: 下载简历
         url: uploads/resume.pdf
       headings:
-        about: ''
+        about: ' '
         education: 教育经历
         interests: 研究方向
     design:

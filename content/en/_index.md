@@ -13,11 +13,11 @@ sections:
       title: ''
       subtitle: ''
       text: |
-        <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:-2rem auto 0 auto;max-width:1200px;">
-          <img src="/media/hero/AT8PASYNNERNTS0045-29-40cor_composite.jpg" alt="Immunofluorescence — multi-channel IF staining" style="height:280px;flex:1 1 200px;object-fit:cover;border-radius:8px;min-width:0;">
-          <img src="/media/hero/AT8TS1021-21-40SNCOTHT.jpg" alt="Immunohistochemistry — AT8/SNC/OTH" style="height:280px;flex:1 1 200px;object-fit:cover;border-radius:8px;min-width:0;">
-          <img src="/media/hero/uncmtdpp61-29-40cor.jpg" alt="Brain tissue staining" style="height:280px;flex:1 1 200px;object-fit:cover;border-radius:8px;min-width:0;">
-          <img src="/media/hero/hp61-20-10-1.jpg" alt="Immunohistochemistry — brain section" style="height:280px;flex:1 1 150px;object-fit:cover;border-radius:8px;min-width:0;">
+        <div style="display:flex;gap:8px;justify-content:center;margin:-2rem auto 0 auto;max-width:100%;overflow-x:auto;">
+          <img src="/media/hero/AT8PASYNNERNTS0045-29-40cor_composite.jpg" alt="Immunofluorescence" style="height:260px;flex-shrink:0;object-fit:cover;border-radius:8px;">
+          <img src="/media/hero/AT8TS1021-21-40SNCOTHT.jpg" alt="Immunohistochemistry" style="height:260px;flex-shrink:0;object-fit:cover;border-radius:8px;">
+          <img src="/media/hero/uncmtdpp61-29-40cor.jpg" alt="Brain tissue staining" style="height:260px;flex-shrink:0;object-fit:cover;border-radius:8px;">
+          <img src="/media/hero/hp61-20-10-1.jpg" alt="Immunohistochemistry" style="height:260px;flex-shrink:0;object-fit:cover;border-radius:8px;">
         </div>
     design:
       columns: '1'
@@ -32,12 +32,14 @@ sections:
 
         My long-term goal is to become an independent investigator developing splicing-based therapies for ALS and frontotemporal dementia (FTD), while uncovering how TDP-43 dysfunction intersects with tau and α-synuclein pathology.
 
-        **eRA Commons:** Tianyu &nbsp;|&nbsp; **Lab:** [Wong Lab](https://labs.pathology.jhu.edu/wong/) &nbsp;|&nbsp; **Department:** [Pathology, Johns Hopkins School of Medicine](https://www.hopkinsmedicine.org/pathology)
+        **eRA Commons:** Tianyu &nbsp;|&nbsp; **Lab:** [Wong Lab](https://labs.pathology.jhu.edu/wong/) &nbsp;|&nbsp; **Department:** [Department of Pathology, Johns Hopkins School of Medicine](https://pathology.jhu.edu/)
+
+        [Google Scholar](https://scholar.google.com/citations?user=JfIynKUAAAAJ) &nbsp;·&nbsp; [ORCID](https://orcid.org/0000-0002-5299-847X) &nbsp;·&nbsp; [GitHub](https://github.com/caotianyu0427) &nbsp;·&nbsp; [Email: tcao6@jh.edu](mailto:tcao6@jh.edu)
       button:
         text: Download CV
         url: uploads/resume.pdf
       headings:
-        about: ''
+        about: ' '
         education: Education
         interests: Research Interests
     design:
