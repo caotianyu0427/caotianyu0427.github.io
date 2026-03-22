@@ -22,4 +22,8 @@ tags:
   - Edaravone
   - Meta-analysis
 featured: false
+links:
+  - type: custom
+    label: PubMed
+    url: https://pubmed.ncbi.nlm.nih.gov/36462105/
 ---

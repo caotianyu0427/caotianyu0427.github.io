@@ -22,4 +22,8 @@ tags:
   - Tau
   - Amyloid-beta
 featured: false
+links:
+  - type: custom
+    label: PubMed
+    url: https://pubmed.ncbi.nlm.nih.gov/36536457/
 ---

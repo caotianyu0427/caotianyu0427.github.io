@@ -22,7 +22,7 @@ tags:
   - Tauopathy
 featured: false
 links:
-  - type: preprint
-    provider: doi
-    id: 10.1101/2024.06.26.600814
+  - type: custom
+    label: bioRxiv
+    url: https://doi.org/10.1101/2024.06.26.600814
 ---

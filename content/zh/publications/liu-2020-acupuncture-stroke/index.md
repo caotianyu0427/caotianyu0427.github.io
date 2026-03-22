@@ -23,4 +23,8 @@ tags:
   - Cognitive Impairment
   - Clinical Trial
 featured: false
+links:
+  - type: custom
+    label: PubMed
+    url: https://pubmed.ncbi.nlm.nih.gov/32859250/
 ---

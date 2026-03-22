@@ -23,7 +23,7 @@ tags:
   - FTD
 featured: true
 links:
-  - type: preprint
-    provider: doi
-    id: 10.1101/2025.08.28.672900
+  - type: custom
+    label: bioRxiv
+    url: https://doi.org/10.1101/2025.08.28.672900
 ---

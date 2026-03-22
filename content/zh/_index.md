@@ -13,11 +13,11 @@ sections:
       title: ''
       subtitle: ''
       text: |
-        <div style="display:flex;gap:8px;justify-content:center;margin:-2rem auto 0 auto;max-width:100%;overflow-x:auto;">
-          <img src="/media/hero/AT8PASYNNERNTS0045-29-40cor_composite.jpg" alt="免疫荧光" style="height:260px;flex-shrink:0;object-fit:cover;border-radius:8px;">
-          <img src="/media/hero/AT8TS1021-21-40SNCOTHT.jpg" alt="免疫组化" style="height:260px;flex-shrink:0;object-fit:cover;border-radius:8px;">
-          <img src="/media/hero/uncmtdpp61-29-40cor.jpg" alt="脑组织染色" style="height:260px;flex-shrink:0;object-fit:cover;border-radius:8px;">
-          <img src="/media/hero/hp61-20-10-1.jpg" alt="免疫组化" style="height:260px;flex-shrink:0;object-fit:cover;border-radius:8px;">
+        <div style="display:flex;gap:6px;margin:-2rem auto 0 auto;">
+          <img src="/media/hero/AT8PASYNNERNTS0045-29-40cor_composite.jpg" alt="免疫荧光" style="width:25%;height:240px;object-fit:cover;border-radius:8px;">
+          <img src="/media/hero/AT8TS1021-21-40SNCOTHT.jpg" alt="免疫组化" style="width:25%;height:240px;object-fit:cover;border-radius:8px;">
+          <img src="/media/hero/uncmtdpp61-29-40cor.jpg" alt="脑组织染色" style="width:25%;height:240px;object-fit:cover;border-radius:8px;">
+          <img src="/media/hero/hp61-20-10-1.jpg" alt="免疫组化" style="width:25%;height:240px;object-fit:cover;border-radius:8px;">
         </div>
     design:
       columns: '1'

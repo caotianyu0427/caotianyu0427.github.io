@@ -21,7 +21,7 @@ tags:
   - RNA Splicing
 featured: false
 links:
-  - type: preprint
-    provider: doi
-    id: 10.1101/2025.09.04.673943
+  - type: custom
+    label: bioRxiv
+    url: https://doi.org/10.1101/2025.09.04.673943
 ---
