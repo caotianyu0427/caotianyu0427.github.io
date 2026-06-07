@@ -1,0 +1,341 @@
+/* ============================================================
+   Laser / ILCA 帆船图解指南  —  Blueprint Design System
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+SC:wght@400;500;600;700&display=swap');
+
+:root {
+  /* ---- ink + paper ---- */
+  --bg:        #071d33;          /* deep navy ground */
+  --bg-2:      #0a2745;          /* card / panel */
+  --bg-3:      #0d2e52;          /* raised panel */
+  --grid:      rgba(122,176,224,0.10);
+  --grid-bold: rgba(122,176,224,0.18);
+
+  /* ---- line work ---- */
+  --line:      #8fc1e8;          /* primary blueprint stroke */
+  --line-dim:  #3f6b97;          /* secondary stroke / construction */
+  --line-faint:#27496e;
+
+  /* ---- type ---- */
+  --ink:       #e3eefa;          /* headings / strong */
+  --ink-2:     #b9d2ea;          /* body */
+  --ink-3:     #7fa3c4;          /* muted / captions */
+
+  /* ---- functional accents (color-coded, not decorative) ---- */
+  --wind:      #ffd166;          /* amber — wind / important */
+  --force:     #ff7a59;          /* coral — applied forces */
+  --water:     #4cc9c0;          /* teal — water / hydro-forces */
+
+  --maxw: 1120px;
+
+  --mono: 'IBM Plex Mono', ui-monospace, monospace;
+  --sans: 'IBM Plex Sans', 'IBM Plex Sans SC', system-ui, sans-serif;
+  --zh:   'IBM Plex Sans SC', 'IBM Plex Sans', system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background-color: var(--bg);
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 28px 28px;
+  color: var(--ink-2);
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* faint vignette so the grid recedes at the edges */
+body::before {
+  content: "";
+  position: fixed; inset: 0;
+  pointer-events: none;
+  background: radial-gradient(120% 90% at 50% 0%, transparent 55%, rgba(3,12,22,0.55) 100%);
+  z-index: 0;
+}
+
+/* ---------- layout primitives ---------- */
+.wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 28px; position: relative; z-index: 1; }
+
+section.block {
+  padding: 76px 0 60px;
+  border-top: 1px solid var(--line-faint);
+}
+section.block:first-of-type { border-top: none; }
+
+/* ---------- mono helpers ---------- */
+.mono { font-family: var(--mono); }
+.tick {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+/* corner-tick frame used on figures + cards */
+.frame {
+  position: relative;
+  background: var(--bg-2);
+  border: 1px solid var(--line-faint);
+}
+.frame::before, .frame::after {
+  content: ""; position: absolute; width: 10px; height: 10px;
+  border: 1px solid var(--line); border-bottom: none; border-right: none;
+  top: 7px; left: 7px;
+}
+.frame::after { top: auto; left: auto; bottom: 7px; right: 7px;
+  border: 1px solid var(--line); border-top: none; border-left: none; }
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero { padding: 92px 0 64px; position: relative; }
+.hero .kicker { color: var(--wind); }
+.hero h1 {
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: clamp(40px, 7vw, 86px);
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin: 18px 0 6px;
+}
+.hero h1 .zh { font-family: var(--zh); display: block; font-size: 0.46em; font-weight: 600; color: var(--line); letter-spacing: 0; margin-top: 14px; }
+.hero .lede {
+  max-width: 720px; margin-top: 22px; font-size: 18px; color: var(--ink-2);
+}
+.hero .lede .zh { font-family: var(--zh); display:block; margin-top: 8px; color: var(--ink-3); font-size: 16px; }
+
+.spec-row {
+  display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px;
+}
+.spec {
+  font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em;
+  color: var(--line); border: 1px solid var(--line-faint);
+  padding: 7px 12px; background: rgba(143,193,232,0.04);
+}
+.spec b { color: var(--ink); font-weight: 600; }
+
+/* ---------- table of contents ---------- */
+.toc {
+  margin-top: 44px;
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+  background: var(--line-faint); border: 1px solid var(--line-faint);
+}
+.toc a {
+  background: var(--bg-2); padding: 16px 16px 18px; text-decoration: none;
+  color: var(--ink-2); transition: background .15s, color .15s; display: block;
+}
+.toc a:hover { background: var(--bg-3); color: var(--ink); }
+.toc a .no { font-family: var(--mono); font-size: 12px; color: var(--wind); letter-spacing: 0.1em; }
+.toc a .t  { display: block; margin-top: 8px; font-weight: 600; color: var(--ink); font-size: 15px; }
+.toc a .z  { display: block; font-family: var(--zh); font-size: 13px; color: var(--ink-3); margin-top: 2px; }
+
+/* ============================================================
+   SECTION HEADINGS
+   ============================================================ */
+.sec-head { display: flex; align-items: baseline; gap: 18px; margin-bottom: 8px; }
+.sec-head .no {
+  font-family: var(--mono); font-size: 14px; letter-spacing: 0.2em;
+  color: var(--wind); padding-top: 6px;
+}
+.sec-head h2 {
+  margin: 0; font-size: clamp(26px, 3.4vw, 38px); font-weight: 700;
+  color: var(--ink); letter-spacing: -0.01em; line-height: 1.05;
+}
+.sec-head h2 .zh { font-family: var(--zh); font-weight: 600; }
+.sec-sub { color: var(--ink-3); max-width: 760px; margin: 0 0 38px; }
+.sec-sub .zh { font-family: var(--zh); display:block; margin-top: 4px; }
+
+/* ============================================================
+   BILINGUAL TEXT BLOCK  (EN | 中文, parallel)
+   ============================================================ */
+.bil { display: grid; grid-template-columns: 1fr 1fr; gap: 0 34px; }
+.bil > .en, .bil > .zh { margin: 0; }
+.bil > .en { color: var(--ink-2); }
+.bil > .zh { font-family: var(--zh); color: var(--ink-2); }
+.bil + .bil { margin-top: 14px; }
+
+/* dividing hairline between the two languages */
+.bil.ruled { position: relative; }
+.bil.ruled::before {
+  content:""; position: absolute; top: 2px; bottom: 2px; left: calc(50% - 17px);
+  border-left: 1px dashed var(--line-faint);
+}
+
+/* ============================================================
+   FIGURE (svg diagrams)
+   ============================================================ */
+figure.fig { margin: 0; }
+.fig-stage {
+  padding: 26px; background: var(--bg-2); border: 1px solid var(--line-faint);
+  position: relative; overflow: hidden;
+}
+.fig-stage svg { display: block; width: 100%; height: auto; }
+figcaption {
+  font-family: var(--mono); font-size: 12px; letter-spacing: 0.05em;
+  color: var(--ink-3); padding: 12px 4px 0; display:flex; gap: 10px;
+}
+figcaption .fig-no { color: var(--wind); }
+
+/* svg label conventions */
+.lbl-en { font: 600 13px var(--mono, monospace); fill: var(--ink); }
+.lbl-zh { font: 500 13px var(--zh, sans-serif); fill: var(--line); }
+.lbl-sm { font: 500 11px var(--mono, monospace); fill: var(--ink-3); }
+
+/* ============================================================
+   PARTS TABLE
+   ============================================================ */
+.parts { margin-top: 36px; border: 1px solid var(--line-faint); }
+.parts .row {
+  display: grid; grid-template-columns: 44px 1.1fr 1fr 2.2fr;
+  border-top: 1px solid var(--line-faint);
+}
+.parts .row:first-child { border-top: none; }
+.parts .row.head {
+  background: var(--bg-3); font-family: var(--mono); font-size: 11px;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-3);
+}
+.parts .row.head > div { padding: 11px 14px; }
+.parts .row > div { padding: 14px; border-left: 1px solid var(--line-faint); }
+.parts .row > div:first-child { border-left: none; }
+.parts .num { font-family: var(--mono); color: var(--wind); font-size: 13px; }
+.parts .en  { color: var(--ink); font-weight: 600; }
+.parts .en small { display:block; font-weight: 400; color: var(--ink-3); font-family: var(--mono); font-size: 11px; letter-spacing: 0.04em; margin-top: 3px; }
+.parts .zhn { font-family: var(--zh); color: var(--ink); font-weight: 500; }
+.parts .fn  { color: var(--ink-2); font-size: 15px; }
+.parts .fn .zh { font-family: var(--zh); display:block; color: var(--ink-3); margin-top: 4px; }
+.parts .row:hover { background: rgba(143,193,232,0.04); }
+
+/* ============================================================
+   STEP CARDS  (rigging / capsize)
+   ============================================================ */
+.steps { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; margin-top: 34px; }
+.step { border: 1px solid var(--line-faint); background: var(--bg-2); display:flex; flex-direction: column; }
+.step .step-fig { padding: 18px 18px 6px; border-bottom: 1px dashed var(--line-faint); }
+.step .step-fig svg { display:block; width: 100%; height: auto; }
+.step .step-fig img.knot { display:block; width: 100%; height: 188px; object-fit: contain; background: var(--bg-3); border-radius: 6px; }
+.step .step-body { padding: 16px 18px 20px; }
+.step .step-no {
+  font-family: var(--mono); font-size: 12px; letter-spacing: 0.16em; color: var(--wind);
+  display:flex; align-items:center; gap: 10px; margin-bottom: 10px;
+}
+.step .step-no::after { content:""; flex:1; border-top: 1px solid var(--line-faint); }
+.step h4 { margin: 0 0 3px; color: var(--ink); font-size: 17px; font-weight: 600; }
+.step h4 .zh { font-family: var(--zh); display:block; font-size: 15px; color: var(--line); font-weight: 500; margin-top: 2px; }
+.step p { margin: 10px 0 0; font-size: 14.5px; }
+.step p.zh { font-family: var(--zh); color: var(--ink-3); }
+
+/* ============================================================
+   CALLOUT / NOTE
+   ============================================================ */
+.note {
+  margin-top: 26px; border-left: 3px solid var(--wind);
+  background: rgba(255,209,102,0.06); padding: 16px 20px;
+}
+.note.warn { border-left-color: var(--force); background: rgba(255,122,89,0.07); }
+.note .tag { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--wind); }
+.note.warn .tag { color: var(--force); }
+.note p { margin: 6px 0 0; font-size: 15px; }
+.note p.zh { font-family: var(--zh); color: var(--ink-3); margin-top: 4px; }
+
+/* ============================================================
+   TWO-COLUMN FIGURE+TEXT
+   ============================================================ */
+.split { display: grid; grid-template-columns: 1.15fr 1fr; gap: 34px; align-items: start; margin-top: 30px; }
+.split.flip { grid-template-columns: 1fr 1.15fr; }
+.split .txt h3 { color: var(--ink); font-size: 19px; margin: 0 0 4px; font-weight: 600; }
+.split .txt h3 .zh { font-family: var(--zh); display:block; font-size: 15px; color: var(--line); font-weight: 500; }
+.split .txt .pair { margin-top: 18px; }
+.split .txt .pair .en { color: var(--ink-2); margin: 0; }
+.split .txt .pair .zh { font-family: var(--zh); color: var(--ink-3); margin: 5px 0 0; font-size: 15px; }
+
+/* legend chips for vector colors */
+.legend { display:flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 16px; }
+.legend .k { display:flex; align-items:center; gap: 8px; font-family: var(--mono); font-size: 12px; color: var(--ink-3); }
+.legend .k i { width: 22px; height: 0; border-top: 3px solid var(--line); display:inline-block; }
+.legend .k.wind i  { border-color: var(--wind); }
+.legend .k.force i { border-color: var(--force); }
+.legend .k.water i { border-color: var(--water); }
+.legend .k.line  i { border-color: var(--line); }
+
+/* ============================================================
+   SVG DRAWING CONVENTIONS (shared by all diagrams)
+   ============================================================ */
+svg .s-line  { stroke: var(--line);     fill: none; stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+svg .s-dim   { stroke: var(--line-dim); fill: none; stroke-width: 1.4; stroke-linecap: round; }
+svg .s-faint { stroke: var(--line-faint);fill: none; stroke-width: 1; }
+svg .s-wind  { stroke: var(--wind);     fill: none; stroke-width: 2.4; stroke-linecap: round; }
+svg .s-force { stroke: var(--force);    fill: none; stroke-width: 2.6; stroke-linecap: round; }
+svg .s-water { stroke: var(--water);    fill: none; stroke-width: 2.4; stroke-linecap: round; }
+svg .dash    { stroke-dasharray: 6 6; }
+svg .dash-sm { stroke-dasharray: 3 4; }
+svg .sail    { fill: rgba(143,193,232,0.09); stroke: var(--line); stroke-width: 2; stroke-linejoin: round; }
+svg .hull    { fill: rgba(13,46,82,0.9); stroke: var(--line); stroke-width: 2.2; stroke-linejoin: round; }
+svg .water-fill { fill: rgba(76,201,192,0.06); }
+svg .f-line  { fill: var(--line); }
+svg .f-wind  { fill: var(--wind); }
+svg .f-force { fill: var(--force); }
+svg .f-water { fill: var(--water); }
+svg .f-ink   { fill: var(--ink); }
+/* callout number badge */
+svg .badge   { fill: var(--bg); stroke: var(--wind); stroke-width: 1.6; }
+svg .badge-t { fill: var(--wind); font: 600 13px var(--mono, monospace); text-anchor: middle; }
+svg .lead    { stroke: var(--line-dim); stroke-width: 1; stroke-dasharray: 2 3; fill: none; }
+/* on-figure name labels */
+svg text.figlab { font: 600 12.5px var(--mono, monospace); fill: var(--ink); }
+svg text.figlab tspan { font-family: var(--zh, sans-serif); font-weight: 500; fill: var(--line); }
+svg text.figlab tspan.n { font-family: var(--mono, monospace); font-weight: 600; fill: var(--wind); }
+
+/* knot diagrams: rope shaded standing→working, with over/under casing */
+svg .rope  { fill: none; stroke-width: 9; stroke-linecap: round; stroke-linejoin: round; }
+svg .cased { fill: none; stroke: var(--bg-2); stroke-width: 17; stroke-linecap: round; }
+svg .post2 { fill: var(--bg-3); stroke: var(--line-dim); stroke-width: 5; }
+
+/* ============================================================
+   GLOSSARY
+   ============================================================ */
+.glossary { margin-top: 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line-faint); border: 1px solid var(--line-faint); }
+.glossary .term { background: var(--bg-2); padding: 15px 20px; }
+.glossary .term:hover { background: var(--bg-3); }
+.glossary .term .t { color: var(--ink); font-weight: 600; font-size: 16px; }
+.glossary .term .t .zh { font-family: var(--zh); color: var(--line); font-weight: 500; font-size: 14px; margin-left: 8px; }
+.glossary .term .d { color: var(--ink-3); font-size: 14px; margin-top: 6px; line-height: 1.5; }
+.glossary .term .d .zh { font-family: var(--zh); display: block; margin-top: 2px; }
+@media (max-width: 720px){ .glossary { grid-template-columns: 1fr; } }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer { border-top: 1px solid var(--line-faint); padding: 40px 0 70px; color: var(--ink-3); }
+footer .mono { font-size: 12px; letter-spacing: 0.1em; }
+footer .zh { font-family: var(--zh); }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 880px) {
+  body { font-size: 16px; }
+  .toc { grid-template-columns: repeat(2, 1fr); }
+  .bil { grid-template-columns: 1fr; gap: 4px; }
+  .bil.ruled::before { display: none; }
+  .bil > .zh { color: var(--ink-3); padding-bottom: 4px; }
+  .steps { grid-template-columns: 1fr; }
+  .split, .split.flip { grid-template-columns: 1fr; }
+  .parts .row { grid-template-columns: 34px 1fr 1fr; }
+  .parts .row .fn { grid-column: 1 / -1; border-left: none; border-top: 1px dashed var(--line-faint); }
+  .parts .row.head .fn { display: none; }
+}
+@media (max-width: 520px) {
+  .wrap { padding: 0 18px; }
+  .toc { grid-template-columns: 1fr; }
+}

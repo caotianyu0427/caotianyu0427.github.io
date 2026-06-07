@@ -1,0 +1,1378 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Laser / ILCA 帆船图解指南</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<header class="hero">
+  <div class="wrap">
+    <div class="tick">Dinghy Sailing · Illustrated Field Guide</div>
+    <h1>The Laser <span style="color:var(--ink-3);font-weight:400;">/ ILCA</span> Sailboat
+      <span class="zh">激光级帆船 · 图解操作指南</span>
+    </h1>
+    <p class="lede">A blueprint-style, bilingual walkthrough of the world's most popular single-handed dinghy — every part named, rigged step by step, and the physics of sailing it laid out in diagrams.
+      <span class="zh">一份蓝图风格的中英对照图解：认识全球最流行的单人帆船的每个部件、一步步学会组装，并用示意图讲清驾驶它的原理。</span>
+    </p>
+    <div class="spec-row">
+      <div class="spec">CLASS 级别 · <b>One-Design 单人艇</b></div>
+      <div class="spec">DESIGN 设计 · <b>Bruce Kirby, 1970</b></div>
+      <div class="spec">LOA 全长 · <b>4.23 m</b></div>
+      <div class="spec">SAIL 帆面 (ILCA 7) · <b>7.06 m²</b></div>
+      <div class="spec">CREW 乘员 · <b>1</b></div>
+      <div class="spec">HULL 船重 · <b>58.9 kg</b></div>
+    </div>
+
+    <nav class="toc">
+      <a href="#parts"><span class="no">01</span><span class="t">Parts &amp; Functions</span><span class="z">各部位名称与功能</span></a>
+      <a href="#rigging"><span class="no">02</span><span class="t">Rigging, Step by Step</span><span class="z">组装与装配步骤</span></a>
+      <a href="#points"><span class="no">03</span><span class="t">Points of Sail</span><span class="z">各点航法（风向与航向）</span></a>
+      <a href="#controls"><span class="no">04</span><span class="t">Sail &amp; Rudder Control</span><span class="z">帆与舵的操纵</span></a>
+      <a href="#forces"><span class="no">05</span><span class="t">Force Analysis</span><span class="z">受力分析</span></a>
+      <a href="#balance"><span class="no">06</span><span class="t">Balancing in Strong Wind</span><span class="z">大风中的平衡</span></a>
+      <a href="#capsize"><span class="no">07</span><span class="t">Capsize Recovery</span><span class="z">翻船后如何回正</span></a>
+      <a href="#glossary"><span class="no">08</span><span class="t">Safety &amp; Glossary</span><span class="z">安全与术语表</span></a>
+    </nav>
+  </div>
+</header>
+
+<!-- ============================================================
+     01 · PARTS & FUNCTIONS
+     ============================================================ -->
+<section class="block" id="parts">
+  <div class="wrap">
+    <div class="sec-head"><span class="no">01</span><h2>Parts &amp; Functions <span class="zh">／ 各部位名称与功能</span></h2></div>
+    <p class="sec-sub">Every numbered part on the diagram is listed below with its English name, Chinese name, and what it actually does on the water.
+      <span class="zh">下图中每个编号部件，都在表中列出英文名、中文名，以及它在水上的实际作用。</span>
+    </p>
+
+    <figure class="fig">
+      <div class="fig-stage">
+        <svg viewBox="0 0 1100 760" role="img" aria-label="Side-view diagram of a rigged Laser / ILCA dinghy, bow to the right, drawn to scale">
+          <!-- water -->
+          <rect x="0" y="560" width="1100" height="200" class="water-fill"></rect>
+          <line x1="0" y1="560" x2="1100" y2="560" class="s-water"></line>
+          <path d="M70,576 q14,-7 28,0 M250,580 q14,-7 28,0 M880,576 q14,-7 28,0 M1010,574 q14,-7 28,0" class="s-water dash-sm" style="opacity:.5"></path>
+
+          <!-- hull (LOA 4.23 m, drawn to scale against the ~5 m luff) -->
+          <path d="M410,520 C500,521 700,520 814,512 C811,532 809,552 806,566 C690,578 480,578 414,566 Z" class="hull"></path>
+          <path d="M418,524 C520,525 700,524 806,517" class="s-dim"></path>
+          <path d="M520,521 C540,536 636,537 652,520" class="s-dim"></path>
+          <ellipse cx="748" cy="519" rx="11" ry="4" class="s-dim"></ellipse>
+
+          <!-- daggerboard -->
+          <path d="M593,505 L607,505 L610,648 L596,648 Z" class="sail"></path>
+
+          <!-- rudder + tiller -->
+          <path d="M398,524 L410,522 L394,656 L380,652 Z" class="sail"></path>
+          <circle cx="410" cy="521" r="4" class="s-line"></circle>
+          <line x1="412" y1="519" x2="566" y2="508" class="s-line" style="stroke-width:2.5"></line>
+          <line x1="566" y1="508" x2="612" y2="500" class="s-dim"></line>
+          <!-- traveler -->
+          <line x1="410" y1="519" x2="452" y2="519" class="s-dim"></line>
+
+          <!-- mast (~5 m luff, taller than the hull is long) -->
+          <line x1="748" y1="519" x2="741" y2="60" class="s-line" style="stroke-width:4"></line>
+          <!-- sail -->
+          <path d="M736,60 L748,478 L490,474 Q545,250 736,60 Z" class="sail"></path>
+          <!-- battens -->
+          <g class="s-dim">
+            <line x1="686" y1="135" x2="734" y2="150"></line>
+            <line x1="641" y1="209" x2="718" y2="224"></line>
+            <line x1="597" y1="284" x2="710" y2="298"></line>
+            <line x1="553" y1="358" x2="704" y2="372"></line>
+          </g>
+          <!-- telltales -->
+          <g class="s-wind">
+            <path d="M700,200 q9,-4 18,0" fill="none"></path>
+            <path d="M700,300 q9,-4 18,0" fill="none"></path>
+          </g>
+          <!-- boom (foot ~2.7 m), clear of the deck at the gooseneck -->
+          <line x1="748" y1="478" x2="490" y2="474" class="s-line" style="stroke-width:3.5"></line>
+          <circle cx="748" cy="478" r="5" class="f-line"></circle>
+          <!-- cunningham -->
+          <line x1="748" y1="452" x2="748" y2="478" class="s-line"></line>
+          <!-- vang -->
+          <line x1="746" y1="512" x2="690" y2="481" class="s-line"></line>
+          <!-- mainsheet -->
+          <line x1="515" y1="478" x2="432" y2="519" class="s-line"></line>
+          <!-- hiking strap -->
+          <path d="M530,531 Q578,544 626,531" class="s-dim" fill="none"></path>
+
+          <!-- ===== callouts (two columns) ===== -->
+          <!-- RIGHT column -->
+          <g><polyline class="lead" points="896,120 866,120 686,135"></polyline><circle class="f-line" cx="686" cy="135" r="2.6"></circle><text class="figlab" x="902" y="124" text-anchor="start"><tspan class="n">4</tspan>  Battens <tspan>帆骨</tspan></text></g>
+          <g><polyline class="lead" points="896,188 866,188 718,205"></polyline><circle class="f-line" cx="718" cy="205" r="2.6"></circle><text class="figlab" x="902" y="192" text-anchor="start"><tspan class="n">5</tspan>  Telltales <tspan>风向毛线</tspan></text></g>
+          <g><polyline class="lead" points="896,256 866,256 745,300"></polyline><circle class="f-line" cx="745" cy="300" r="2.6"></circle><text class="figlab" x="902" y="260" text-anchor="start"><tspan class="n">2</tspan>  Mast <tspan>桅杆</tspan></text></g>
+          <g><polyline class="lead" points="896,324 866,324 615,300"></polyline><circle class="f-line" cx="615" cy="300" r="2.6"></circle><text class="figlab" x="902" y="328" text-anchor="start"><tspan class="n">1</tspan>  Mainsail <tspan>主帆</tspan></text></g>
+          <g><polyline class="lead" points="896,392 866,392 750,478"></polyline><circle class="f-line" cx="750" cy="478" r="2.6"></circle><text class="figlab" x="902" y="396" text-anchor="start"><tspan class="n">6</tspan>  Gooseneck <tspan>帆杆接头</tspan></text></g>
+          <g><polyline class="lead" points="896,460 866,460 748,460"></polyline><circle class="f-line" cx="748" cy="460" r="2.6"></circle><text class="figlab" x="902" y="464" text-anchor="start"><tspan class="n">16</tspan>  Cunningham <tspan>帆领下拉</tspan></text></g>
+          <g><polyline class="lead" points="896,528 866,528 700,498"></polyline><circle class="f-line" cx="700" cy="498" r="2.6"></circle><text class="figlab" x="902" y="532" text-anchor="start"><tspan class="n">15</tspan>  Vang <tspan>压帆器</tspan></text></g>
+          <g><polyline class="lead" points="896,596 866,596 812,514"></polyline><circle class="f-line" cx="812" cy="514" r="2.6"></circle><text class="figlab" x="902" y="600" text-anchor="start"><tspan class="n">8</tspan>  Bow <tspan>船首</tspan></text></g>
+          <g><polyline class="lead" points="896,664 866,664 605,615"></polyline><circle class="f-line" cx="605" cy="615" r="2.6"></circle><text class="figlab" x="902" y="668" text-anchor="start"><tspan class="n">11</tspan>  Daggerboard <tspan>稳向板</tspan></text></g>
+          <!-- LEFT column -->
+          <g><polyline class="lead" points="204,120 234,120 618,477"></polyline><circle class="f-line" cx="618" cy="477" r="2.6"></circle><text class="figlab" x="198" y="124" text-anchor="end"><tspan class="n">3</tspan>  Boom <tspan>帆杆</tspan></text></g>
+          <g><polyline class="lead" points="204,180 234,180 496,475"></polyline><circle class="f-line" cx="496" cy="475" r="2.6"></circle><text class="figlab" x="198" y="184" text-anchor="end"><tspan class="n">17</tspan>  Outhaul <tspan>外拉索</tspan></text></g>
+          <g><polyline class="lead" points="204,240 234,240 540,512"></polyline><circle class="f-line" cx="540" cy="512" r="2.6"></circle><text class="figlab" x="198" y="244" text-anchor="end"><tspan class="n">13</tspan>  Tiller <tspan>舵柄</tspan></text></g>
+          <g><polyline class="lead" points="204,300 234,300 470,500"></polyline><circle class="f-line" cx="470" cy="500" r="2.6"></circle><text class="figlab" x="198" y="304" text-anchor="end"><tspan class="n">14</tspan>  Mainsheet <tspan>主缭</tspan></text></g>
+          <g><polyline class="lead" points="204,360 234,360 586,528"></polyline><circle class="f-line" cx="586" cy="528" r="2.6"></circle><text class="figlab" x="198" y="364" text-anchor="end"><tspan class="n">10</tspan>  Cockpit <tspan>驾驶舱</tspan></text></g>
+          <g><polyline class="lead" points="204,420 234,420 430,519"></polyline><circle class="f-line" cx="430" cy="519" r="2.6"></circle><text class="figlab" x="198" y="424" text-anchor="end"><tspan class="n">19</tspan>  Traveler <tspan>缭桥</tspan></text></g>
+          <g><polyline class="lead" points="204,480 234,480 410,540"></polyline><circle class="f-line" cx="410" cy="540" r="2.6"></circle><text class="figlab" x="198" y="484" text-anchor="end"><tspan class="n">9</tspan>  Transom <tspan>尾板</tspan></text></g>
+          <g><polyline class="lead" points="204,540 234,540 580,536"></polyline><circle class="f-line" cx="580" cy="536" r="2.6"></circle><text class="figlab" x="198" y="544" text-anchor="end"><tspan class="n">18</tspan>  Hiking strap <tspan>压舷带</tspan></text></g>
+          <g><polyline class="lead" points="204,600 234,600 470,548"></polyline><circle class="f-line" cx="470" cy="548" r="2.6"></circle><text class="figlab" x="198" y="604" text-anchor="end"><tspan class="n">7</tspan>  Hull <tspan>船体</tspan></text></g>
+          <g><polyline class="lead" points="204,660 234,660 390,610"></polyline><circle class="f-line" cx="390" cy="610" r="2.6"></circle><text class="figlab" x="198" y="664" text-anchor="end"><tspan class="n">12</tspan>  Rudder <tspan>舵叶</tspan></text></g>
+        </svg>
+      </div>
+      <figcaption><span class="fig-no">FIG 1.0</span><span>Rigged Laser / ILCA, port side · 已组装的激光级帆船（左舷视图）</span></figcaption>
+    </figure>
+
+    <!-- parts table -->
+    <div class="parts">
+      <div class="row head">
+        <div>No.</div><div>Part · 名称</div><div>中文</div><div class="fn">Function · 功能</div>
+      </div>
+      <div class="row"><div class="num">1</div><div class="en">Mainsail<small>sail</small></div><div class="zhn">主帆</div><div class="fn">The single sail that captures wind to make drive; its sleeved luff slides straight over the mast.<span class="zh">唯一的帆，兜风产生前进动力；帆前缘做成套筒，直接套在桅杆上。</span></div></div>
+      <div class="row"><div class="num">2</div><div class="en">Mast<small>2-part spar</small></div><div class="zhn">桅杆</div><div class="fn">Two-part alloy spar that holds the sail up; the lower section steps into the hull.<span class="zh">两节式铝合金杆，支撑主帆；下节插入船体的桅座中。</span></div></div>
+      <div class="row"><div class="num">3</div><div class="en">Boom<small>spar</small></div><div class="zhn">帆杆 / 下桁</div><div class="fn">Horizontal spar along the foot of the sail; swinging it sets the sail's angle to the boat.<span class="zh">沿帆下缘的横杆；摆动它来调整帆与船的夹角。</span></div></div>
+      <div class="row"><div class="num">4</div><div class="en">Battens</div><div class="zhn">帆骨</div><div class="fn">Thin strips in the leech that stop the trailing edge from curling and flapping.<span class="zh">插在帆后缘的薄条，防止后缘卷边、抖动。</span></div></div>
+      <div class="row"><div class="num">5</div><div class="en">Telltales</div><div class="zhn">风向毛线</div><div class="fn">Short yarns that show the airflow over the sail — trim until both sides stream aft.<span class="zh">显示帆面气流的小毛线；调帆到两侧都顺向后飘即为最佳。</span></div></div>
+      <div class="row"><div class="num">6</div><div class="en">Gooseneck</div><div class="zhn">帆杆接头</div><div class="fn">The fitting that joins boom to mast and lets the boom swing out to either side.<span class="zh">连接帆杆与桅杆的接头，让帆杆能向两舷摆出。</span></div></div>
+      <div class="row"><div class="num">7</div><div class="en">Hull</div><div class="zhn">船体</div><div class="fn">The buoyant body you sit in; its shape sets the boat's speed and stability.<span class="zh">提供浮力、供人乘坐的船身；外形决定航速与稳定性。</span></div></div>
+      <div class="row"><div class="num">8</div><div class="en">Bow</div><div class="zhn">船首</div><div class="fn">The pointed front of the hull that slices through the water.<span class="zh">船体前端的尖头，破水前进。</span></div></div>
+      <div class="row"><div class="num">9</div><div class="en">Transom / Stern</div><div class="zhn">尾板 / 船尾</div><div class="fn">The flat rear of the hull; the rudder and traveler attach here.<span class="zh">船体后端的平板；舵与缭桥都安装在此。</span></div></div>
+      <div class="row"><div class="num">10</div><div class="en">Cockpit</div><div class="zhn">驾驶舱</div><div class="fn">The footwell where the sailor sits and braces against the hiking strap.<span class="zh">船员乘坐、踩住压舷带发力的凹槽。</span></div></div>
+      <div class="row"><div class="num">11</div><div class="en">Daggerboard</div><div class="zhn">中插板 / 稳向板</div><div class="fn">A board pushed down through the hull that resists sideways slip and lets the boat sail upwind.<span class="zh">从船体中部插下水的板，抵抗横向漂移，使船能迎风航行。</span></div></div>
+      <div class="row"><div class="num">12</div><div class="en">Rudder blade</div><div class="zhn">舵叶</div><div class="fn">The underwater blade at the stern that steers the boat left or right.<span class="zh">船尾水下的板，控制船向左或向右转。</span></div></div>
+      <div class="row"><div class="num">13</div><div class="en">Tiller &amp; Extension</div><div class="zhn">舵柄与延伸杆</div><div class="fn">The arm you hold to turn the rudder; the extension lets you steer while hiked out.<span class="zh">控制舵的握杆；延伸杆让你压舷在外侧时仍能掌舵。</span></div></div>
+      <div class="row"><div class="num">14</div><div class="en">Mainsheet</div><div class="zhn">主帆缭 / 主缭</div><div class="fn">The rope in your hand that pulls the sail in or lets it out — effectively your throttle.<span class="zh">手中收放帆的主绳——相当于油门。</span></div></div>
+      <div class="row"><div class="num">15</div><div class="en">Boom Vang / Kicker</div><div class="zhn">压帆器</div><div class="fn">Tackle from mast base to boom that holds the boom down, controlling leech tension and twist.<span class="zh">桅底到帆杆的滑轮组，压住帆杆，控制帆后缘张力与扭转。</span></div></div>
+      <div class="row"><div class="num">16</div><div class="en">Cunningham</div><div class="zhn">帆领下拉索</div><div class="fn">Pulls the luff down to flatten the sail and move its draft forward in stronger wind.<span class="zh">下拉帆前缘，使帆变平、最大弧度前移，用于大风。</span></div></div>
+      <div class="row"><div class="num">17</div><div class="en">Outhaul</div><div class="zhn">帆脚外拉索</div><div class="fn">Tensions the foot along the boom to control the depth of the lower sail.<span class="zh">沿帆杆张紧帆下缘，控制帆下部的弧度深浅。</span></div></div>
+      <div class="row"><div class="num">18</div><div class="en">Hiking Strap</div><div class="zhn">压舷带</div><div class="fn">The strap your feet hook under so you can lean right out to balance the boat.<span class="zh">勾住双脚的带子，让你能把身体探出舷外去平衡船。</span></div></div>
+      <div class="row"><div class="num">19</div><div class="en">Traveler / Bridle</div><div class="zhn">缭桥 / 尾横索</div><div class="fn">The line across the transom that the mainsheet leads through at the stern.<span class="zh">横跨船尾的绳，主缭从这里穿过。</span></div></div>
+    </div>
+
+    <div class="note">
+      <span class="tag">Note · 提示</span>
+      <p>Items 15–17 (vang, cunningham, outhaul) are the three "sail-shape controls." You'll meet them again in Section 04 — for now just know where they live.</p>
+      <p class="zh">第 15–17 项（压帆器、帆领下拉、帆脚外拉）是三大"帆型控制索"。第 04 节会再次用到，这里先记住它们的位置即可。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     02 · RIGGING, STEP BY STEP
+     ============================================================ -->
+<section class="block" id="rigging">
+  <div class="wrap">
+    <div class="sec-head"><span class="no">02</span><h2>Rigging, Step by Step <span class="zh">／ 组装与装配步骤</span></h2></div>
+    <p class="sec-sub">From a bag of parts on the beach to a boat ready to launch. Always rig head-to-wind (bow pointing into the wind) so the sail flaps freely instead of powering up while you work.
+      <span class="zh">从沙滩上一堆零件，到一艘可以下水的船。组装时务必让船头正对来风，这样帆会自由抖动而不会突然吃风。</span>
+    </p>
+
+    <div class="steps">
+
+      <!-- STEP 1 -->
+      <div class="step">
+        <div class="step-fig">
+          <svg viewBox="0 0 340 180" role="img" aria-label="Joining the two mast sections">
+            <defs><marker id="ar-s1" markerWidth="9" markerHeight="9" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" class="f-wind"></path></marker></defs>
+            <rect x="158" y="78" width="24" height="92" rx="4" class="s-line"></rect>
+            <rect x="159" y="14" width="22" height="78" rx="4" class="s-line"></rect>
+            <line x1="156" y1="84" x2="184" y2="84" class="s-dim dash"></line>
+            <text x="200" y="50" class="lbl-sm">UPPER 上节</text>
+            <text x="200" y="135" class="lbl-sm">LOWER 下节</text>
+            <line x1="120" y1="40" x2="120" y2="80" class="s-wind" marker-end="url(#ar-s1)"></line>
+            <text x="74" y="36" class="lbl-sm">push</text>
+          </svg>
+        </div>
+        <div class="step-body">
+          <div class="step-no">STEP 01</div>
+          <h4>Assemble the mast<span class="zh">接桅杆</span></h4>
+          <p>Push the upper mast section firmly into the lower section until the spigot seats fully.</p>
+          <p class="zh">把上节桅杆用力插入下节，直到接头完全到位、不再松动。</p>
+        </div>
+      </div>
+
+      <!-- STEP 2 -->
+      <div class="step">
+        <div class="step-fig">
+          <svg viewBox="0 0 340 180" role="img" aria-label="Insert the battens into the leech, then sleeve the sail">
+            <defs><marker id="ar-s2" markerWidth="9" markerHeight="9" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" class="f-wind"></path></marker></defs>
+            <polygon points="40,30 40,150 300,150" class="sail"></polygon>
+            <text x="50" y="142" class="lbl-sm">SAIL 帆</text>
+            <!-- leech pockets + battens -->
+            <g class="s-dim">
+              <line x1="70" y1="72" x2="118" y2="66"></line>
+              <line x1="120" y1="100" x2="183" y2="96"></line>
+              <line x1="180" y1="128" x2="248" y2="126"></line>
+            </g>
+            <!-- batten being slid in -->
+            <line x1="158" y1="58" x2="124" y2="64" class="s-wind" marker-end="url(#ar-s2)" style="stroke-width:3"></line>
+            <text x="150" y="44" class="lbl-sm" style="fill:var(--wind)">thin end first 细头朝里</text>
+            <text x="232" y="150" class="lbl-sm" style="fill:var(--line)">leech 后缘插袋</text>
+          </svg>
+        </div>
+        <div class="step-body">
+          <div class="step-no">STEP 02</div>
+          <h4>Batten, then sleeve<span class="zh">先插帆骨，再套帆</span></h4>
+          <p>First slide the battens into their leech pockets (thin end in, snug not forced). Then sleeve the sail's luff over the mast, head first, all the way up.</p>
+          <p class="zh">先把帆骨逐根插入帆后缘的插袋（细头朝里，插紧但别硬顶）。再把帆前缘的套筒从桅杆顶端套下，一路推到帆顶到顶。</p>
+        </div>
+      </div>
+
+      <!-- STEP 3 -->
+      <div class="step">
+        <div class="step-fig">
+          <svg viewBox="0 0 340 180" role="img" aria-label="Stepping the mast into the deck">
+            <defs><marker id="ar-s3" markerWidth="9" markerHeight="9" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" class="f-wind"></path></marker></defs>
+            <path d="M40,150 Q170,138 300,150 L300,166 Q170,156 40,166 Z" class="hull"></path>
+            <ellipse cx="170" cy="146" rx="16" ry="5" class="s-dim"></ellipse>
+            <line x1="170" y1="20" x2="170" y2="142" class="s-line" style="stroke-width:3"></line>
+            <line x1="170" y1="40" x2="170" y2="96" class="s-wind" marker-end="url(#ar-s3)" style="stroke-width:4"></line>
+            <text x="186" y="135" class="lbl-sm">mast step 桅座</text>
+          </svg>
+        </div>
+        <div class="step-body">
+          <div class="step-no">STEP 03</div>
+          <h4>Step the mast<span class="zh">立桅</span></h4>
+          <p>Lift the mast vertical and drop its base into the mast step in the foredeck. It should spin freely.</p>
+          <p class="zh">把桅杆竖起，将底端插入前甲板的桅座。装好后桅杆应能自由转动。</p>
+        </div>
+      </div>
+
+      <!-- STEP 4 -->
+      <div class="step">
+        <div class="step-fig">
+          <svg viewBox="0 0 340 180" role="img" aria-label="Attaching the boom at the gooseneck">
+            <line x1="120" y1="14" x2="120" y2="168" class="s-line" style="stroke-width:3"></line>
+            <line x1="124" y1="70" x2="300" y2="78" class="s-line" style="stroke-width:3"></line>
+            <circle cx="122" cy="71" r="7" class="s-wind"></circle>
+            <text x="132" y="56" class="lbl-sm f-wind" style="fill:var(--wind)">gooseneck 接头</text>
+            <circle cx="298" cy="78" r="5" class="s-line"></circle>
+            <text x="232" y="100" class="lbl-sm">clew 帆脚</text>
+          </svg>
+        </div>
+        <div class="step-body">
+          <div class="step-no">STEP 04</div>
+          <h4>Attach the boom<span class="zh">装帆杆</span></h4>
+          <p>Clip the boom to the gooseneck on the mast, then hook the sail's clew to the boom end.</p>
+          <p class="zh">把帆杆扣到桅杆的接头（gooseneck）上，再把帆的后下角（帆脚）挂到帆杆末端。</p>
+        </div>
+      </div>
+
+      <!-- STEP 5 -->
+      <div class="step">
+        <div class="step-fig">
+          <svg viewBox="0 0 340 180" role="img" aria-label="Rigging the sail-shape control lines">
+            <line x1="60" y1="20" x2="60" y2="150" class="s-line" style="stroke-width:3"></line>
+            <line x1="62" y1="120" x2="300" y2="126" class="s-line" style="stroke-width:3"></line>
+            <!-- vang -->
+            <path d="M62,148 L120,128" class="s-force"></path>
+            <text x="70" y="166" class="lbl-sm f-force" style="fill:var(--force)">vang 压帆器</text>
+            <!-- cunningham -->
+            <line x1="60" y1="60" x2="60" y2="118" class="s-water"></line>
+            <text x="66" y="52" class="lbl-sm f-water" style="fill:var(--water)">cunningham 下拉</text>
+            <!-- outhaul -->
+            <line x1="266" y1="124" x2="300" y2="125" class="s-wind"></line>
+            <text x="214" y="148" class="lbl-sm f-wind" style="fill:var(--wind)">outhaul 外拉</text>
+          </svg>
+        </div>
+        <div class="step-body">
+          <div class="step-no">STEP 05</div>
+          <h4>Rig the control lines<span class="zh">接帆型控制索</span></h4>
+          <p>Connect the three sail-shape lines: outhaul, cunningham and vang. These are the trickiest part — full breakdown below.</p>
+          <p class="zh">连接三条帆型控制索：帆脚外拉、帆领下拉、压帆器。这是最难的环节——详解见下方「帆型三索」。</p>
+        </div>
+      </div>
+
+      <!-- STEP 6 -->
+      <div class="step">
+        <div class="step-fig">
+          <svg viewBox="0 0 340 200" role="img" aria-label="How the mainsheet is reeved through the blocks">
+            <defs><marker id="ar-s6" markerWidth="11" markerHeight="11" refX="6" refY="3.5" orient="auto"><path d="M0,0 L8,3.5 L0,7 Z" class="f-wind"></path></marker></defs>
+            <!-- boom -->
+            <line x1="48" y1="44" x2="302" y2="44" class="s-line" style="stroke-width:3"></line>
+            <text x="112" y="32" class="lbl-sm">boom 帆杆</text>
+            <!-- blocks -->
+            <circle cx="178" cy="54" r="5" class="s-line"></circle>
+            <circle cx="286" cy="54" r="5" class="s-line"></circle>
+            <circle cx="286" cy="50" r="3" class="f-wind"></circle>
+            <text x="302" y="34" class="lbl-sm" text-anchor="end" style="fill:var(--wind)">tied off 系死</text>
+            <!-- transom traveler -->
+            <line x1="256" y1="160" x2="320" y2="160" class="s-dim"></line>
+            <circle cx="288" cy="160" r="5" class="s-line"></circle>
+            <text x="288" y="180" class="lbl-sm" text-anchor="middle">traveler 缭桥</text>
+            <!-- ratchet on cockpit floor -->
+            <circle cx="158" cy="150" r="6" class="s-line"></circle>
+            <text x="172" y="166" class="lbl-sm" text-anchor="start">ratchet 棘轮</text>
+            <!-- rope path: free end leads UP out of the ratchet to your hand -->
+            <g class="s-wind" fill="none" style="stroke-width:2.4">
+              <line x1="286" y1="59" x2="284" y2="156"></line>
+              <line x1="292" y1="156" x2="290" y2="59"></line>
+              <line x1="282" y1="54" x2="182" y2="54"></line>
+              <line x1="176" y1="58" x2="160" y2="144"></line>
+              <line x1="152" y1="146" x2="74" y2="96" marker-end="url(#ar-s6)"></line>
+            </g>
+            <text x="82" y="86" class="lbl-sm" text-anchor="start" style="fill:var(--wind)">to hand 到手中</text>
+          </svg>
+        </div>
+        <div class="step-body">
+          <div class="step-no">STEP 06</div>
+          <h4>Reeve the mainsheet<span class="zh">穿主缭</span></h4>
+          <p>Lead the sheet through the block system so a light pull on your end trims the whole sail. How the purchase works is explained below.</p>
+          <p class="zh">把主缭穿过整套滑轮，这样你手上轻轻一拉就能收紧整面帆。滑轮组的工作原理见下方详解。</p>
+        </div>
+      </div>
+
+      <!-- STEP 7 -->
+      <div class="step">
+        <div class="step-fig">
+          <svg viewBox="0 0 340 180" role="img" aria-label="Fitting the rudder and tiller">
+            <path d="M60,70 Q170,60 300,70 L300,86 Q170,76 60,86 Z" class="hull"></path>
+            <line x1="296" y1="78" x2="296" y2="78" class="s-line"></line>
+            <!-- rudder hung on transom (right) -->
+            <path d="M300,78 L316,78 L312,166 L298,164 Z" class="sail"></path>
+            <circle cx="300" cy="74" r="4" class="s-wind"></circle>
+            <text x="252" y="40" class="lbl-sm f-wind" style="fill:var(--wind)">pintles 舵针</text>
+            <!-- tiller forward -->
+            <line x1="300" y1="74" x2="120" y2="80" class="s-line"></line>
+            <text x="120" y="64" class="lbl-sm">tiller 舵柄</text>
+          </svg>
+        </div>
+        <div class="step-body">
+          <div class="step-no">STEP 07</div>
+          <h4>Fit the rudder &amp; tiller<span class="zh">装舵</span></h4>
+          <p>Hang the rudder on the transom pintles and lock it down; slide the tiller forward under the traveler. Tie off the rudder hold-down and finish loose line-ends with a stopper knot (knots below).</p>
+          <p class="zh">把舵挂到船尾的舵针上并锁住；舵柄从缭桥下方向前穿入。系好舵的下压绳，并在松散的绳头打一个止索结防脱出（绳结见下方）。</p>
+        </div>
+      </div>
+
+      <!-- STEP 8 -->
+      <div class="step">
+        <div class="step-fig">
+          <svg viewBox="0 0 340 180" role="img" aria-label="Inserting the daggerboard before launching">
+            <defs><marker id="ar-s8" markerWidth="9" markerHeight="9" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" class="f-wind"></path></marker></defs>
+            <line x1="0" y1="92" x2="340" y2="92" class="s-water"></line>
+            <rect x="0" y="92" width="340" height="78" class="water-fill"></rect>
+            <path d="M70,78 Q170,70 270,78 L270,96 Q170,90 70,96 Z" class="hull"></path>
+            <rect x="160" y="60" width="20" height="104" rx="3" class="sail"></rect>
+            <line x1="170" y1="20" x2="170" y2="58" class="s-wind" marker-end="url(#ar-s8)" style="stroke-width:4"></line>
+            <text x="186" y="150" class="lbl-sm">daggerboard 稳向板</text>
+          </svg>
+        </div>
+        <div class="step-body">
+          <div class="step-no">STEP 08</div>
+          <h4>Daggerboard &amp; launch<span class="zh">插稳向板、下水</span></h4>
+          <p>Drop the daggerboard into its slot (leave it half-up near shore), launch, then push it fully down in deep water.</p>
+          <p class="zh">把稳向板放入插槽（近岸先插一半），下水后在深水处再完全插到底。</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ===== DEEP DIVE A: the three control lines ===== -->
+    <h3 style="color:var(--ink);font-size:21px;margin:50px 0 4px;">The three control lines, explained <span class="zh" style="font-family:var(--zh);color:var(--line);font-weight:500;font-size:15px;display:block;margin-top:2px;">帆型三索详解 · 装配中最容易搞混的部分</span></h3>
+    <p class="sec-sub" style="margin-bottom:22px;">Three ropes, three edges of the sail. Each one tensions a different edge to change the sail's shape. Pull them all <b>on</b> to flatten and de-power in strong wind; ease them all <b>off</b> for a deep, powerful sail in light wind.
+      <span class="zh">三条绳，对应帆的三条边。每条张紧一条边来改变帆型。大风时三条全<b>收紧</b>＝帆变平、减力；小风时三条全<b>放松</b>＝帆变鼓、加力。</span>
+    </p>
+
+    <figure class="fig">
+      <div class="fig-stage">
+        <svg viewBox="0 0 760 380" role="img" aria-label="The three sail-shape control lines on the lower rig">
+          <defs>
+            <marker id="ar-ca" markerWidth="10" markerHeight="10" refX="5" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" class="f-wind"></path></marker>
+            <marker id="ar-cv" markerWidth="10" markerHeight="10" refX="5" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" class="f-force"></path></marker>
+            <marker id="ar-co" markerWidth="10" markerHeight="10" refX="5" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" class="f-water"></path></marker>
+          </defs>
+          <!-- lower sail -->
+          <path d="M566,60 L566,200 L150,214 Z" class="sail"></path>
+          <text x="360" y="150" class="lbl-sm">SAIL 帆（下半部）</text>
+          <!-- mast -->
+          <line x1="560" y1="300" x2="572" y2="40" class="s-line" style="stroke-width:4"></line>
+          <!-- boom -->
+          <line x1="566" y1="196" x2="150" y2="214" class="s-line" style="stroke-width:4"></line>
+          <circle cx="566" cy="196" r="5" class="f-line"></circle>
+          <!-- deck/gooseneck area -->
+          <line x1="500" y1="300" x2="600" y2="300" class="s-dim"></line>
+          <text x="606" y="304" class="lbl-sm">deck 甲板</text>
+
+          <!-- CUNNINGHAM (amber) pulls luff DOWN -->
+          <line x1="566" y1="120" x2="566" y2="290" class="s-wind" style="stroke-width:2.6"></line>
+          <line x1="566" y1="150" x2="566" y2="210" class="s-wind" marker-end="url(#ar-ca)" style="stroke-width:3"></line>
+          <text x="584" y="120" class="lbl-zh" style="fill:var(--wind);font-size:13px">CUNNINGHAM 帆领下拉</text>
+          <text x="584" y="138" class="lbl-sm" style="fill:var(--wind)">pulls luff DOWN 下拉前缘</text>
+
+          <!-- VANG (coral) pulls boom DOWN -->
+          <line x1="556" y1="290" x2="470" y2="206" class="s-force" style="stroke-width:2.6"></line>
+          <line x1="500" y1="248" x2="476" y2="214" class="s-force" marker-end="url(#ar-cv)" style="stroke-width:3"></line>
+          <text x="360" y="300" class="lbl-zh" style="fill:var(--force);font-size:13px">VANG 压帆器</text>
+          <text x="360" y="318" class="lbl-sm" style="fill:var(--force)">pulls boom DOWN 下压帆杆</text>
+
+          <!-- OUTHAUL (teal) tensions foot OUT to clew -->
+          <line x1="150" y1="214" x2="300" y2="210" class="s-water" style="stroke-width:2.6"></line>
+          <line x1="210" y1="212" x2="168" y2="213" class="s-water" marker-end="url(#ar-co)" style="stroke-width:3"></line>
+          <text x="150" y="244" class="lbl-zh" style="fill:var(--water);font-size:13px">OUTHAUL 帆脚外拉</text>
+          <text x="150" y="262" class="lbl-sm" style="fill:var(--water)">tensions foot 张紧下缘</text>
+        </svg>
+      </div>
+      <figcaption><span class="fig-no">FIG 2.A</span><span>Each line tensions one edge of the sail · 每条索张紧帆的一条边</span></figcaption>
+    </figure>
+
+    <div class="parts" style="margin-top:30px">
+      <div class="row head"><div style="width:auto">●</div><div class="en" style="grid-column:auto">Line · 控制索</div><div class="zhn">改变什么</div><div class="fn">What it does &amp; when to use · 作用与使用时机</div></div>
+      <div class="row"><div class="num" style="color:var(--water)">▸</div><div class="en">Outhaul</div><div class="zhn">帆脚外拉索<br><span style="font-weight:400;color:var(--ink-3)">foot 下缘</span></div><div class="fn">Pulls the clew out along the boom, tensioning the foot and flattening the lower third of the sail. Pull <b>on</b> for flat water / stronger wind; ease <b>off</b> in light wind or waves for more power.<span class="zh">把帆脚沿帆杆向外拉，张紧下缘、使帆下三分之一变平。平水或大风时<b>收紧</b>；小风或有浪时<b>放松</b>以加力。</span></div></div>
+      <div class="row"><div class="num" style="color:var(--wind)">▸</div><div class="en">Cunningham</div><div class="zhn">帆领下拉索<br><span style="font-weight:400;color:var(--ink-3)">luff 前缘</span></div><div class="fn">Pulls the luff (front edge) down, smoothing wrinkles and dragging the sail's deepest point forward. Pull <b>on</b> as the wind builds to de-power and keep the helm light; ease <b>off</b> in light air.<span class="zh">下拉帆前缘，抚平褶皱并把帆最鼓的点前移。风变大时<b>收紧</b>来减力、让舵变轻；小风时<b>放松</b>。</span></div></div>
+      <div class="row"><div class="num" style="color:var(--force)">▸</div><div class="en">Vang / Kicker</div><div class="zhn">压帆器<br><span style="font-weight:400;color:var(--ink-3)">leech 后缘</span></div><div class="fn">Pulls the boom down, tensioning the leech and controlling <b>twist</b> (how far the top of the sail falls open). The most powerful of the three — keep it <b>on</b> downwind and in gusts; ease when sitting in light air. It also stops the boom skying when you let the sheet out.<span class="zh">下压帆杆，张紧后缘、控制帆顶的<b>扭转</b>（帆上部张开多少）。三者中最有力——顺风和阵风中保持<b>收紧</b>；小风静坐时放松。它还能防止你放缭时帆杆翘起。</span></div></div>
+    </div>
+
+    <div class="note">
+      <span class="tag">Remember · 口诀</span>
+      <p>Three lines, three edges — <b style="color:var(--water)">outhaul = foot</b>, <b style="color:var(--wind)">cunningham = luff</b>, <b style="color:var(--force)">vang = leech</b>. More wind → pull all three on (flat sail). Less wind → ease all three off (full sail).</p>
+      <p class="zh">三索对三边：<b style="color:var(--water)">外拉＝下缘</b>、<b style="color:var(--wind)">下拉＝前缘</b>、<b style="color:var(--force)">压帆器＝后缘</b>。风大全收紧（帆平）；风小全放松（帆鼓）。</p>
+    </div>
+
+    <!-- ===== how each control line is actually rigged ===== -->
+    <h3 style="color:var(--ink);font-size:21px;margin:50px 0 4px;">How each line is actually tied on <span class="zh" style="font-family:var(--zh);color:var(--line);font-weight:500;font-size:15px;display:block;margin-top:2px;">三索如何用绳连接 · 接到哪里、怎么走线</span></h3>
+    <p class="sec-sub" style="margin-bottom:22px;">Each line attaches at the sail/spar corner it controls, runs through one or more blocks to multiply your pull, and finishes at a cleat you can release. Below: where each one starts, where it leads, and which way you haul it.
+      <span class="zh">每条索都接在它所控制的帆角／桅杆部位，穿过一个或多个滑轮来放大拉力，最后落到一个可随时松开的角索上。下面分别给出：从哪里起、走到哪里、往哪个方向拉。</span>
+    </p>
+
+    <div class="steps" style="grid-template-columns:repeat(3,1fr)">
+
+      <!-- OUTHAUL -->
+      <div class="step">
+        <div class="step-fig">
+          <svg viewBox="0 0 300 230" role="img" aria-label="Outhaul rigging: from the clew, around a block at the boom end, forward to a cleat">
+            <defs><marker id="o-ar" markerWidth="10" markerHeight="10" refX="6" refY="3.2" orient="auto"><path d="M0,0 L7,3.2 L0,6.4 Z" class="f-water"></path></marker></defs>
+            <line x1="46" y1="34" x2="46" y2="120" class="s-line" style="stroke-width:3"></line>
+            <line x1="46" y1="86" x2="270" y2="86" class="s-line" style="stroke-width:3"></line>
+            <path d="M52,44 L262,82 L52,82 Z" class="sail" style="opacity:.5"></path>
+            <circle cx="260" cy="82" r="5" class="s-line"></circle>
+            <circle cx="248" cy="98" r="5" class="s-line"></circle>
+            <rect x="78" y="92" width="16" height="8" rx="2" class="s-line"></rect>
+            <g class="s-water" fill="none" style="stroke-width:2.6">
+              <line x1="259" y1="87" x2="250" y2="94"></line>
+              <line x1="246" y1="102" x2="96" y2="100"></line>
+              <line x1="92" y1="100" x2="60" y2="100" marker-end="url(#o-ar)"></line>
+            </g>
+            <text x="268" y="74" class="lbl-sm" text-anchor="end">clew 帆脚</text>
+            <text x="248" y="118" class="lbl-sm" text-anchor="middle">block 滑轮</text>
+            <text x="86" y="118" class="lbl-sm" text-anchor="middle">cleat 角索</text>
+            <text x="150" y="138" class="lbl-sm" text-anchor="middle" style="fill:var(--water)">pull out → 向外拉＝张紧下缘</text>
+          </svg>
+        </div>
+        <div class="step-body">
+          <div class="step-no" style="color:var(--water)">OUTHAUL · 帆脚外拉</div>
+          <h4>Clew → boom-end block → cleat<span class="zh">帆脚 → 帆杆端滑轮 → 角索</span></h4>
+          <p>Tie the line to the <b>clew</b>, lead it around a block at the aft end of the boom, then forward along the boom to a cleat. Pulling the tail draws the clew out and flattens the foot.</p>
+          <p class="zh">把绳系在<b>帆脚</b>，绕过帆杆末端的滑轮，再沿帆杆向前引到角索。拉绳尾就把帆脚向外拉、压平下缘。</p>
+        </div>
+      </div>
+
+      <!-- CUNNINGHAM -->
+      <div class="step">
+        <div class="step-fig">
+          <svg viewBox="0 0 300 230" role="img" aria-label="Cunningham rigging: from a cringle low on the luff, down through a block at the gooseneck, to a cleat">
+            <defs><marker id="c-ar" markerWidth="10" markerHeight="10" refX="6" refY="3.2" orient="auto"><path d="M0,0 L7,3.2 L0,6.4 Z" class="f-wind"></path></marker></defs>
+            <line x1="150" y1="28" x2="150" y2="200" class="s-line" style="stroke-width:3"></line>
+            <line x1="150" y1="150" x2="276" y2="150" class="s-line" style="stroke-width:3"></line>
+            <path d="M150,40 L270,148 L150,148 Z" class="sail" style="opacity:.5"></path>
+            <circle cx="150" cy="108" r="5" class="s-line"></circle>
+            <circle cx="150" cy="152" r="5" class="s-line"></circle>
+            <rect x="104" y="180" width="16" height="8" rx="2" class="s-line"></rect>
+            <g class="s-wind" fill="none" style="stroke-width:2.6">
+              <line x1="150" y1="113" x2="150" y2="147"></line>
+              <line x1="146" y1="156" x2="116" y2="180"></line>
+            </g>
+            <line x1="150" y1="120" x2="150" y2="142" class="s-wind" style="stroke-width:3" marker-end="url(#c-ar)"></line>
+            <text x="158" y="104" class="lbl-sm" text-anchor="start">luff cringle 帆领孔</text>
+            <text x="160" y="150" class="lbl-sm" text-anchor="start">block 滑轮</text>
+            <text x="100" y="194" class="lbl-sm" text-anchor="end">cleat 角索</text>
+            <text x="150" y="216" class="lbl-sm" text-anchor="middle" style="fill:var(--wind)">pull down ↓ 下拉＝张紧前缘</text>
+          </svg>
+        </div>
+        <div class="step-body">
+          <div class="step-no" style="color:var(--wind)">CUNNINGHAM · 帆领下拉</div>
+          <h4>Luff cringle → gooseneck block → cleat<span class="zh">帆领孔 → 帆杆接头滑轮 → 角索</span></h4>
+          <p>Thread the line through the <b>cringle</b> (eyelet) low on the front edge, down through a block at the gooseneck, then to a cleat. Pulling down stretches the luff and flattens the sail.</p>
+          <p class="zh">把绳穿过帆前缘下部的<b>帆领孔</b>，向下穿过帆杆接头处的滑轮，再到角索。下拉就拉伸前缘、使帆变平。</p>
+        </div>
+      </div>
+
+      <!-- VANG -->
+      <div class="step">
+        <div class="step-fig">
+          <svg viewBox="0 0 300 230" role="img" aria-label="Vang rigging: a block-and-tackle between the mast base and the boom for big purchase">
+            <defs><marker id="v-ar" markerWidth="10" markerHeight="10" refX="6" refY="3.2" orient="auto"><path d="M0,0 L7,3.2 L0,6.4 Z" class="f-force"></path></marker></defs>
+            <line x1="70" y1="34" x2="70" y2="206" class="s-line" style="stroke-width:3"></line>
+            <line x1="70" y1="120" x2="276" y2="120" class="s-line" style="stroke-width:3"></line>
+            <path d="M70,46 L268,118 L70,118 Z" class="sail" style="opacity:.5"></path>
+            <circle cx="74" cy="170" r="5" class="s-line"></circle>
+            <circle cx="150" cy="122" r="5" class="s-line"></circle>
+            <g class="s-force" fill="none" style="stroke-width:2.4">
+              <line x1="78" y1="168" x2="146" y2="126"></line>
+              <line x1="82" y1="172" x2="150" y2="130"></line>
+              <line x1="86" y1="170" x2="154" y2="126"></line>
+              <line x1="74" y1="175" x2="60" y2="196" marker-end="url(#v-ar)"></line>
+            </g>
+            <rect x="44" y="196" width="16" height="8" rx="2" class="s-line"></rect>
+            <text x="68" y="186" class="lbl-sm" text-anchor="end">mast base 桅座</text>
+            <text x="158" y="118" class="lbl-sm" text-anchor="start">on the boom 帆杆上</text>
+            <text x="150" y="214" class="lbl-sm" text-anchor="middle" style="fill:var(--force)">block-and-tackle 多倍省力滑轮组</text>
+          </svg>
+        </div>
+        <div class="step-body">
+          <div class="step-no" style="color:var(--force)">VANG · 压帆器</div>
+          <h4>Mast base ↔ boom, many parts<span class="zh">桅座 ↔ 帆杆，多段绳省力</span></h4>
+          <p>A <b>block-and-tackle</b> runs between a fitting at the mast base and a fitting under the boom. Many rope falls multiply your pull, so a light hand hauls the boom hard down — controlling leech tension and twist.</p>
+          <p class="zh">在桅座接点与帆杆下方接点之间装一组<b>滑轮组</b>。多段绳放大了拉力，所以轻轻一拉就能把帆杆狠狠下压——控制后缘张力与扭转。</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ===== DEEP DIVE B: how the mainsheet works ===== -->
+    <h3 style="color:var(--ink);font-size:21px;margin:50px 0 4px;">How the mainsheet works <span class="zh" style="font-family:var(--zh);color:var(--line);font-weight:500;font-size:15px;display:block;margin-top:2px;">主缭工作原理 · 你的"油门"</span></h3>
+    <p class="sec-sub" style="margin-bottom:22px;">The mainsheet is the rope in your hand that pulls the sail in and out. It runs through a set of blocks (pulleys) so a light hand-pull controls the big load on the sail.
+      <span class="zh">主缭是你手中收放帆的那根绳。它穿过一组滑轮，因此手上轻轻一拉，就能控制帆上巨大的受力。</span>
+    </p>
+
+    <div class="split">
+      <figure class="fig">
+        <div class="fig-stage">
+          <svg viewBox="0 0 460 340" role="img" aria-label="The mainsheet block-and-tackle path from boom to hand">
+            <defs><marker id="ar-ms" markerWidth="10" markerHeight="10" refX="5" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" class="f-wind"></path></marker></defs>
+            <!-- boom -->
+            <line x1="70" y1="60" x2="410" y2="60" class="s-line" style="stroke-width:4"></line>
+            <text x="70" y="46" class="lbl-sm">boom 帆杆</text>
+            <!-- blocks -->
+            <circle cx="230" cy="70" r="7" class="s-line"></circle>
+            <circle cx="392" cy="70" r="7" class="s-line"></circle>
+            <text x="392" y="44" class="lbl-sm" style="fill:var(--wind);text-anchor:middle">tied off 系死</text>
+            <!-- transom + traveler -->
+            <line x1="330" y1="232" x2="430" y2="232" class="s-dim"></line>
+            <circle cx="380" cy="232" r="7" class="s-line"></circle>
+            <text x="392" y="252" class="lbl-sm">traveler 缭桥</text>
+            <!-- ratchet on cockpit floor -->
+            <circle cx="200" cy="256" r="8" class="s-line"></circle>
+            <text x="150" y="278" class="lbl-sm">ratchet 棘轮滑轮</text>
+            <!-- rope path -->
+            <g style="stroke:var(--wind);stroke-width:2.6;fill:none">
+              <line x1="392" y1="64" x2="380" y2="225"></line>
+              <line x1="380" y1="225" x2="392" y2="78"></line>
+              <line x1="386" y1="70" x2="236" y2="70"></line>
+              <line x1="230" y1="78" x2="202" y2="248"></line>
+              <line x1="194" y1="262" x2="120" y2="296" marker-end="url(#ar-ms)"></line>
+            </g>
+            <text x="70" y="312" class="lbl-sm" style="fill:var(--wind)">your hand 手中（油门）</text>
+          </svg>
+        </div>
+        <figcaption><span class="fig-no">FIG 2.B</span><span>One continuous rope, several blocks = a purchase · 一根绳穿过多个滑轮＝省力的滑轮组</span></figcaption>
+      </figure>
+      <div class="txt">
+        <h3>Pull = power, ease = spill<span class="zh">拉＝加力，放＝泄力</span></h3>
+        <div class="pair"><p class="en"><b>Pull it in</b> and the boom comes toward the centerline — the sail fills, powers up and points higher. <b>Let it out</b> and the sail opens and spills wind — less power. It is your throttle.</p>
+          <p class="zh"><b>往里收</b>，帆杆靠近中线——帆吃满风、动力增大、能更贴风行驶。<b>往外放</b>，帆张开漏风——动力减小。它就是油门。</p></div>
+        <div class="pair"><p class="en">The blocks form a <b>purchase</b> (pulley advantage): the load is shared across several rope falls, so you pull a longer length but with much less force — light enough to hold a powered-up sail by hand. The <b>ratchet block</b> grips under load so your hand doesn't tire.</p>
+          <p class="zh">这些滑轮组成<b>省力滑轮组</b>：受力被多段绳分担，你拉的绳更长、但用力小得多——小到能徒手拉住吃满风的帆。<b>棘轮滑轮</b>在受力时会"咬住"，让手不易累。</p></div>
+        <div class="pair"><p class="en"><b>Never cleat the mainsheet in a dinghy.</b> Hold it in your hand so you can dump it instantly in a gust — releasing the sheet is your fastest way to stop a capsize.</p>
+          <p class="zh"><b>小艇上绝不要把主缭固定（上夹）。</b>始终握在手里，阵风一来能立刻松手放掉——松缭是阻止翻船最快的办法。</p></div>
+      </div>
+    </div>
+
+    <!-- ===== DEEP DIVE C: essential knots ===== -->
+    <h3 style="color:var(--ink);font-size:21px;margin:50px 0 4px;">Essential knots <span class="zh" style="font-family:var(--zh);color:var(--line);font-weight:500;font-size:15px;display:block;margin-top:2px;">必备绳结 · 图示捆绑方法</span></h3>
+    <p class="sec-sub" style="margin-bottom:22px;">Six knots cover almost everything on a small boat. In each illustration below one rope is shown in <b style="color:#E08A2E">orange</b>, and the second rope — or the post / rail you tie onto — in <b style="color:#5C8A2E">green</b>.
+      <span class="zh">小船上常用的就这六个结。下图中主绳为<b style="color:#E08A2E">橙色</b>，第二条绳（或你系上的桩、栏杆）为<b style="color:#5C8A2E">绿色</b>。图示来自 Wikimedia Commons（公有领域）。</span>
+    </p>
+
+    <div class="steps" style="grid-template-columns:repeat(3,1fr)">
+
+      <!-- FIGURE EIGHT -->
+      <div class="step"><div class="step-fig">
+        <img class="knot" alt="Figure-eight stopper knot" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Achtknoop.svg/960px-Achtknoop.svg.png">
+      </div><div class="step-body"><div class="step-no">FIGURE-EIGHT · 八字结</div>
+        <h4>Stopper at a rope's end<span class="zh">止索结 · 防止脱出</span></h4>
+        <p>The non-jamming stopper. Put one on the end of the mainsheet and every control line so it can't run out through its block.<span class="zh" style="display:block;font-family:var(--zh);color:var(--ink-3);margin-top:5px;">不会卡死的绳头结。在主缭与每条控制索的绳头各打一个，防止绳子从滑轮中脱出。</span></p>
+      </div></div>
+
+      <!-- BOWLINE -->
+      <div class="step"><div class="step-fig">
+        <img class="knot" alt="Bowline, a fixed loop that will not slip" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Dubbelepaalsteek.svg/960px-Dubbelepaalsteek.svg.png">
+      </div><div class="step-body"><div class="step-no">BOWLINE · 单套结 / 布林结</div>
+        <h4>A loop that never slips or jams<span class="zh">不滑、不卡死的固定环</span></h4>
+        <p>The sailor's most useful knot — a fixed loop for sheets, painters and dock lines that unties easily even after heavy load.<span class="zh" style="display:block;font-family:var(--zh);color:var(--ink-3);margin-top:5px;">水手最常用的结——打出固定大小的环，受力后仍易解开。</span></p>
+      </div></div>
+
+      <!-- CLOVE HITCH -->
+      <div class="step"><div class="step-fig">
+        <img class="knot" alt="Clove hitch around a post" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Mastworp.svg/960px-Mastworp.svg.png">
+      </div><div class="step-body"><div class="step-no">CLOVE HITCH · 卷结</div>
+        <h4>Quick attach to a post or rail<span class="zh">快速系到桩或栏杆</span></h4>
+        <p>Two crossing turns — fast to tie and adjust. Good for fenders and lashing to a rail; back it up with a half hitch if it must hold hard.<span class="zh" style="display:block;font-family:var(--zh);color:var(--ink-3);margin-top:5px;">两道交叉缠绕，打、调都快。适合挂防撞球或绑栏杆；受力大时再加一个半结更保险。</span></p>
+      </div></div>
+
+      <!-- ROUND TURN & TWO HALF HITCHES -->
+      <div class="step"><div class="step-fig">
+        <img class="knot" alt="Round turn and two half hitches around a ring" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Ankersteek.svg/960px-Ankersteek.svg.png">
+      </div><div class="step-body"><div class="step-no">ROUND TURN + 2 HALF HITCHES · 双半结系桩</div>
+        <h4>Tie a boat to a ring or post<span class="zh">把船系到环或桩上</span></h4>
+        <p>The round turn takes the strain while you tie; two half hitches lock it. The go-to for painters, mooring rings and dock posts.<span class="zh" style="display:block;font-family:var(--zh);color:var(--ink-3);margin-top:5px;">先绕一整圈承力，再打两个半结锁住。系缆绳、系泊环、码头桩的首选。</span></p>
+      </div></div>
+
+      <!-- REEF (SQUARE) KNOT -->
+      <div class="step"><div class="step-fig">
+        <img class="knot" alt="Reef (square) knot joining two rope ends" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Platteknoop.svg/960px-Platteknoop.svg.png">
+      </div><div class="step-body"><div class="step-no">REEF / SQUARE KNOT · 平结</div>
+        <h4>Join two ends of equal rope<span class="zh">连接两条粗细相同的绳</span></h4>
+        <p>Flat and tidy for bundling a furled sail or tying in a reef. <b>Not</b> for a heavy load or two different-sized ropes — it can capsize and slip.<span class="zh" style="display:block;font-family:var(--zh);color:var(--ink-3);margin-top:5px;">平整服帖，适合捆扎收起的帆或扎缩帆。<b>不</b>可用于重载或粗细不同的绳——会松脱。</span></p>
+      </div></div>
+
+      <!-- SHEET BEND -->
+      <div class="step"><div class="step-fig">
+        <img class="knot" alt="Sheet bend joining two ropes of different size" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Schootsteek.svg/960px-Schootsteek.svg.png">
+      </div><div class="step-body"><div class="step-no">SHEET BEND · 接绳结 / 双套结</div>
+        <h4>Join two ropes of different size<span class="zh">连接两条粗细不同的绳</span></h4>
+        <p>The reliable way to bend two lines together — works even when they differ in thickness, where a reef knot would slip. Double the tuck for slippery rope.<span class="zh" style="display:block;font-family:var(--zh);color:var(--ink-3);margin-top:5px;">把两条绳系到一起的可靠方法——即使粗细不同也牢固，而平结在此会松脱。绳子滑时多绕一道更保险。</span></p>
+      </div></div>
+
+    </div>
+
+    <p class="sec-sub" style="font-size:12.5px;color:var(--ink-3);margin-top:14px;">Knot illustrations: Wikimedia Commons, public domain. 结绳图：Wikimedia Commons，公有领域。</p>
+
+    <div class="note warn">
+      <span class="tag">Safety · 安全</span>
+      <p>Rig with the bow into the wind and the mainsheet loose. A rigged boat left side-on to a gust can power up and flip on land or knock you down.</p>
+      <p class="zh">组装时船头要正对来风、主缭放松。已装好帆的船若侧对阵风，可能突然吃风，在岸上掀翻或撞到人。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     03 · POINTS OF SAIL
+     ============================================================ -->
+<section class="block" id="points">
+  <div class="wrap">
+    <div class="sec-head"><span class="no">03</span><h2>Points of Sail <span class="zh">／ 各点航法（风向与航向）</span></h2></div>
+    <p class="sec-sub">A boat cannot sail straight into the wind. As you turn away from the wind, the angle of the sail changes — this map of headings is the single most important concept in sailing.
+      <span class="zh">帆船无法正对风行驶。随着航向逐渐偏离风，帆的角度也随之改变——这张"航向地图"是帆船运动中最核心的概念。</span>
+    </p>
+
+    <figure class="fig">
+      <div class="fig-stage">
+        <svg viewBox="0 0 900 620" role="img" aria-label="Points of sail diagram with wind from the top">
+          <defs>
+            <marker id="ar-wind" markerWidth="11" markerHeight="11" refX="5" refY="3.2" orient="auto"><path d="M0,0 L7,3.2 L0,6.4 Z" class="f-wind"></path></marker>
+            <g id="hullsym"><path d="M0,-34 C8,-22 11,-6 11,6 C11,18 7,27 4,30 L-4,30 C-7,27 -11,18 -11,6 C-11,-6 -8,-22 0,-34 Z" style="fill:rgba(143,193,232,0.18);stroke:var(--line);stroke-width:2.4;stroke-linejoin:round"></path><path d="M0,-41 l-3.6,6.8 l7.2,0 Z" style="fill:var(--wind)"></path><circle cx="0" cy="-13" r="2.4" class="f-line"></circle></g>
+            <g id="b15"><use href="#hullsym"></use><path d="M0,-13 L7.8,17 Q10.9,4 0,-13 Z" style="fill:rgba(178,212,240,0.6);stroke:var(--ink);stroke-width:1.8;stroke-linejoin:round"></path><line x1="0" y1="-13" x2="7.8" y2="17" style="stroke:var(--ink);stroke-width:2.8;stroke-linecap:round"></line></g>
+            <g id="b45"><use href="#hullsym"></use><path d="M0,-13 L21.2,8.2 Q17.6,-0.4 0,-13 Z" style="fill:rgba(178,212,240,0.6);stroke:var(--ink);stroke-width:1.8;stroke-linejoin:round"></path><line x1="0" y1="-13" x2="21.2" y2="8.2" style="stroke:var(--ink);stroke-width:2.8;stroke-linecap:round"></line></g>
+            <g id="b70"><use href="#hullsym"></use><path d="M0,-13 L28.2,-2.7 Q21.1,-5.9 0,-13 Z" style="fill:rgba(178,212,240,0.6);stroke:var(--ink);stroke-width:1.8;stroke-linejoin:round"></path><line x1="0" y1="-13" x2="28.2" y2="-2.7" style="stroke:var(--ink);stroke-width:2.8;stroke-linecap:round"></line></g>
+            <g id="b90"><use href="#hullsym"></use><path d="M0,-13 L30,-13 Q20,-5 0,-13 Z" style="fill:rgba(178,212,240,0.6);stroke:var(--ink);stroke-width:1.8;stroke-linejoin:round"></path><line x1="0" y1="-13" x2="30" y2="-13" style="stroke:var(--ink);stroke-width:2.8;stroke-linecap:round"></line></g>
+            <g id="bir"><use href="#hullsym"></use><path d="M0,-13 Q-4,4 0,21 Q4,4 0,-13 Z" style="fill:rgba(178,212,240,0.32);stroke:var(--ink);stroke-width:1.5"></path><path d="M0,-13 C-6,0 6,11 0,22" class="s-dim"></path></g>
+          </defs>
+
+          <!-- faint wind streaming straight down -->
+          <g class="s-wind dash" style="opacity:.18;stroke-width:1.5">
+            <line x1="170" y1="120" x2="170" y2="560"></line>
+            <line x1="730" y1="120" x2="730" y2="560"></line>
+            <line x1="100" y1="160" x2="100" y2="520"></line>
+            <line x1="800" y1="160" x2="800" y2="520"></line>
+          </g>
+
+          <!-- no-go zone wedge -->
+          <path d="M450,300 L287.4,137.4 A230,230 0 0 1 612.6,137.4 Z" fill="rgba(255,209,102,0.07)" class="s-wind dash" style="stroke-width:1.4"></path>
+          <text x="450" y="150" class="lbl-zh" text-anchor="middle" style="fill:var(--wind);font-size:15px">NO-GO ZONE 顶风死区</text>
+          <text x="450" y="172" class="lbl-sm" text-anchor="middle" style="fill:var(--wind)">~45° each side · 两侧各约 45°</text>
+
+          <!-- wind arrow -->
+          <line x1="450" y1="26" x2="450" y2="92" class="s-wind" style="stroke-width:4" marker-end="url(#ar-wind)"></line>
+          <text x="466" y="60" class="lbl-zh" style="fill:var(--wind);font-size:16px">WIND 风</text>
+
+          <!-- boats: starboard (right) -->
+          <use href="#b15" transform="translate(591,159) rotate(45)"></use>
+          <use href="#b45" transform="translate(650,300) rotate(90)"></use>
+          <use href="#b70" transform="translate(591,441) rotate(135)"></use>
+          <!-- boats: port (left, mirrored) -->
+          <use href="#b15" transform="translate(309,159) scale(-1,1) rotate(45)"></use>
+          <use href="#b45" transform="translate(250,300) scale(-1,1) rotate(90)"></use>
+          <use href="#b70" transform="translate(309,441) scale(-1,1) rotate(135)"></use>
+          <!-- run (bottom) + in irons (top) -->
+          <use href="#b90" transform="translate(450,500) rotate(180)"></use>
+          <use href="#bir" transform="translate(450,108)"></use>
+
+          <!-- point-of-sail labels (right side) -->
+          <text x="640" y="120" class="lbl-en" text-anchor="start">CLOSE-HAULED</text>
+          <text x="640" y="138" class="lbl-zh" text-anchor="start" style="font-size:13px">迎风 / 抢风 · ~45°</text>
+          <text x="700" y="296" class="lbl-en" text-anchor="start">BEAM REACH</text>
+          <text x="700" y="314" class="lbl-zh" text-anchor="start" style="font-size:13px">横风 · 90°</text>
+          <text x="640" y="486" class="lbl-en" text-anchor="start">BROAD REACH</text>
+          <text x="640" y="504" class="lbl-zh" text-anchor="start" style="font-size:13px">顺侧风 · ~135°</text>
+          <text x="450" y="566" class="lbl-en" text-anchor="middle">RUN · 顺风 · 180°</text>
+
+          <!-- tack labels -->
+          <text x="250" y="372" class="lbl-sm" text-anchor="middle" style="fill:var(--ink-3)">PORT TACK 左舷风</text>
+          <text x="650" y="372" class="lbl-sm" text-anchor="middle" style="fill:var(--ink-3)">STARBOARD TACK 右舷风</text>
+        </svg>
+      </div>
+      <figcaption><span class="fig-no">FIG 3.0</span><span>Wind from top · the boat mirrors left/right for the two tacks · 风自顶部来，左右两侧对称即两个"受风舷"</span></figcaption>
+    </figure>
+
+    <div class="parts" style="margin-top:32px">
+      <div class="row head"><div style="width:auto">●</div><div class="en" style="grid-column:auto">Point of sail · 航法</div><div class="zhn">角度</div><div class="fn">Sail trim &amp; feel · 帆的状态与感受</div></div>
+      <div class="row"><div class="num">—</div><div class="en">In Irons<small>no-go</small></div><div class="zhn">顶风死区<br><span style="font-weight:400;color:var(--ink-3)">0–45°</span></div><div class="fn">Pointed into the wind: the sail just flaps and the boat stops. You must bear away to restart.<span class="zh">船头正对风：帆只会抖动、没有动力，船会停住。必须转向离风（bear away）才能重新起步。</span></div></div>
+      <div class="row"><div class="num">↗</div><div class="en">Close-Hauled<small>beating</small></div><div class="zhn">迎风 / 抢风<br><span style="font-weight:400;color:var(--ink-3)">~45°</span></div><div class="fn">Sheeted in tight, boom near the centerline. The closest you can sail to the wind — zig-zag (tack) to make ground upwind.<span class="zh">帆收到最紧、帆杆贴近中线。这是能贴风行驶的最小角度——靠左右折线（抢风/换舷）一点点驶向上风。</span></div></div>
+      <div class="row"><div class="num">→</div><div class="en">Beam Reach</div><div class="zhn">横风<br><span style="font-weight:400;color:var(--ink-3)">90°</span></div><div class="fn">Wind straight across the side; boom out about 45°. The fastest, easiest, most comfortable point of sail.<span class="zh">风从正侧方吹来，帆放出约 45°。最快、最省力、最好掌控的航法。</span></div></div>
+      <div class="row"><div class="num">↘</div><div class="en">Broad Reach</div><div class="zhn">顺侧风<br><span style="font-weight:400;color:var(--ink-3)">~135°</span></div><div class="fn">Wind over the back corner (quarter); boom well out at 60–70°. Very fast and planing-friendly.<span class="zh">风从船后侧角吹来，帆放出 60–70°。速度很快，容易"滑行"加速。</span></div></div>
+      <div class="row"><div class="num">↓</div><div class="en">Run<small>dead run</small></div><div class="zhn">顺风<br><span style="font-weight:400;color:var(--ink-3)">180°</span></div><div class="fn">Dead downwind; boom right out near 90°. Feels calm but is unstable — watch for an accidental gybe.<span class="zh">正顺风；帆放到接近 90° 的最大角度。看似平静但其实不稳，要小心帆突然甩到另一侧（意外转帆 gybe）。</span></div></div>
+    </div>
+
+    <div class="note">
+      <span class="tag">Key idea · 核心</span>
+      <p>To go <b>toward</b> the wind you cannot sail straight at it — you <b>tack</b>, zig-zagging at ~45° across the no-go zone. To go <b>away</b> from the wind you <b>gybe</b>, swinging the stern through the wind. As you turn away from the wind, let the sail out; as you turn toward it, pull the sail in.</p>
+      <p class="zh">想<b>逆风前进</b>不能直冲，而要<b>抢风换舷（tack）</b>，以约 45° 的"之"字形穿过死区。想<b>顺风离开</b>则要<b>转帆换舷（gybe）</b>，让船尾扫过风。口诀：<b>向风收帆、离风放帆</b>。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     04 · SAIL & RUDDER CONTROL
+     ============================================================ -->
+<section class="block" id="controls">
+  <div class="wrap">
+    <div class="sec-head"><span class="no">04</span><h2>Sail &amp; Rudder Control <span class="zh">／ 帆与舵的操纵</span></h2></div>
+    <p class="sec-sub">You drive a Laser with two hands: the <b>tiller</b> (steering) in your back hand and the <b>mainsheet</b> (power) in your front hand. Two simple rules cover almost everything.
+      <span class="zh">驾驶激光级靠两只手：后手握<b>舵柄</b>（控制方向），前手握<b>主缭</b>（控制动力）。掌握两条简单规则，几乎够用。</span>
+    </p>
+
+    <!-- A: steering -->
+    <div class="split">
+      <figure class="fig">
+        <div class="fig-stage">
+          <svg viewBox="0 0 400 360" role="img" aria-label="Top view: the tiller is one rigid arm that pivots at the rudder, so the hand-end and the blade swing to opposite sides">
+            <defs>
+              <marker id="ar-turn" markerWidth="11" markerHeight="11" refX="6" refY="3.4" orient="auto"><path d="M0,0 L8,3.4 L0,6.8 Z" class="f-wind"></path></marker>
+              <marker id="ar-push" markerWidth="11" markerHeight="11" refX="6" refY="3.4" orient="auto"><path d="M0,0 L8,3.4 L0,6.8 Z" class="f-line"></path></marker>
+              <marker id="ar-rud" markerWidth="11" markerHeight="11" refX="6" refY="3.4" orient="auto"><path d="M0,0 L8,3.4 L0,6.8 Z" class="f-water"></path></marker>
+            </defs>
+            <!-- original heading -->
+            <line x1="200" y1="26" x2="200" y2="300" class="s-faint dash"></line>
+            <text x="208" y="40" class="lbl-sm">heading 原航向</text>
+            <!-- hull, top-down, bow up -->
+            <path d="M200,58 C234,98 234,196 220,248 L180,248 C166,196 166,98 200,58 Z" class="hull"></path>
+            <ellipse cx="200" cy="192" rx="14" ry="22" class="s-dim"></ellipse>
+            <!-- pivot at rudder head -->
+            <circle cx="200" cy="248" r="4" class="f-line"></circle>
+            <text x="206" y="246" class="lbl-sm">pivot 舵轴</text>
+            <!-- TILLER: one rigid arm forward, hand-end moved to PORT (left) -->
+            <line x1="200" y1="248" x2="156" y2="150" class="s-line" style="stroke-width:3.5"></line>
+            <line x1="156" y1="150" x2="150" y2="120" class="s-line dash"></line>
+            <circle cx="156" cy="150" r="6" class="s-line"></circle>
+            <text x="148" y="138" class="lbl-sm" text-anchor="end">you hold this end</text>
+            <text x="148" y="152" class="lbl-zh" text-anchor="end" style="font-size:12px">你握这一端</text>
+            <!-- lateral push of the hand-end -->
+            <line x1="174" y1="164" x2="148" y2="172" class="s-line" marker-end="url(#ar-push)"></line>
+            <text x="148" y="186" class="lbl-sm" text-anchor="end">move it to one side 推向一侧</text>
+            <!-- RUDDER blade aft, swings to STARBOARD (the opposite side) -->
+            <line x1="200" y1="248" x2="228" y2="306" class="s-water" style="stroke-width:4"></line>
+            <text x="236" y="298" class="lbl-sm" text-anchor="start" style="fill:var(--water)">blade swings</text>
+            <text x="236" y="312" class="lbl-zh" text-anchor="start" style="fill:var(--water);font-size:12px">舵叶摆向另一侧</text>
+            <!-- bow turns -->
+            <path d="M200,56 A60,60 0 0 1 256,86" class="s-wind" style="stroke-width:3" marker-end="url(#ar-turn)"></path>
+            <text x="252" y="62" class="lbl-zh" style="fill:var(--wind);font-size:13px">bow turns 船头转</text>
+          </svg>
+        </div>
+        <figcaption><span class="fig-no">FIG 4.1</span><span>One rigid arm pivoting at the rudder · 舵柄是一根绕舵轴转动的硬杆</span></figcaption>
+      </figure>
+      <div class="txt">
+        <h3>Steering — the opposite rule<span class="zh">舵——"反向"法则</span></h3>
+        <div class="pair"><p class="en">The <b>tiller</b> is one rigid arm clamped to the top of the rudder; you hold its forward end (usually through a hinged <b>extension</b>, so you can reach it while hiking out). Because the whole arm pivots at the rudder, the end in your hand and the blade under the boat always swing to <b>opposite sides</b>.</p>
+          <p class="zh"><b>舵柄</b>是固定在舵顶的一根硬杆，你握住它伸向船内的那一端（通常再接一根可转动的<b>延伸杆</b>，让你压舷在外侧时也够得着）。整根杆绕舵轴转动，所以你<b>手里那端</b>和船底的<b>舵叶</b>永远摆向<b>相反的两侧</b>。</p></div>
+        <div class="pair"><p class="en">So the boat turns the <b>opposite</b> way to your hand: move the tiller end to <b>port (left)</b> and the bow swings to <b>starboard (right)</b>. Move it gently — small nudges, then bring it back to centre. A hard-over rudder just drags like a brake.</p>
+          <p class="zh">于是船的转向和你的手<b>相反</b>：把舵柄末端推向<b>左舷</b>，船头就转向<b>右舷</b>。动作要轻——小幅修正后立刻回中。舵打得太死只会像刹车一样拖慢船速。</p></div>
+        <div class="pair"><p class="en">An easy memory hook: move the tiller <b>toward the sail/boom</b> = bear away (turn away from the wind); move it <b>away from the boom</b> = head up (turn toward the wind).</p>
+          <p class="zh">一个好记的口诀：把舵柄推<b>向帆／帆杆那一侧</b>＝离风转向（bear away）；把舵柄拉<b>离帆杆</b>＝向风转向（head up）。</p></div>
+      </div>
+    </div>
+
+    <!-- B: sheeting / telltales -->
+    <div class="split flip" style="margin-top:46px">
+      <div class="txt">
+        <h3>Trimming the sail — the flap rule<span class="zh">调帆——"抖动"法则</span></h3>
+        <div class="pair"><p class="en">For <b>any</b> course: ease the mainsheet out until the front edge of the sail just begins to flap (luff), then pull in just until the flapping stops. That is perfect trim. Re-check every time you change course or the wind shifts.</p>
+          <p class="zh">无论哪种航向，方法都一样：放出主缭，直到帆的前缘刚开始抖动（luff），再收回到刚好不抖为止——这就是最佳帆型。每次改变航向或风向变化时，都重新调一次。</p></div>
+        <div class="pair"><p class="en"><b>Telltales</b> tell you faster: both yarns streaming straight back = perfect. Windward (inside) yarn lifting = ease out or bear away. Leeward (outside) yarn fluttering = pull in or head up.</p>
+          <p class="zh"><b>风向毛线</b>更灵敏：两侧毛线都顺直后飘＝正确；迎风侧（内侧）毛线上飘＝放帆或离风；背风侧（外侧）毛线乱抖＝收帆或向风。</p></div>
+      </div>
+      <figure class="fig">
+        <div class="fig-stage">
+          <svg viewBox="0 0 380 320" role="img" aria-label="Telltales streaming aft indicate correct sail trim">
+            <defs><marker id="ar-w2" markerWidth="10" markerHeight="10" refX="5" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" class="f-wind"></path></marker></defs>
+            <g class="s-wind"><line x1="20" y1="90" x2="64" y2="90" marker-end="url(#ar-w2)"></line><line x1="20" y1="160" x2="64" y2="160" marker-end="url(#ar-w2)"></line><line x1="20" y1="230" x2="64" y2="230" marker-end="url(#ar-w2)"></line></g>
+            <text x="20" y="66" class="lbl-zh" style="fill:var(--wind);font-size:14px">WIND 风</text>
+            <!-- sail seen from above -->
+            <path d="M150,60 Q230,180 196,286" class="s-line" style="stroke-width:3"></path>
+            <circle cx="150" cy="60" r="4" class="f-line"></circle>
+            <text x="158" y="56" class="lbl-sm">luff 帆前缘</text>
+            <!-- telltales both streaming aft -->
+            <path d="M150,88 q26,5 44,1" class="s-wind"></path>
+            <path d="M156,104 q26,5 44,1" class="s-wind"></path>
+            <text x="206" y="92" class="lbl-sm" style="fill:var(--wind)">windward 迎风侧</text>
+            <text x="208" y="112" class="lbl-sm" style="fill:var(--wind)">leeward 背风侧</text>
+            <text x="150" y="250" class="lbl-zh" style="fill:var(--line);font-size:13px">both stream aft</text>
+            <text x="150" y="268" class="lbl-zh" style="font-size:13px">两侧都顺飘 ＝ 正确</text>
+          </svg>
+        </div>
+        <figcaption><span class="fig-no">FIG 4.2</span><span>Telltales: both streaming = correct trim · 毛线两侧顺飘＝帆型正确</span></figcaption>
+      </figure>
+    </div>
+
+    <div class="note">
+      <span class="tag">Coordinate · 配合</span>
+      <p>Sail and steer together: as you <b>head up</b> (turn toward the wind) pull the sail <b>in</b>; as you <b>bear away</b> (turn from the wind) let it <b>out</b>. Hands move in opposite directions — front hand and back hand working as a pair.</p>
+      <p class="zh">帆与舵要协同：<b>向风转</b>（head up）时同时<b>收帆</b>，<b>离风转</b>（bear away）时同时<b>放帆</b>。两只手往相反方向动，前后手配合成一对。</p>
+    </div>
+
+    <!-- C: changing sides — tack & gybe -->
+    <h3 style="color:var(--ink);font-size:21px;margin:54px 0 4px;">Changing sides — tack &amp; gybe <span class="zh" style="font-family:var(--zh);color:var(--line);font-weight:500;font-size:15px;display:block;margin-top:2px;">换舷——迎风转 (tack) 与顺风转 (gybe)</span></h3>
+    <p class="sec-sub" style="margin-bottom:22px;">At any moment the wind is on one side of the boat and the sail is set out to the other. To zig-zag upwind, or simply to turn onto the other tack, you have to swap the sail across — and there are exactly two ways to do it, depending on which end of the boat you turn through the wind.
+      <span class="zh">任何时刻，风都从船的某一侧吹来、帆张向另一侧。要想迎风之字形上风，或只是换到另一舷，你都得把帆换到对侧——根据让船的哪一端穿过风，方法正好有两种。</span>
+    </p>
+
+    <figure class="fig">
+      <div class="fig-stage">
+        <svg viewBox="0 0 760 400" role="img" aria-label="Tacking turns the bow up through the wind; gybing turns the stern down through the wind">
+          <defs>
+            <marker id="ar-trk" markerWidth="11" markerHeight="11" refX="6" refY="3.4" orient="auto"><path d="M0,0 L8,3.4 L0,6.8 Z" class="f-line"></path></marker>
+            <marker id="ar-wn3" markerWidth="11" markerHeight="11" refX="6" refY="3.4" orient="auto"><path d="M0,0 L8,3.4 L0,6.8 Z" class="f-wind"></path></marker>
+            <marker id="ar-bm" markerWidth="11" markerHeight="11" refX="6" refY="3.4" orient="auto"><path d="M0,0 L8,3.4 L0,6.8 Z" class="f-force"></path></marker>
+          </defs>
+          <!-- wind across the top -->
+          <line x1="190" y1="20" x2="190" y2="58" class="s-wind" style="stroke-width:3.5" marker-end="url(#ar-wn3)"></line>
+          <line x1="570" y1="20" x2="570" y2="58" class="s-wind" style="stroke-width:3.5" marker-end="url(#ar-wn3)"></line>
+          <text x="380" y="34" class="lbl-zh" text-anchor="middle" style="fill:var(--wind);font-size:15px">WIND 风</text>
+          <line x1="380" y1="64" x2="380" y2="372" class="s-faint dash"></line>
+
+          <!-- ===== TACK (left): track arcs UP through the wind ===== -->
+          <path d="M120,250 C120,150 140,110 190,108 C240,110 260,150 260,250" class="s-line dash" fill="none" marker-end="url(#ar-trk)"></path>
+          <text x="190" y="92" class="lbl-sm" text-anchor="middle" style="fill:var(--wind)">through the eye 穿过风眼</text>
+          <g transform="translate(120,256) rotate(28)">
+            <path d="M0,-24 C7,-14 8,4 5,20 L-5,20 C-8,4 -7,-14 0,-24 Z" class="hull"></path>
+            <circle cx="0" cy="-4" r="2.4" class="f-line"></circle>
+            <line x1="0" y1="-4" x2="-13" y2="14" class="s-line" style="stroke-width:2.4"></line>
+          </g>
+          <g transform="translate(260,256) rotate(-28)">
+            <path d="M0,-24 C7,-14 8,4 5,20 L-5,20 C-8,4 -7,-14 0,-24 Z" class="hull"></path>
+            <circle cx="0" cy="-4" r="2.4" class="f-line"></circle>
+            <line x1="0" y1="-4" x2="13" y2="14" class="s-line" style="stroke-width:2.4"></line>
+          </g>
+          <text x="190" y="312" class="lbl-en" text-anchor="middle">TACK 迎风转</text>
+          <text x="190" y="332" class="lbl-zh" text-anchor="middle" style="font-size:13px">bow passes through the wind</text>
+          <text x="190" y="350" class="lbl-zh" text-anchor="middle" style="font-size:13px">船头穿过风 · 帆轻轻换边</text>
+
+          <!-- ===== GYBE (right): track arcs DOWN, boom slams across ===== -->
+          <path d="M500,150 C500,250 520,290 570,292 C620,290 640,250 640,150" class="s-line dash" fill="none" marker-end="url(#ar-trk)"></path>
+          <g transform="translate(500,150) rotate(152)">
+            <path d="M0,-24 C7,-14 8,4 5,20 L-5,20 C-8,4 -7,-14 0,-24 Z" class="hull"></path>
+            <circle cx="0" cy="-4" r="2.4" class="f-line"></circle>
+            <line x1="0" y1="-4" x2="-22" y2="4" class="s-line" style="stroke-width:2.4"></line>
+          </g>
+          <g transform="translate(640,150) rotate(-152)">
+            <path d="M0,-24 C7,-14 8,4 5,20 L-5,20 C-8,4 -7,-14 0,-24 Z" class="hull"></path>
+            <circle cx="0" cy="-4" r="2.4" class="f-line"></circle>
+            <line x1="0" y1="-4" x2="22" y2="4" class="s-line" style="stroke-width:2.4"></line>
+          </g>
+          <path d="M512,120 C540,86 600,86 628,120" class="s-force" style="stroke-width:3" fill="none" marker-end="url(#ar-bm)"></path>
+          <text x="570" y="84" class="lbl-zh" text-anchor="middle" style="fill:var(--force);font-size:13px">boom slams across 帆杆猛甩过来</text>
+          <text x="570" y="312" class="lbl-en" text-anchor="middle">GYBE 顺风转</text>
+          <text x="570" y="332" class="lbl-zh" text-anchor="middle" style="font-size:13px">stern passes through the wind</text>
+          <text x="570" y="350" class="lbl-zh" text-anchor="middle" style="font-size:13px">船尾穿过风 · 帆猛烈换边（小心）</text>
+        </svg>
+      </div>
+      <figcaption><span class="fig-no">FIG 4.3</span><span>Tack = turn the bow up through the wind · Gybe = turn the stern down through the wind</span></figcaption>
+    </figure>
+
+    <div class="steps" style="margin-top:30px">
+      <div class="step">
+        <div class="step-body">
+          <div class="step-no">TACK · 迎风转</div>
+          <h4>Bow through the wind<span class="zh">船头穿过风（上风时用）</span></h4>
+          <ol style="margin:12px 0 0;padding-left:20px;color:var(--ink-2);font-size:14.5px;line-height:1.5;">
+            <li style="margin-bottom:11px;">Sail close-hauled with good speed and look around for room.<span class="zh" style="display:block;font-family:var(--zh);color:var(--ink-3);margin-top:2px;">先在迎风航向上保持速度，环顾四周确认有空间。</span></li>
+            <li style="margin-bottom:11px;">Call "ready about." Steer smoothly <b>toward the wind</b> (tiller away from the boom).<span class="zh" style="display:block;font-family:var(--zh);color:var(--ink-3);margin-top:2px;">喊"准备转向"。平稳地<b>向风</b>转舵（舵柄拉离帆杆）。</span></li>
+            <li style="margin-bottom:11px;">As the bow crosses the wind, the sail flaps and the boom drifts gently across.<span class="zh" style="display:block;font-family:var(--zh);color:var(--ink-3);margin-top:2px;">船头穿过风时，帆开始抖动，帆杆轻轻地飘到对侧。</span></li>
+            <li style="margin-bottom:11px;">Cross the boat <b>facing forward</b>; swap tiller and sheet hands behind your back.<span class="zh" style="display:block;font-family:var(--zh);color:var(--ink-3);margin-top:2px;"><b>面朝前</b>移到新的一侧；在身后交换握舵柄与主缭的两只手。</span></li>
+            <li>As the sail fills on the new side, straighten up and sheet in.<span class="zh" style="display:block;font-family:var(--zh);color:var(--ink-3);margin-top:2px;">帆在新一侧吃满风后，把舵回正并收帆。</span></li>
+          </ol>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-body">
+          <div class="step-no">GYBE · 顺风转</div>
+          <h4>Stern through the wind<span class="zh">船尾穿过风（下风时用）</span></h4>
+          <ol style="margin:12px 0 0;padding-left:20px;color:var(--ink-2);font-size:14.5px;line-height:1.5;">
+            <li style="margin-bottom:11px;">Sail on a broad reach / run with the boom right out; check for room.<span class="zh" style="display:block;font-family:var(--zh);color:var(--ink-3);margin-top:2px;">在顺侧风／顺风航向上、帆杆完全放出时，确认周围有空间。</span></li>
+            <li style="margin-bottom:11px;">Pull in some mainsheet so the boom is more central — it will swing a shorter, gentler arc. Keep the <b>vang on</b>.<span class="zh" style="display:block;font-family:var(--zh);color:var(--ink-3);margin-top:2px;">先收一点主缭让帆杆靠中——这样它甩过来的弧度更短、更温和。保持<b>压帆器收紧</b>。</span></li>
+            <li style="margin-bottom:11px;">Call "gybe-oh" and steer the <b>stern through the wind</b> (bear away).<span class="zh" style="display:block;font-family:var(--zh);color:var(--ink-3);margin-top:2px;">喊"转篷"，把<b>船尾</b>转过风（离风转）。</span></li>
+            <li style="margin-bottom:11px;">As the boom flips across, <b>duck</b>, cross the boat, and let the sheet run back out.<span class="zh" style="display:block;font-family:var(--zh);color:var(--ink-3);margin-top:2px;">帆杆甩过头顶时<b>低头</b>，移到对侧，并把主缭放回去。</span></li>
+            <li>Swap hands, straighten the tiller, settle low. The boom comes over <b>fast</b>.<span class="zh" style="display:block;font-family:var(--zh);color:var(--ink-3);margin-top:2px;">换手、回正舵柄、重心放低。帆杆甩过来<b>很快</b>。</span></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+
+    <div class="note warn">
+      <span class="tag">Safety · 安全</span>
+      <p>The <b>gybe</b> is the move that most often capsizes beginners: downwind the boom carries full power and slams across head-height. Pull the boom in before you turn, keep your head low, and never gybe in a strong gust if you can bear away and tack around instead.</p>
+      <p class="zh"><b>顺风转（gybe）</b>是新手最容易翻船的动作：顺风时帆杆带着满满的力量、在头部高度猛甩过来。转之前先把帆杆收近，低头通过，大阵风中如果可以，宁可绕大圈用迎风转代替。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     05 · FORCE ANALYSIS
+     ============================================================ -->
+<section class="block" id="forces">
+  <div class="wrap">
+    <div class="sec-head"><span class="no">05</span><h2>Force Analysis <span class="zh">／ 受力分析</span></h2></div>
+    <p class="sec-sub">Why does a push of wind from the side make the boat go forward? Because two forces team up: the <b>sail</b> turns wind into a push, and the <b>daggerboard</b> stops the boat sliding sideways — so the only way left to go is forward.
+      <span class="zh">为什么侧向来的风能让船向前？因为两股力在协作：<b>帆</b>把风变成一个推力，<b>稳向板</b>则挡住船的横向滑动——于是剩下唯一能走的方向就是"向前"。</span>
+    </p>
+
+    <div class="legend">
+      <span class="k wind"><i></i> Wind 风向 / wind force</span>
+      <span class="k force"><i></i> Aerodynamic force 帆受的气动力</span>
+      <span class="k water"><i></i> Hydrodynamic force 水的反作用力</span>
+      <span class="k line"><i></i> Hull &amp; weight 船体 / 重力</span>
+    </div>
+
+    <!-- A: top-view decomposition -->
+    <div class="split" style="margin-top:30px">
+      <figure class="fig">
+        <div class="fig-stage">
+          <svg viewBox="0 0 520 440" role="img" aria-label="Free-body top view: at steady speed the total water force is equal and opposite to the total sail force">
+            <defs>
+              <marker id="ar-f" markerWidth="11" markerHeight="11" refX="6" refY="3.4" orient="auto"><path d="M0,0 L8,3.4 L0,6.8 Z" class="f-force"></path></marker>
+              <marker id="ar-water" markerWidth="11" markerHeight="11" refX="6" refY="3.4" orient="auto"><path d="M0,0 L8,3.4 L0,6.8 Z" class="f-water"></path></marker>
+              <marker id="ar-w3" markerWidth="10" markerHeight="10" refX="5" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" class="f-wind"></path></marker>
+            </defs>
+            <!-- forward / heading reference -->
+            <line x1="260" y1="96" x2="260" y2="372" class="s-faint dash"></line>
+            <text x="266" y="104" class="lbl-sm">forward 船首 / 航向 ↑</text>
+            <!-- wind streaming from upper-left -->
+            <g class="s-wind" style="opacity:.45"><line x1="30" y1="70" x2="86" y2="106" marker-end="url(#ar-w3)"></line><line x1="30" y1="128" x2="86" y2="164" marker-end="url(#ar-w3)"></line></g>
+            <text x="30" y="56" class="lbl-zh" style="fill:var(--wind);font-size:14px">WIND 风</text>
+            <!-- faint boat outline, bow up -->
+            <path d="M260,198 C271,217 271,271 260,288 C249,271 249,217 260,198 Z" class="hull" style="opacity:.22"></path>
+            <line x1="260" y1="214" x2="260" y2="268" class="s-line" style="opacity:.25"></line>
+            <!-- construction parallelograms -->
+            <g class="s-faint dash">
+              <line x1="260" y1="150" x2="370" y2="150"></line><line x1="370" y1="150" x2="370" y2="240"></line>
+              <line x1="260" y1="330" x2="150" y2="330"></line><line x1="150" y1="330" x2="150" y2="240"></line>
+            </g>
+            <!-- AERO total + components (coral) -->
+            <line x1="260" y1="240" x2="370" y2="150" class="s-force" style="stroke-width:4" marker-end="url(#ar-f)"></line>
+            <line x1="260" y1="240" x2="260" y2="150" class="s-force dash" marker-end="url(#ar-f)"></line>
+            <line x1="260" y1="240" x2="370" y2="240" class="s-force dash" marker-end="url(#ar-f)"></line>
+            <!-- HYDRO total + components (teal), equal and opposite -->
+            <line x1="260" y1="240" x2="150" y2="330" class="s-water" style="stroke-width:4" marker-end="url(#ar-water)"></line>
+            <line x1="260" y1="240" x2="260" y2="330" class="s-water dash" marker-end="url(#ar-water)"></line>
+            <line x1="260" y1="240" x2="150" y2="240" class="s-water dash" marker-end="url(#ar-water)"></line>
+            <!-- the boat as a point mass -->
+            <circle cx="260" cy="240" r="8" fill="none" class="s-faint"></circle>
+            <circle cx="260" cy="240" r="3.4" class="f-ink"></circle>
+            <!-- labels -->
+            <text x="376" y="144" class="lbl-zh" style="fill:var(--force);font-size:13px" text-anchor="start">F_air 帆气动合力</text>
+            <text x="252" y="142" class="lbl-sm" style="fill:var(--force)" text-anchor="end">drive 推进 ↑</text>
+            <text x="376" y="256" class="lbl-sm" style="fill:var(--force)" text-anchor="start">side 侧向 →</text>
+            <text x="144" y="340" class="lbl-zh" style="fill:var(--water);font-size:13px" text-anchor="end">F_water 水反作用合力</text>
+            <text x="272" y="330" class="lbl-sm" style="fill:var(--water)" text-anchor="start">drag 阻力 ↓</text>
+            <text x="200" y="230" class="lbl-sm" style="fill:var(--water)" text-anchor="middle">← 稳向板横向阻力</text>
+            <text x="260" y="408" class="lbl-zh" style="text-anchor:middle;font-size:13px">F_water = − F_air　等大、反向 → 合力为零，匀速直航</text>
+          </svg>
+        </div>
+        <figcaption><span class="fig-no">FIG 5.1</span><span>Bird's-eye view · at steady speed the water force is equal and opposite to the sail force · 俯视：匀速时水的合力与帆的合力等大反向</span></figcaption>
+      </figure>
+      <div class="txt">
+        <h3>From side-push to forward drive<span class="zh">侧向推力 → 向前的动力</span></h3>
+        <div class="pair"><p class="en">The wind's total push on the sail (<b style="color:var(--force)">F_air</b>, coral) points mostly sideways. Split it into two parts: a small <b>drive</b> straight forward and a large <b>side force</b> to leeward.</p>
+          <p class="zh">风作用在帆上的合力（<b style="color:var(--force)">F_air</b>，珊瑚色）大体指向侧方。把它分解成两部分：一个朝正前方的较小<b>推进力</b>，和一个朝下风、较大的<b>侧向力</b>。</p></div>
+        <div class="pair"><p class="en"><b>You're right to expect the water force to point the opposite way — it does.</b> The water pushing back on the hull and daggerboard (<b style="color:var(--water)">F_water</b>, teal) is, at a steady speed, <b>equal and opposite</b> to F_air. The two cancel, the net force is zero, and that is exactly why the boat holds a constant speed and course (Newton's first law) rather than accelerating forever.</p>
+          <p class="zh"><b>你的直觉没错——水的合力确实指向相反方向。</b>水对船体和稳向板的反作用力（<b style="color:var(--water)">F_water</b>，青色）在匀速时与 F_air <b>等大、反向</b>。两者相互抵消、合力为零，这正是船能保持恒定速度与航向（牛顿第一定律）、而不是一直加速的原因。</p></div>
+        <div class="pair"><p class="en">Look at it component by component: the deep <b>daggerboard</b> supplies a sideways grip that cancels the side force (the boat barely slips sideways), and the hull's <b>drag</b> grows with speed until it cancels the drive. The boat settles at the speed where drive = drag. Pull the daggerboard up and nothing opposes the side force — so the boat just slides off downwind.</p>
+          <p class="zh">逐个分量来看：深插的<b>稳向板</b>提供一个横向阻力，抵消侧向力（船几乎不横移）；船体的<b>阻力</b>随速度增大，直到抵消推进力。船最终稳定在"推进力＝阻力"的速度上。若拔起稳向板，侧向力就无人对抗——船便被风往下风方向横推走。</p></div>
+      </div>
+    </div>
+
+    <!-- B: heeling vs righting couple -->
+    <div class="split flip" style="margin-top:46px">
+      <div class="txt">
+        <h3>Heeling vs. righting — a see-saw<span class="zh">倾覆与复正——一架跷跷板</span></h3>
+        <div class="pair"><p class="en">That same side force, acting high up on the sail, also tries to <b>tip the boat over</b> (heeling moment). You fight it with a moment of your own: your body weight hung out to the <b>windward</b> side (righting moment).</p>
+          <p class="zh">同一个侧向力作用在高处的帆上，还会<b>把船往侧面掀倒</b>（倾覆力矩）。你用自己的力矩来对抗它：把身体探到<b>迎风一侧</b>的舷外（复正力矩）。</p></div>
+        <div class="pair"><p class="en">Balance the two and the boat sails flat and fast. When the wind gusts, the heeling moment jumps — so you must hike harder or spill wind. That is the whole job in Section 06.</p>
+          <p class="zh">两个力矩平衡，船就平稳又快。一阵阵风来时倾覆力矩骤增——你就得压舷更狠，或者"漏掉"一部分风。这正是第 06 节要讲的核心。</p></div>
+      </div>
+      <figure class="fig">
+        <div class="fig-stage">
+          <svg viewBox="0 0 520 380" role="img" aria-label="Rear view: heeling moment from the sail vs righting moment from the crew">
+            <defs>
+              <marker id="ar-f2" markerWidth="11" markerHeight="11" refX="6" refY="3.4" orient="auto"><path d="M0,0 L8,3.4 L0,6.8 Z" class="f-force"></path></marker>
+              <marker id="ar-g" markerWidth="10" markerHeight="10" refX="5" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" class="f-line"></path></marker>
+            </defs>
+            <rect x="0" y="252" width="520" height="128" class="water-fill"></rect>
+            <line x1="0" y1="252" x2="520" y2="252" class="s-water"></line>
+            <!-- hull cross section, heeled slightly to leeward (right) -->
+            <path d="M214,250 Q260,284 306,250 Q300,232 260,234 Q224,234 214,250 Z" class="hull"></path>
+            <!-- mast leaning to leeward -->
+            <line x1="258" y1="238" x2="312" y2="78" class="s-line" style="stroke-width:3"></line>
+            <line x1="300" y1="112" x2="356" y2="150" class="s-line" style="stroke-width:2"></line>
+            <!-- heeling force high on sail -->
+            <line x1="300" y1="120" x2="372" y2="120" class="s-force" style="stroke-width:3.4" marker-end="url(#ar-f2)"></line>
+            <text x="300" y="106" class="lbl-zh" style="fill:var(--force);font-size:13px">heeling force 倾覆力</text>
+            <!-- crew hiking out to windward (left) -->
+            <line x1="226" y1="244" x2="150" y2="244" class="s-line" style="stroke-width:7;opacity:.85"></line>
+            <circle cx="140" cy="244" r="11" class="hull"></circle>
+            <text x="120" y="222" class="lbl-zh" style="font-size:13px">crew 船员</text>
+            <!-- crew weight down -->
+            <line x1="150" y1="252" x2="150" y2="316" class="s-line" marker-end="url(#ar-g)"></line>
+            <text x="100" y="306" class="lbl-zh" style="font-size:12px">weight 重力</text>
+            <!-- moment arrows -->
+            <path d="M250,180 A40,40 0 0 1 290,212" class="s-force dash" marker-end="url(#ar-f2)"></path>
+            <text x="296" y="196" class="lbl-sm" style="fill:var(--force)">heel 倾覆力矩</text>
+            <path d="M232,176 A44,44 0 0 0 196,210" class="s-line dash" marker-end="url(#ar-g)"></path>
+            <text x="150" y="178" class="lbl-sm">right 复正力矩</text>
+          </svg>
+        </div>
+        <figcaption><span class="fig-no">FIG 5.2</span><span>Rear view · crew weight balances the sail's heeling moment · 后视：人体重力平衡帆的倾覆力矩</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     06 · BALANCING IN STRONG WIND
+     ============================================================ -->
+<section class="block" id="balance">
+  <div class="wrap">
+    <div class="sec-head"><span class="no">06</span><h2>Balancing in Strong Wind <span class="zh">／ 大风中的平衡</span></h2></div>
+    <p class="sec-sub">A flat Laser is a fast, controllable Laser. When it blows hard the sail's heeling moment shoots up, so you must add righting moment (your body) and shed power (the sail). Keep the mast vertical and the boat sails itself.
+      <span class="zh">船越平，激光级越快、越好控制。风一大，帆的倾覆力矩骤增，你就得"加上复正力矩"（身体）并"卸掉动力"（帆）。让桅杆保持竖直，船几乎能自己稳住。</span>
+    </p>
+
+    <!-- hiking technique -->
+    <div class="split" style="margin-top:30px">
+      <figure class="fig">
+        <div class="fig-stage">
+          <svg viewBox="0 0 480 340" role="img" aria-label="Rear view of a sailor hiking out to keep the boat flat">
+            <defs>
+              <marker id="ar-f6" markerWidth="11" markerHeight="11" refX="6" refY="3.4" orient="auto"><path d="M0,0 L8,3.4 L0,6.8 Z" class="f-force"></path></marker>
+              <marker id="ar-g6" markerWidth="10" markerHeight="10" refX="5" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" class="f-line"></path></marker>
+            </defs>
+            <rect x="0" y="256" width="480" height="84" class="water-fill"></rect>
+            <line x1="0" y1="256" x2="480" y2="256" class="s-water"></line>
+            <!-- hull cross-section, flat -->
+            <path d="M176,236 L304,236 L300,256 Q240,272 180,256 Z" class="hull"></path>
+            <!-- mast vertical = boat flat -->
+            <line x1="240" y1="234" x2="240" y2="70" class="s-line" style="stroke-width:3"></line>
+            <line x1="240" y1="150" x2="290" y2="150" class="s-line" style="stroke-width:2"></line>
+            <!-- heeling force -->
+            <line x1="240" y1="118" x2="312" y2="118" class="s-force" style="stroke-width:3.4" marker-end="url(#ar-f6)"></line>
+            <text x="246" y="106" class="lbl-zh" style="fill:var(--force);font-size:13px">wind heel 倾覆力</text>
+            <!-- crew hiked out (windward = left) -->
+            <path d="M176,238 L160,222 L150,242 L92,256" fill="none" class="s-line" style="stroke-width:7;opacity:.9;stroke-linejoin:round;stroke-linecap:round"></path>
+            <line x1="100" y1="252" x2="150" y2="238" class="s-line" style="stroke-width:4;opacity:.7"></line>
+            <circle cx="84" cy="258" r="10" class="hull"></circle>
+            <!-- hiking strap under feet -->
+            <path d="M168,244 q8,9 16,2" class="s-wind"></path>
+            <text x="150" y="298" class="lbl-zh" style="fill:var(--wind);font-size:12px;text-anchor:middle">feet under strap 脚勾压舷带</text>
+            <!-- righting lever -->
+            <line x1="240" y1="250" x2="108" y2="250" class="s-faint dash"></line>
+            <line x1="108" y1="256" x2="108" y2="318" class="s-line" marker-end="url(#ar-g6)"></line>
+            <text x="60" y="312" class="lbl-zh" style="font-size:12px">weight 体重</text>
+            <text x="174" y="206" class="lbl-zh" style="font-size:12px;fill:var(--line)">righting lever 复正力臂</text>
+          </svg>
+        </div>
+        <figcaption><span class="fig-no">FIG 6.1</span><span>Hiking flat · the longer your body's lever, the more righting power · 压舷：身体伸得越远，复正力矩越大</span></figcaption>
+      </figure>
+      <div class="txt">
+        <h3>Hiking — your engine of stability<span class="zh">压舷——你的稳定性来源</span></h3>
+        <div class="pair"><p class="en">Hook your feet under the hiking strap and straighten your legs so your back and shoulders hang out over the windward side. The further out your weight, the longer the lever and the more heel you cancel.</p>
+          <p class="zh">双脚勾住压舷带、蹬直双腿，让后背和肩膀探出迎风一侧的舷外。身体伸得越远，力臂越长，能抵消的倾覆就越多。</p></div>
+        <div class="pair"><p class="en">Move in steps as the wind builds: sit <b>in</b> the cockpit in light air → sit <b>on</b> the side deck in a breeze → <b>full hike</b> when it's strong. Come back in the instant the boat sits flat — don't over-flatten to windward.</p>
+          <p class="zh">随风力分级移动：微风时坐在<b>舱内</b> → 有风时坐到<b>侧甲板</b> → 大风时<b>完全压舷</b>。船一平就收回身体——别用力过猛把船压向迎风侧。</p></div>
+      </div>
+    </div>
+
+    <!-- gust response: HIKE / EASE / STEER -->
+    <h3 style="color:var(--ink);font-size:19px;margin:46px 0 0;">The gust response — three reactions at once <span class="zh" style="font-family:var(--zh);color:var(--line);font-weight:500;font-size:15px;display:block;">阵风来袭——三个动作同时做</span></h3>
+    <div class="steps" style="grid-template-columns:repeat(3,1fr);margin-top:22px">
+
+      <div class="step">
+        <div class="step-fig">
+          <svg viewBox="0 0 300 150" role="img" aria-label="Hike harder">
+            <line x1="0" y1="120" x2="300" y2="120" class="s-water"></line>
+            <path d="M118,108 L196,108 L192,122 Q150,132 122,122 Z" class="hull"></path>
+            <line x1="156" y1="106" x2="156" y2="28" class="s-line" style="stroke-width:2.5"></line>
+            <path d="M118,110 L106,98 L98,112 L58,122" fill="none" class="s-line" style="stroke-width:5;opacity:.9;stroke-linejoin:round;stroke-linecap:round"></path>
+            <circle cx="52" cy="123" r="7" class="hull"></circle>
+          </svg>
+        </div>
+        <div class="step-body">
+          <div class="step-no">REACTION 01 · 身体</div>
+          <h4>Hike harder<span class="zh">压舷更狠</span></h4>
+          <p>Throw your weight further out to soak up the extra heeling force.</p>
+          <p class="zh">把身体甩得更远，吸收骤增的倾覆力。</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-fig">
+          <svg viewBox="0 0 300 150" role="img" aria-label="Ease the mainsheet">
+            <defs><marker id="ar-w6" markerWidth="9" markerHeight="9" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" class="f-wind"></path></marker></defs>
+            <g class="s-wind"><line x1="14" y1="40" x2="58" y2="40" marker-end="url(#ar-w6)"></line><line x1="14" y1="80" x2="58" y2="80" marker-end="url(#ar-w6)"></line></g>
+            <line x1="96" y1="20" x2="96" y2="138" class="s-line" style="stroke-width:3"></line>
+            <path d="M96,30 Q150,70 250,96" class="s-line dash"></path>
+            <path d="M96,30 Q170,96 270,120" class="s-line" style="stroke-width:2.5"></path>
+            <text x="190" y="64" class="lbl-sm">eased out 放出</text>
+          </svg>
+        </div>
+        <div class="step-body">
+          <div class="step-no">REACTION 02 · 前手</div>
+          <h4>Ease the mainsheet<span class="zh">放出主缭</span></h4>
+          <p>Let the sail out so the gust spills off it — then sheet back in as it passes.</p>
+          <p class="zh">放出帆让阵风"漏掉"，风过去后再收回来。</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-fig">
+          <svg viewBox="0 0 300 150" role="img" aria-label="Feather up into the gust">
+            <defs><marker id="ar-t6" markerWidth="10" markerHeight="10" refX="5" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" class="f-wind"></path></marker></defs>
+            <path d="M150,40 C164,66 164,116 150,140 C136,116 136,66 150,40 Z" class="hull"></path>
+            <line x1="150" y1="64" x2="186" y2="78" class="s-dim"></line>
+            <path d="M150,30 q-6,-2 -12,2 M150,40 q-6,-2 -12,2" class="s-dim"></path>
+            <path d="M150,30 A40,40 0 0 1 178,42" class="s-wind" style="stroke-width:2.5" marker-end="url(#ar-t6)"></path>
+            <text x="150" y="20" class="lbl-sm" style="fill:var(--wind);text-anchor:middle">head up 向风</text>
+          </svg>
+        </div>
+        <div class="step-body">
+          <div class="step-no">REACTION 03 · 后手</div>
+          <h4>Feather up<span class="zh">借舵向风</span></h4>
+          <p>Steer a touch toward the wind so it blows off the front of the sail.</p>
+          <p class="zh">轻轻把船头转向风，让风从帆前缘"漏"掉。</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="note">
+      <span class="tag">Pre-set · 预先调好</span>
+      <p>Before it pipes up, <b>flatten the sail</b> to shed power: pull on <b>cunningham</b> (flattens the front) and <b>outhaul</b> (flattens the foot), and tension the <b>vang</b> so easing the sheet still spills the top. A flat sail in a flat boat is the goal.</p>
+      <p class="zh">风变大前先<b>把帆调平</b>来减力：拉紧<b>帆领下拉（cunningham）</b>使前部变平、拉紧<b>帆脚外拉（outhaul）</b>使下缘变平，并张紧<b>压帆器（vang）</b>，这样放缭时帆顶仍能漏风。目标是"平的帆＋平的船"。</p>
+    </div>
+
+    <div class="note warn">
+      <span class="tag">If it heels · 一旦倾斜</span>
+      <p>Letting the boat heel makes it round up into the wind (weather helm) and stall — fighting it with rudder only slows you and can trip into a capsize. Cure the heel first (hike + ease), and the helm goes light again.</p>
+      <p class="zh">任由船倾斜，它会自己抢向上风（"weather helm 顶舵"）并失速——只靠拉舵硬扳，既减速又可能直接翻船。先治倾斜（压舷＋放帆），舵自然就变轻了。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     07 · CAPSIZE RECOVERY
+     ============================================================ -->
+<section class="block" id="capsize">
+  <div class="wrap">
+    <div class="sec-head"><span class="no">07</span><h2>Capsize Recovery <span class="zh">／ 翻船后如何回正</span></h2></div>
+    <p class="sec-sub">Everyone capsizes — it is a normal part of sailing a Laser, not an emergency. The hull floats, and one person can right it in under a minute using the daggerboard as a lever. The golden rule: <b>stay with the boat.</b>
+      <span class="zh">每个人都会翻船——这是驾驶激光级的正常环节，不是事故。船体会浮起，一个人用稳向板当杠杆，一分钟内就能把它扳正。黄金法则：<b>始终待在船边。</b></span>
+    </p>
+
+    <div class="steps">
+
+      <!-- step 1 -->
+      <!-- step 1 -->
+      <div class="step">
+        <div class="step-fig">
+          <svg viewBox="0 0 340 200" role="img" aria-label="Boat on its side, sailor swims to the centerboard">
+            <rect x="0" y="120" width="340" height="80" class="water-fill"></rect>
+            <line x1="0" y1="120" x2="340" y2="120" class="s-water"></line>
+            <!-- mast + sail flat on water (left) -->
+            <polygon points="242,96 70,114 150,142" class="sail" style="opacity:.45"></polygon>
+            <line x1="242" y1="96" x2="70" y2="114" class="s-line" style="stroke-width:3"></line>
+            <text x="96" y="150" class="lbl-sm">mast &amp; sail on water 桅帆浮水面</text>
+            <!-- hull on its side, deck facing left -->
+            <path d="M242,80 C280,98 280,150 242,166 L242,80 Z" class="hull"></path>
+            <!-- centerboard out to the right -->
+            <path d="M278,118 L342,110 L344,118 L280,126 Z" class="sail"></path>
+            <text x="300" y="100" class="lbl-sm" style="fill:var(--line);text-anchor:middle">centerboard 中插板</text>
+            <!-- sailor in water reaching for board -->
+            <circle cx="322" cy="134" r="8" class="hull"></circle>
+            <line x1="316" y1="130" x2="300" y2="120" class="s-line" style="stroke-width:4;stroke-linecap:round"></line>
+          </svg>
+        </div>
+        <div class="step-body">
+          <div class="step-no">STEP 01</div>
+          <h4>Hold on, reach the board<span class="zh">抓住船，游向插板</span></h4>
+          <p>Surface and keep a hand on the boat. Check you're free of all lines and the mainsheet is uncleated, then move to the centerboard sticking out of the hull.</p>
+          <p class="zh">浮起后始终扶住船。确认没被绳索缠住、主缭已松开，然后挪到从船底伸出的中插板（centerboard）旁。</p>
+        </div>
+      </div>
+
+      <!-- step 2 -->
+      <div class="step">
+        <div class="step-fig">
+          <svg viewBox="0 0 340 200" role="img" aria-label="Sailor grabs the centerboard with both hands">
+            <rect x="0" y="120" width="340" height="80" class="water-fill"></rect>
+            <line x1="0" y1="120" x2="340" y2="120" class="s-water"></line>
+            <polygon points="242,96 70,114 150,142" class="sail" style="opacity:.45"></polygon>
+            <line x1="242" y1="96" x2="70" y2="114" class="s-line" style="stroke-width:3"></line>
+            <path d="M242,80 C280,98 280,150 242,166 L242,80 Z" class="hull"></path>
+            <path d="M278,118 L342,110 L344,118 L280,126 Z" class="sail"></path>
+            <!-- sailor grabbing board, body in water -->
+            <circle cx="312" cy="116" r="8" class="hull"></circle>
+            <path d="M312,124 q6,16 2,30" class="s-dim dash"></path>
+            <line x1="308" y1="114" x2="298" y2="116" class="s-line" style="stroke-width:4;stroke-linecap:round"></line>
+            <line x1="316" y1="114" x2="306" y2="115" class="s-line" style="stroke-width:4;stroke-linecap:round"></line>
+            <text x="300" y="96" class="lbl-sm" style="fill:var(--wind);text-anchor:middle">grab firmly 双手抓牢</text>
+          </svg>
+        </div>
+        <div class="step-body">
+          <div class="step-no">STEP 02</div>
+          <h4>Grab the centerboard<span class="zh">抓牢中插板</span></h4>
+          <p>Take a firm two-handed grip on the board, close to the hull. (If the boat has gone fully upside-down, pull the board to roll it onto its side first.)</p>
+          <p class="zh">用双手抓牢插板靠近船体的部位。（若船已完全倒扣，先拉插板把它拉回侧躺状态。）</p>
+        </div>
+      </div>
+
+      <!-- step 3 -->
+      <div class="step">
+        <div class="step-fig">
+          <svg viewBox="0 0 340 200" role="img" aria-label="Sailor stands on the board and leans back to lever the boat upright">
+            <defs>
+              <marker id="ar-cap3" markerWidth="10" markerHeight="10" refX="5" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" class="f-line"></path></marker>
+              <marker id="ar-cap3r" markerWidth="10" markerHeight="10" refX="5" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" class="f-wind"></path></marker>
+            </defs>
+            <rect x="0" y="120" width="340" height="80" class="water-fill"></rect>
+            <line x1="0" y1="120" x2="340" y2="120" class="s-water"></line>
+            <!-- mast lifting off the water -->
+            <line x1="262" y1="116" x2="150" y2="86" class="s-line dash" style="stroke-width:2"></line>
+            <!-- righting rotation arrow -->
+            <path d="M150,80 A78,78 0 0 1 214,60" class="s-wind dash" style="stroke-width:2.5" marker-end="url(#ar-cap3r)"></path>
+            <!-- hull on side -->
+            <path d="M250,86 C286,104 286,150 250,166 L250,86 Z" class="hull"></path>
+            <!-- board angled down-right -->
+            <path d="M276,122 L340,136 L342,144 L278,130 Z" class="sail"></path>
+            <!-- sailor standing on board, leaning back -->
+            <path d="M312,130 L308,102 M308,102 L318,82 M308,102 L296,104" fill="none" class="s-line" style="stroke-width:5;stroke-linecap:round;stroke-linejoin:round"></path>
+            <circle cx="320" cy="74" r="8" class="hull"></circle>
+            <!-- weight down -->
+            <line x1="312" y1="132" x2="312" y2="160" class="s-line" marker-end="url(#ar-cap3)"></line>
+            <text x="150" y="178" class="lbl-sm" style="text-anchor:middle">stand on board, lean back 站板上后仰</text>
+          </svg>
+        </div>
+        <div class="step-body">
+          <div class="step-no">STEP 03</div>
+          <h4>Lean back to right it<span class="zh">后仰把船扳正</span></h4>
+          <p>Get your feet onto the board and lean your bodyweight back. The board works as a lever — the hull rolls upright and the mast lifts off the water.</p>
+          <p class="zh">把双脚踩上插板、身体后仰下压。插板就是杠杆——船体随之翻正，桅杆和帆离开水面。</p>
+        </div>
+      </div>
+
+      <!-- step 4 -->
+      <div class="step">
+        <div class="step-fig">
+          <svg viewBox="0 0 340 200" role="img" aria-label="Boat upright, sailor climbs in over the side deck">
+            <rect x="0" y="120" width="340" height="80" class="water-fill"></rect>
+            <line x1="0" y1="120" x2="340" y2="120" class="s-water"></line>
+            <!-- upright hull -->
+            <path d="M150,116 Q190,126 230,116 L226,140 Q190,150 154,140 Z" class="hull"></path>
+            <line x1="190" y1="120" x2="200" y2="28" class="s-line" style="stroke-width:3"></line>
+            <line x1="198" y1="58" x2="252" y2="72" class="s-line" style="stroke-width:2"></line>
+            <!-- sailor climbing in over the side deck -->
+            <circle cx="226" cy="102" r="8" class="hull"></circle>
+            <path d="M226,110 L212,122 M226,113 L240,118 M212,122 L206,134" fill="none" class="s-line" style="stroke-width:5;stroke-linecap:round;stroke-linejoin:round"></path>
+            <text x="160" y="178" class="lbl-sm" style="text-anchor:middle">climb in, sit, sail on 翻进舱、坐稳、起航</text>
+          </svg>
+        </div>
+        <div class="step-body">
+          <div class="step-no">STEP 04</div>
+          <h4>Climb aboard &amp; go<span class="zh">爬上船、继续航行</span></h4>
+          <p>As the boat comes up it scoops you toward the cockpit — climb in over the side deck, sit down, sort out the tiller and mainsheet, and sail on.</p>
+          <p class="zh">船立起时会把你带向驾驶舱——从侧甲板翻进船里，坐稳，理好舵柄和主缭，继续航行。</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="note warn">
+      <span class="tag">If it turtles · 若完全倒扣</span>
+      <p>If the boat fully inverts (mast straight down — "turtle"), stand on the upturned gunwale and pull back on the centerboard to bring it onto its side first, then recover as above. The hull floats — never dive under it, and stay with the boat.</p>
+      <p class="zh">若船完全倒扣（桅杆竖直朝下，俗称"乌龟"），先站到翻起的舷边、向后拉中插板，把船拉回侧躺，再按上面步骤扶正。船体会浮——切勿钻到船底下，始终待在船边。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     08 · SAFETY & GLOSSARY
+     ============================================================ -->
+<section class="block" id="glossary">
+  <div class="wrap">
+    <div class="sec-head"><span class="no">08</span><h2>Safety &amp; Glossary <span class="zh">／ 安全与航行术语</span></h2></div>
+    <p class="sec-sub">A short pre-launch safety checklist, then the words you'll hear on the water — every term used in this guide, in plain English and Chinese.
+      <span class="zh">先是一份下水前的安全清单，再是水上常听到的词汇——本指南用到的每个术语，中英对照。</span>
+    </p>
+
+    <div class="note">
+      <span class="tag">Before you launch · 下水前</span>
+      <p><b>1.</b> Wear a properly fitted buoyancy aid (PFD). &nbsp; <b>2.</b> Check the forecast — avoid offshore winds that blow you away from land. &nbsp; <b>3.</b> Never sail alone; tell someone your plan and return time. &nbsp; <b>4.</b> Know how to right a capsize before you need to. &nbsp; <b>5.</b> Dress for the water temperature, not the air. &nbsp; <b>6.</b> If in trouble, <b>stay with the boat</b> — it floats and is far easier to spot than a swimmer.</p>
+      <p class="zh"><b>1.</b> 穿好合身的浮力衣（救生衣）。&nbsp; <b>2.</b> 查看天气——避开把你吹离岸的"离岸风"。&nbsp; <b>3.</b> 不要单独出海；告诉别人你的计划和返回时间。&nbsp; <b>4.</b> 在真正需要前就学会扶正翻船。&nbsp; <b>5.</b> 按水温而非气温穿衣。&nbsp; <b>6.</b> 遇险时<b>始终待在船边</b>——船会浮，比游泳的人好被发现得多。</p>
+    </div>
+
+    <div class="glossary">
+      <div class="term"><div class="t">Windward <span class="zh">迎风侧 / 上风</span></div><div class="d">The side the wind hits first; "up toward the wind."<span class="zh">风先吹到的一侧；靠近风的方向。</span></div></div>
+      <div class="term"><div class="t">Leeward <span class="zh">背风侧 / 下风</span></div><div class="d">The sheltered side, away from the wind.<span class="zh">背着风、被挡住的一侧。</span></div></div>
+      <div class="term"><div class="t">Port <span class="zh">左舷</span></div><div class="d">The left-hand side when you face the bow.<span class="zh">面向船首时的左侧。</span></div></div>
+      <div class="term"><div class="t">Starboard <span class="zh">右舷</span></div><div class="d">The right-hand side when you face the bow.<span class="zh">面向船首时的右侧。</span></div></div>
+      <div class="term"><div class="t">Head up <span class="zh">向风转</span></div><div class="d">Steer closer to the wind; pull the sail in as you do.<span class="zh">把船头转向风；同时收帆。</span></div></div>
+      <div class="term"><div class="t">Bear away <span class="zh">离风转</span></div><div class="d">Steer away from the wind; let the sail out as you do.<span class="zh">把船头转离风；同时放帆。</span></div></div>
+      <div class="term"><div class="t">Tack <span class="zh">抢风换舷</span></div><div class="d">Turn the bow <b>through</b> the wind to change sides; used to make ground upwind.<span class="zh">让船头<b>穿过</b>风来换受风舷，用于逆风上风。</span></div></div>
+      <div class="term"><div class="t">Gybe / Jibe <span class="zh">转帆换舷</span></div><div class="d">Turn the stern through the wind; the boom swings across — do it under control.<span class="zh">让船尾穿过风，帆杆会扫过对面——务必控制好。</span></div></div>
+      <div class="term"><div class="t">Luff <span class="zh">帆抖动 / 帆前缘</span></div><div class="d">The front edge of the sail; also "to luff" = let it flap.<span class="zh">帆的前缘；也指帆开始抖动、漏风。</span></div></div>
+      <div class="term"><div class="t">Trim <span class="zh">调帆</span></div><div class="d">Adjusting the sail angle in or out for the course.<span class="zh">根据航向把帆收进或放出的调整。</span></div></div>
+      <div class="term"><div class="t">Heel <span class="zh">横倾</span></div><div class="d">The boat leaning over to one side.<span class="zh">船向一侧倾斜。</span></div></div>
+      <div class="term"><div class="t">In irons <span class="zh">顶风停滞</span></div><div class="d">Stuck pointing straight into the wind with no drive.<span class="zh">船头正对风、失去动力、停住。</span></div></div>
+      <div class="term"><div class="t">Beat / Beating <span class="zh">抢风上风</span></div><div class="d">Sailing upwind close-hauled by tacking in a zig-zag.<span class="zh">用"之"字形抢风、贴风驶向上风。</span></div></div>
+      <div class="term"><div class="t">Reach <span class="zh">横风航行</span></div><div class="d">Sailing across the wind — the fast, easy points of sail.<span class="zh">侧风航行——又快又好掌控的航法。</span></div></div>
+      <div class="term"><div class="t">Run <span class="zh">顺风航行</span></div><div class="d">Sailing with the wind behind you, sail right out.<span class="zh">风从后方来、帆放到最大的航行。</span></div></div>
+      <div class="term"><div class="t">Apparent wind <span class="zh">视风 / 相对风</span></div><div class="d">The wind you actually feel = true wind + wind from the boat's own motion.<span class="zh">你实际感到的风＝真风＋船运动产生的风。</span></div></div>
+      <div class="term"><div class="t">Weather helm <span class="zh">顶舵</span></div><div class="d">The boat's pull to turn into the wind when it heels too far.<span class="zh">船倾斜过度时自己抢向上风的趋势。</span></div></div>
+      <div class="term"><div class="t">Capsize / Right <span class="zh">翻船 / 扶正</span></div><div class="d">The boat tipping flat onto the water; "right" = bring it back up.<span class="zh">船翻倒在水面上；"扶正"＝把它重新立起。</span></div></div>
+    </div>
+
+    <div class="note">
+      <span class="tag">One-line summary · 一句话总结</span>
+      <p>Keep the boat <b>flat</b>, keep the telltales <b>streaming</b>, ease in the gust and sheet in the lull — and when in doubt, let the mainsheet go. Everything else is practice.</p>
+      <p class="zh">让船<b>保持平稳</b>、让毛线<b>顺直飘动</b>，阵风放帆、风弱收帆——拿不准时，就松开主缭。其余的，全靠练习。</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="mono">LASER / ILCA · ILLUSTRATED FIELD GUIDE · 激光级帆船图解指南</div>
+    <p class="zh" style="margin-top:10px;max-width:680px;line-height:1.6;">本指南为教学示意，所有示意图均为原理性、非按比例工程图。实际操作请在合格教练指导下、佩戴浮力衣进行。激光级现由 ILCA（国际激光级协会）管理，标准帆型号为 ILCA 7。</p>
+    <p class="mono" style="margin-top:14px;opacity:.6;">08 sections · 9 diagrams · EN / 中文</p>
+  </div>
+</footer>
+
+</body>
+</html>
