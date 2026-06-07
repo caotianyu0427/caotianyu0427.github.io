@@ -8,15 +8,15 @@ main:
   - name: Publications
     url: /#publications
     weight: 30
-  - name: Awards
-    url: /#awards
+  - name: Projects
+    url: /project/
     weight: 40
+  - name: Interests
+    url: /interests/
+    weight: 50
   - name: CV
     url: /#cv
-    weight: 50
+    weight: 60
   - name: Contact
     url: /#contact
-    weight: 60
-  - name: Laser
-    url: /laser/
     weight: 70
