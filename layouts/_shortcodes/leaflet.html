@@ -1,0 +1,46 @@
+{{/*
+  简单的 Leaflet 交互地图 shortcode，供未来的旅行/博客文章使用。
+  用法：
+  {{< leaflet lat="21.3" lng="-157.8" zoom="10" height="400"
+      markers="21.3187,-157.9224,机场;19.4194,-155.2885,火山" >}}
+  markers 参数：用 ; 分隔多个点，每个点用 , 分隔 "纬度,经度,标签"（标签可省略）。
+*/}}
+{{ $lat := .Get "lat" | default "20.5" }}
+{{ $lng := .Get "lng" | default "-157.5" }}
+{{ $zoom := .Get "zoom" | default "8" }}
+{{ $height := .Get "height" | default "420" }}
+{{ $markers := .Get "markers" | default "" }}
+{{ $id := printf "leaflet-map-%d" (add (.Ordinal) 1) }}
+
+<div id="{{ $id }}" style="height:{{ $height }}px;border-radius:12px;margin:1.5rem 0;"></div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script>
+(function () {
+  function init() {
+    var map = L.map("{{ $id }}").setView([{{ $lat }}, {{ $lng }}], {{ $zoom }});
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      attribution: "&copy; OpenStreetMap contributors",
+      maxZoom: 18
+    }).addTo(map);
+
+    var raw = {{ $markers }};
+    if (raw) {
+      raw.split(";").forEach(function (entry) {
+        var parts = entry.split(",");
+        if (parts.length < 2) return;
+        var lat = parseFloat(parts[0]);
+        var lng = parseFloat(parts[1]);
+        var label = parts.slice(2).join(",").trim();
+        if (isNaN(lat) || isNaN(lng)) return;
+        var marker = L.marker([lat, lng]).addTo(map);
+        if (label) marker.bindPopup(label);
+      });
+    }
+  }
+  if (window.L) { init(); } else {
+    var s = document.currentScript.previousElementSibling;
+    s.addEventListener("load", init);
+  }
+})();
+</script>

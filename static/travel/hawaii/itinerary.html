@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>夏威夷行程规划 最终版 · 9/26–10/3</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<style>
+  :root{
+    --bg:#faf8f4; --card:#ffffff; --ink:#2b2620; --sub:#6b6255;
+    --line:#e7e0d4; --accent:#c8632b;
+    --big:#c0392b; --oahu:#2471a3;
+    --light:#5a9e6f; --moderate:#c8632b; --high:#c0392b;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55;}
+  .wrap{max-width:1180px;margin:0 auto;padding:28px 20px 60px;}
+  header h1{font-size:22px;margin:0 0 4px;}
+  header p{color:var(--sub);font-size:13.5px;margin:2px 0;}
+  .badge{display:inline-block;background:#fff3ea;color:var(--accent);border:1px solid #f0d3bd;border-radius:20px;padding:2px 10px;font-size:12px;margin-right:6px;margin-bottom:4px;}
+  .notice{background:#fff8ea;border:1px solid #f0e0b0;border-radius:10px;padding:12px 16px;margin:14px 0;font-size:13px;color:#7a5b12;}
+  .notice.green{background:#eef6ee;border-color:#c9e2c9;color:#2c4a2c;}
+  .notice.blue{background:#eaf2f8;border-color:#c3dbec;color:#204a63;}
+  .notice b{color:#5c4306;} .notice.green b{color:#1e4a1e;} .notice.blue b{color:#123650;}
+  h2.sec{font-size:16px;margin:30px 0 10px;border-top:1px solid var(--line);padding-top:22px;}
+  h2.sec:first-of-type{border-top:none;padding-top:0;}
+
+  /* days */
+  .legend-ex{display:flex;gap:16px;flex-wrap:wrap;margin:10px 0 4px;font-size:12.5px;}
+  .legend-ex span{display:inline-flex;align-items:center;gap:6px;}
+  .dot{width:10px;height:10px;border-radius:50%;display:inline-block;}
+  .daytabs{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 14px;}
+  .daytabs button{border:1px solid var(--line);background:var(--card);color:var(--ink);padding:8px 14px;border-radius:10px;font-size:12.5px;cursor:pointer;text-align:left;line-height:1.3;}
+  .daytabs button b{display:block;font-size:13.5px;}
+  .daytabs button span{color:var(--sub);font-size:11px;}
+  .daytabs button.active{background:var(--ink);color:#fff;border-color:var(--ink);}
+  .daytabs button.active span{color:#ddd;}
+  #map{height:420px;border-radius:12px;border:1px solid var(--line);margin-bottom:18px;}
+  .daycard{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin-bottom:20px;}
+  .daycard h2{margin:0 0 2px;font-size:19px;}
+  .daycard .meta{color:var(--sub);font-size:13px;margin-bottom:4px;}
+  .exbadge{display:inline-block;font-size:11.5px;padding:2px 9px;border-radius:12px;color:#fff;font-weight:600;margin-left:6px;}
+  .tag-Oahu{color:var(--oahu);font-weight:700;}
+  .tag-Big{color:var(--big);font-weight:700;}
+  .schedule{list-style:none;margin:14px 0 0;padding:0;}
+  .schedule li{display:flex;gap:12px;padding:11px 0;border-bottom:1px solid var(--line);}
+  .schedule li:last-child{border-bottom:none;}
+  .time{flex:0 0 92px;font-weight:700;color:var(--accent);font-size:12.5px;padding-top:1px;}
+  .num{display:inline-flex;align-items:center;justify-content:center;width:19px;height:19px;border-radius:50%;background:var(--accent);color:#fff;font-size:11px;font-weight:700;margin-right:6px;}
+  .stopname{font-weight:600;font-size:14.5px;}
+  .stopintro{color:#5c5346;font-size:12.8px;margin-top:3px;}
+  .stoplogi{color:var(--sub);font-size:12.2px;margin-top:2px;}
+  .stoplink{margin-top:3px;}
+  .stoplink a{font-size:12px;color:#2471a3;text-decoration:none;border-bottom:1px dashed #b7d2e3;}
+  .stoplink a:hover{text-decoration:underline;}
+  .returnbox{margin-top:12px;font-size:12.5px;color:#5c5346;background:#f4f1ea;border-radius:8px;padding:8px 12px;}
+  .bonusbox{margin-top:14px;padding:12px 14px;background:#f7f2e8;border-radius:10px;border:1px dashed #d8c7a3;}
+  .bonusbox h3{margin:0 0 8px;font-size:13px;color:#8a6d2f;}
+  .bonusbox p{margin:0;font-size:13px;color:#5c4d2f;}
+  footer{margin-top:30px;color:var(--sub);font-size:12px;}
+  .leaflet-popup-content{font-size:13px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>🌺 夏威夷行程规划 · 最终版</h1>
+    <p>
+      <span class="badge">9/25(五)晚 Baltimore出发</span>
+      <span class="badge">9/26(六) 婚礼 @ Hilton Hawaiian Village</span>
+      <span class="badge">Oahu 4晚 → 大岛 3晚</span>
+      <span class="badge">10/3(六) 返程</span>
+    </p>
+    <p>全程 <b>8天</b>，9/26抵达当天参加婚礼，10/3从Hilo返程。每天地图上的编号①②③...和下方时间表的编号一一对应。机票/住宿/租车的具体价格与预订链接见配套的《夏威夷总预算表》，这里只放景点本身的详细介绍。</p>
+  </header>
+
+  <h2 class="sec">🗓️ 逐日路线</h2>
+  <div class="legend-ex">
+    <span><span class="dot" style="background:var(--light)"></span>轻松日</span>
+    <span><span class="dot" style="background:var(--moderate)"></span>适中</span>
+    <span><span class="dot" style="background:var(--high)"></span>较满/体力大</span>
+  </div>
+  <div class="daytabs" id="tabs"></div>
+  <div id="map"></div>
+  <div id="daypanel"></div>
+
+  <footer>
+    机票/住宿/租车的价格明细与预订链接见配套的《夏威夷总预算表》；更多候选景点的评分对比见《夏威夷景点候选清单》。以下景点介绍与链接均为2026年7月搜索时点信息，出行前请以官网实时公告为准（尤其Diamond Head/Hanauma Bay/Mauna Kea等预约类项目）。
+  </footer>
+</div>
+
+<script>
+/* ---------- 逐日行程 ---------- */
+const EXCOLOR = {"轻松（社交/时差疲劳）":"#5a9e6f","轻松":"#5a9e6f","适中":"#c8632b","适中（转场+夜潜）":"#c8632b","较满":"#c0392b","较满（熬夜）":"#c0392b"};
+function exColor(e){ return EXCOLOR[e] || "#c8632b"; }
+
+const DAYS = [
+{
+  date:"Day1 · 9/26 周六", island:"Oahu", title:"抵达 + 婚礼 @ Hilton Hawaiian Village", exert:"轻松（社交/时差疲劳）", overnight:"住 Waikiki（近Hilton Hawaiian Village）",
+  stops:[
+    {time:"上午", name:"抵达 Honolulu (HNL)", intro:"前一晚从Baltimore出发，转机1次，约12.5–13.5小时。", logi:"取车到Hilton Hawaiian Village一带约20分钟。", lat:21.3187,lng:-157.9224,bonus:false},
+    {time:"上午", name:"入住 + 补觉", intro:"长途飞行后建议眯一会儿。", logi:"婚礼就在同一酒店举行，走过去就行。", lat:21.2847,lng:-157.8378,bonus:false},
+    {time:"下午/傍晚", name:"婚礼 @ Hilton Hawaiian Village", intro:"夏威夷最大的海滨度假村之一，占地22英亩，1955年开业，是Waikiki最早的大型度假村之一。园区自带一片人工泻湖(Duke Kahanamoku Lagoon)和开阔沙滩，棕榈树+火烈鸟池塘+塔希提式建筑群，很多户外婚礼会选在这里的草坪或沙滩举行，周五晚固定有免费烟花表演。", logi:"具体流程时间以请柬为准；度假村很大，提前查好具体举办的塔楼/草坪位置。", link:"https://www.hiltonhawaiianvillage.com/", linkText:"度假村官网", lat:21.2830,lng:-157.8378,bonus:false},
+  ],
+  returnNote:"婚礼结束就在住处附近，不需要额外交通。",
+  bonusNote:"KCC Farmers Market正好也是今天(周六7:30–11am)，但刚下红眼航班+要准备婚礼，大概率没精力赶，大岛后面的Hilo Farmers Market(周三/周六最全)可以补上这个体验。"
+},
+{
+  date:"Day2 · 9/27 周日", island:"Oahu", title:"轻松日：平等院 + Lanikai躺海滩", exert:"轻松", overnight:"住 Waikiki",
+  stops:[
+    {time:"上午", name:"睡到自然醒", intro:"婚礼后的恢复日，不用早起。", logi:"", lat:21.2793,lng:-157.8294,bonus:false},
+    {time:"11:30–13:00", name:"平等院 Byodo-In Temple", intro:"1968年为纪念首批日本移民赴夏威夷100周年而建，是京都宇治平等院(凤凰堂)的等比例复刻，坐落在Valley of the Temples墓园内，背靠Ko'olau山脉笔直的翠绿峭壁，画面感极强。锦鲤池、孔雀、庭院里有一口5.5吨重的青铜和平钟，传说敲响它能带来好运与长寿——几乎每个游客都会去敲一下。殿内供奉一尊高9英尺的镀金阿弥陀佛坐像。", logi:"$10/人+$6/车停车，只收信用卡；开放8:30am–4:30pm；从Waikiki约25–30分钟。", link:"https://byodo-in.com/visit/", linkText:"官网购票信息", lat:21.4227,lng:-157.8434,bonus:false},
+    {time:"14:00–18:00", name:"Kailua / Lanikai 躺海滩", intro:"细白沙+浅水区被珊瑚礁环抱形成的平静海湾，水色从浅绿到深蓝层次分明，多次被Dr. Beach和Travel+Leisure评为全美最美海滩之一。沿岸望向东南能看到一对双子离岛Mokulua(俗称'The Mokes')，本地人周末最爱来这里躺平、遛狗、划桨板，游客相对Waikiki少很多，氛围更生活化。", logi:"公共海滩免费，路边停车；从平等院约10分钟车程。", lat:21.3931,lng:-157.7156,bonus:false},
+  ],
+  returnNote:"返回Waikiki约25–30分钟。",
+  bonusNote:"顺路：从Waikiki去Kaneohe路上会经过Nuuanu Pali Lookout（俯瞰东岸整片悬崖，15分钟停留，风很大，是1795年Kamehameha大帝统一夏威夷群岛关键战役的古战场，如果对眼前的风景本身感兴趣值得一停）。"
+},
+{
+  date:"Day3 · 9/28 周一", island:"Oahu", title:"Diamond Head日出 + 市区壁画 + 民俗Luau之夜", exert:"适中", overnight:"住 Waikiki",
+  stops:[
+    {time:"06:00–08:00", name:"Diamond Head 日出徒步", intro:"30万年前一次单一喷发形成的凝灰岩火山口，夏威夷语名「Lēʻahi」（金枪鱼额头的意思，因山脊形状得名）。步道从火山口内部往上爬升约0.8英里到山脊顶端，途经99级台阶、一条实心黑暗的隧道和二战时期修建的Fire Control Station瞭望碉堡，最后视野豁然开朗——整条Waikiki海岸线、钻石头周边住宅区和远处的Ko'olau山脉尽收眼底，日出时天色渐亮的过程尤其震撼。", logi:"$5/人+$10/车；须在gostateparks.hawaii.gov官网提前最多30天预约6:00–7:00场次(最热门，开放瞬间秒空)；从Waikiki约10–15分钟；全程往返约1.5–2小时，中等强度，穿好走的鞋。", link:"https://gostateparks.hawaii.gov/diamondhead/", linkText:"官方预约系统", lat:21.2620,lng:-157.8056,bonus:false},
+    {time:"09:00–11:00", name:"Kaka'ako 街头壁画区", intro:"由每年二月的POW! WOW! Hawaii国际艺术节孕育出的露天壁画长廊，从2011年至今持续在Kaka'ako的仓库墙面上留下巨幅作品，如今已是全球知名的街头艺术聚落之一。Auahi St、Cooke St、Keawe St几条街区最为集中，题材从写实肖像到抽象色块都有，本地年轻人喜欢来这里拍照、喝咖啡、看展，是完全不带游客团的本地生活街区。", logi:"免费，全年开放（户外公共空间）；从Diamond Head约10分钟车程；建议早上光线好、天气凉快时逛，周边有不少精品咖啡馆和啤酒厂可以坐坐。", link:"https://ourkakaako.com/street-art/", linkText:"壁画地图与艺术家介绍", lat:21.2947,lng:-157.8515,bonus:false},
+    {time:"中午–下午", name:"自由活动 / 休息", intro:"", logi:"为晚上的Luau留点精神。", lat:21.2793,lng:-157.8294,bonus:false},
+    {time:"18:00–21:00", name:"Mauka Warriors Lūʻau", intro:"在西Oahu Kapolei山林间举行的小型民俗luau，主题是「被遗忘的波利尼西亚战士历史」，全程限流在100人以内（相比动辄5-600人的商业luau体验密度完全不同）。开场由真正的文化practitioner用夏威夷语吟唱、带领仪式，讲述古代战士训练与出征的故事；菜单包含ti叶包烧芋头(kalua)、现钓鲜鱼、面包果等传统食材，穿插的歌舞表演也更强调叙事而非纯娱乐。", logi:"$139/人起（含餐食表演，Show Only票$79/人起）；建议提前1–2周订；17:00从Waikiki出发，约40–45分钟到Kapolei，check-in从16:45开始。", link:"https://maukawarriorsluau.com/reservations/", linkText:"官网订票", lat:21.3269,lng:-158.0858,bonus:false},
+  ],
+  returnNote:"返回Waikiki约40–45分钟；Luau含酒水，建议指定一位不喝酒的司机。",
+  bonusNote:"如果比起壁画更想玩水，可以把Kaka'ako换成Waikiki海滩边的Outrigger独木舟冲浪体验（约$40–75/人，20–30分钟三个浪，感受最传统的夏威夷冲浪方式，Waikiki Beach Services/Star Beach Boys等海滩摊位现场报名即可）。"
+},
+{
+  date:"Day4 · 9/29 周二", island:"Oahu", title:"North Shore 主题日", exert:"较满", overnight:"住 Waikiki",
+  stops:[
+    {time:"07:00–09:00", name:"North Shore 鲨鱼笼潜水", intro:"船开到Haleiwa外海几英里的深水区，那片海域因为地形和洋流本来就是黑边鳍鲨、加拉帕戈斯鲨的天然栖息地，全程不投喂、不诱捕，鲨鱼因为本身活跃在此才被看到。游客换上浮潜装备，进入漂浮在水面的铁笼里近距离观察，全程有海洋生物学向导讲解习性，是夏威夷少数合法的商业鲨鱼共游项目。", logi:"$100–125/人（约2小时，含20–30分钟下水时间）；06:00从Waikiki出发(约50分钟–1小时)，清晨海况最平静、能见度最好。", link:"https://sharktourshawaii.com/", linkText:"官网订票", lat:21.5928,lng:-158.1067,bonus:false},
+    {time:"09:30–12:00", name:"Waimea Valley", intro:"这片山谷在夏威夷传统土地划分体系里叫ahupua'a，从山顶到海岸的一整条水系被视为神圣的自然与文化单元。现由非营利机构Hi'ipaka LLC运营，园区是热带植物园（收藏5000+种热带植物）与文化保护地的结合体：沿步道设有hula草裙舞、编织、传统石器打磨等文化体验站，尽头是一条落差45英尺的瀑布，水质达标时可以直接下水游泳。整体氛围比商业化的Polynesian Cultural Center更安静、真实，不做表演秀场。", logi:"$26/人；周一/三/六/日9am–4pm开放，周四提前到2:30pm关闭，周五休园（如遇周五需调整行程）。", link:"https://www.waimeavalley.net/admission", linkText:"官网门票信息", lat:21.6377,lng:-158.0625,bonus:false},
+    {time:"12:00–13:00", name:"Haleiwa小镇午餐", intro:"20世纪初的老糖厂小镇，如今怀旧的种植园风格建筑里开满冲浪店、艺术画廊和刨冰摊，是北岸的生活与商业中心。Matsumoto's Shave Ice从1951年开到现在，是岛上最有名的刨冰地标之一，常年排队但翻台快。", logi:"", lat:21.5944,lng:-158.1044,bonus:false},
+    {time:"13:30–15:30", name:"Haleiwa 学冲浪", intro:"North Shore冬季(11月–次年2月)是全球职业冲浪圣地，浪高能到20英尺以上；但9月正处于夏季平静期，浪小、好上手，反而是最适合零基础入门的季节和地点——教练会先在沙滩上讲解基本姿势，再陪同下水抓浪。", logi:"约$70–130/人（2小时团体课）；Faith Surf School等北岸多家冲浪学校可选。", link:"https://faithsurfschool.com/", linkText:"Faith Surf School官网", lat:21.5944,lng:-158.1044,bonus:false},
+  ],
+  returnNote:"返回Waikiki约50分钟–1小时，晚上早点休息，明天要飞大岛。",
+  bonusNote:"顺路：吃完午饭沿Kamehameha Hwy北上，Pipeline(Ehukai Beach)、Sunset Beach、Waimea Bay悬崖跳水点都在同一条路上，5–10分钟停留拍照即可。"
+},
+{
+  date:"Day5 · 9/30 周三", island:"Oahu → Big Island", title:"飞大岛 + 夜潜蝠鲼", exert:"适中（转场+夜潜）", overnight:"住 Kailua-Kona",
+  stops:[
+    {time:"上午", name:"Honolulu(HNL) → Kona(KOA)", intro:"", logi:"岛内航班约50分钟，建议订上午/中午的航班。", lat:21.3187,lng:-157.9224,bonus:false},
+    {time:"中午", name:"抵达Kona，取车，入住", intro:"", logi:"租车柜台不在航站楼里，出行李提取处后坐免费班车去航站楼外的租车中心（几分钟一趟，是很多美国机场的标准做法，不用担心）；取完车到Kailua-Kona镇约10分钟。", lat:19.6400,lng:-155.9969,bonus:false},
+    {time:"下午", name:"自由活动", intro:"", logi:"Kona镇上散步、超市采购接下来几天的水和零食，或者干脆睡个午觉。", lat:19.6400,lng:-155.9969,bonus:false},
+    {time:"18:00–21:00", name:"Kona Manta Ray 夜间浮潜", intro:"船在傍晚驶向Keauhou湾内固定海域锚定，打开水下灯光吸引浮游生物聚集，翼展常超3米的野生礁蝠鲼(reef manta)会循着食物贴着水面、贴着人翻腾进食，距离近到能感受到水流。Kona是全世界公认最稳定可靠的野生蝠鲼夜观地之一，几乎全年可见，不像其他地方要看运气。", logi:"$99–149/人，建议提前1–2周预定（早订的团位价格通常更低）；17:30从Kona前往Keauhou港口(10–15分钟)。", link:"https://konamantaraysnorkeltours.com/", linkText:"官网订票", lat:19.567,lng:-155.973,bonus:false},
+  ],
+  returnNote:"返回Kona住处约10–15分钟。",
+  bonusNote:"下午目前是空档，★这是全程最适合插入Waikoloa直升机观火山之旅的时间窗（Waikoloa直升机基地车程约30–40分钟，飞行本身50分钟–1h45min，回来还赶得上18:00的蝠鲼船）；如果当天临时约不到蝠鲼团，可以换成白天的Kealakekua Bay皮划艇浮潜看野生海豚。价格明细见《夏威夷总预算表》。"
+},
+{
+  date:"Day6 · 10/1 周四", island:"Big Island", title:"南下绿沙滩+黑沙滩 → 住进火山公园", exert:"较满", overnight:"住 Nāmakanipaio 小木屋（公园内）",
+  stops:[
+    {time:"09:45", name:"Ka Lae 南角（顺路）", intro:"美国本土最南端，比佛罗里达最南点还要靠南，古时是波利尼西亚人最早登陆夏威夷群岛的地点之一。悬崖边常年大风，是本地人跳海的传统娱乐点（游客不建议尝试）。", logi:"2分钟打卡拍照；08:00从Kona出发，约1.5–2小时。", lat:18.9105,lng:-155.6811,bonus:true},
+    {time:"10:00–13:00", name:"Papakolea Green Sand Beach", intro:"全球仅有的4处绿沙滩之一，沙粒来自一座正在被海浪侵蚀的橄榄石火山渣锥(Pu'u Mahana)，橄榄石是熔岩里天然的绿色矿物晶体，密度比普通沙子大、颜色在阳光下会闪烁墨绿色光泽。要沿着炎热无遮荫的海岸悬崖步道走5.5英里往返才能到达，属于夏威夷比较硬核的徒步打卡点，体力值得换来这份稀有。", logi:"往返约2.5–3小时，无遮荫，务必戴帽子、涂防晒、带够水；免费，无需许可；沿途偶有当地人开皮卡违规载客(非法运营)，不建议乘坐。", lat:18.9647,lng:-155.6483,bonus:false},
+    {time:"14:30–15:30", name:"Punaluu Black Sand Beach（顺路一带而过）", intro:"熔岩流入海水时骤冷炸裂形成的玄武岩黑沙滩，是夏威夷最经典的黑沙滩之一。因为水温和地形，这里也是濒危绿海龟(honu)和偶尔出现的玳瑁海龟(honu'ea)固定的上岸日光浴地点，通常上午11点到下午3点最活跃。", logi:"免费；法律规定必须与海龟保持至少10英尺距离，禁止触摸、投喂、拍照打扰。", lat:19.1361,lng:-155.5011,bonus:false},
+    {time:"19:30起", name:"步行去看火山口夜间辉光", intro:"Kilauea Overlook等观景台就在住处附近，晚上人少、天黑后视觉效果最好。Kilauea处于间歇喷发状态，若正逢活跃期能看到红色岩浆辉光映照云层，即使没有喷发，火山口本身持续冒出的蒸汽和硫磺味也很有临场感。", logi:"16:15左右办理入住Nāmakanipaio；出发前查USGS官网实时火山活动公告。", link:"https://www.nps.gov/havo/", linkText:"公园官网", lat:19.4194,lng:-155.2885,bonus:false},
+  ],
+  returnNote:"晚上已经住在公园里，看完辉光走几步就能睡，不需要额外返程。",
+  bonusNote:"这天体力消耗大（长徒步+长驾驶），住进公园里正好省掉夜里往返的路程。"
+},
+{
+  date:"Day7 · 10/2 周五", island:"Big Island", title:"火山公园白天 → 转住Hilo → Mauna Kea星空", exert:"较满（熬夜）", overnight:"住 Hilo",
+  stops:[
+    {time:"上午", name:"公园内轻松走走", intro:"体力允许可以看Steam Vents天然蒸汽口——地下水渗入滚烫岩层后化为蒸汽从地面裂缝冒出，免费、就在主环路边，不强求安排，睡饱最重要。", logi:"11:00退房前往Hilo(约40–45分钟)。", lat:19.4194,lng:-155.2885,bonus:false},
+    {time:"中午–下午", name:"Hilo入住 + 午睡", intro:"", logi:"为晚上熬夜观星攒精神。", lat:19.7241,lng:-155.0868,bonus:false},
+    {time:"17:30–21:00", name:"Mauna Kea 日落 + 星空", intro:"从海底算起(约33,500英尺)是世界第一高山，山顶因为空气极度干燥、光污染极低、大气层稳定，聚集了13座全球顶尖天文台（包括凯克望远镜）。位于9,200英尺的Onizuka游客信息站(VIS)全年365天开放9am–9pm，站在观景台上通常已经身处云海之上，肉眼就能看到惊人密度的星空；每月还有一次限额预约的免费望远镜观星活动。想上到13,800英尺真正的山顶看日落，则须包车跟团（租车公司禁止自驾租车上山，且山顶道路在日落后30分钟到日出前30分钟封闭）。", logi:"16:00从Hilo出发(约1.5小时)；VIS平台免费开放无需预约，望远镜活动需另查当月场次。", link:"https://hilo.hawaii.edu/maunakea/", linkText:"游客信息站官网", lat:19.7719,lng:-155.4556,bonus:false},
+  ],
+  returnNote:"返回Hilo住处约1.5小时——全程最长的一趟夜路，建议轮流开车、注意休息。",
+  bonusNote:"★这天就是Mauna Kea山顶跟团升级的插入点：把免费的VIS游客中心观星，直接换成付费的13,800英尺山顶日落+观星跟团（无需额外挪日子，同一个晚上，只是从自驾游客中心变成跟团上山顶）。关于「能不能整晚露宿看火山/星空」：昨晚(10/1)已经睡在火山公园里的小木屋，这就是最正宗的伴着火山入睡；Mauna Kea没有合法露营点，看完星星还是要下山回Hilo睡好觉。"
+},
+{
+  date:"Day8 · 10/3 周六", island:"Big Island", title:"Hilo农夫市集 → 飞回Baltimore", exert:"轻松", overnight:"—（返程）",
+  stops:[
+    {time:"08:00–10:30", name:"Hilo Farmers Market", intro:"大岛最大、最日常的市集，1988年从几个摊主自发聚集开始，如今每天开放，周三和周六是摊位最全的两天(150+摊位)，10/3正好是周六。本地热带花卉(火鹤/兰花)、当地水果(荔枝/龙眼/苹果芒)、手工艺品和现做小吃应有尽有，价格比游客区便宜不少，是感受本地日常生活很好的收尾。", logi:"从Hilo住处很近，市中心步行/开车几分钟可达，Kamehameha Ave与Mamo St交界，面朝Hilo Bay。", link:"https://www.hilofarmersmarket.com/", linkText:"官网", lat:19.7241,lng:-155.0868,bonus:false},
+    {time:"11:00", name:"返回住处退房", intro:"", logi:"整理行李。", lat:19.7241,lng:-155.0868,bonus:false},
+    {time:"下午/晚", name:"Hilo(ITO) → Baltimore(BWI)", intro:"", logi:"建议选ITO直接出发，省去当天一早开车回Kona机场(1.5–2h)的折腾；通常经Honolulu或西岸转机，请预留充足时间。", lat:19.721,lng:-155.048,bonus:false},
+  ],
+  returnNote:"行程结束。",
+  bonusNote:""
+},
+];
+
+const colors = {"Oahu":"#2471a3","Big Island":"#c0392b","Oahu → Big Island":"#a06a2c"};
+function colorFor(island){ return colors[island] || "#2471a3"; }
+
+const map = L.map('map');
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'&copy; OpenStreetMap contributors', maxZoom:13}).addTo(map);
+let layer = L.layerGroup().addTo(map);
+
+function renderMap(d){
+  layer.clearLayers();
+  const core = d.stops.filter(s=>!s.bonus);
+  const bonus = d.stops.filter(s=>s.bonus);
+  const c = colorFor(d.island);
+  if(core.length>1){
+    L.polyline(core.map(s=>[s.lat,s.lng]), {color:c, weight:3, opacity:0.7}).addTo(layer);
+  }
+  core.forEach((s,i)=>{
+    const marker = L.circleMarker([s.lat,s.lng], {radius:10, color:c, fillColor:c, fillOpacity:0.9, weight:2}).addTo(layer);
+    marker.bindTooltip(String(i+1), {permanent:true, direction:"center", className:""});
+    marker.bindPopup(`<b>${i+1}. ${s.time} · ${s.name}</b><br>${s.intro||""}`);
+  });
+  bonus.forEach(s=>{
+    const marker = L.circleMarker([s.lat,s.lng], {radius:6, color:c, fillColor:"#fff", fillOpacity:0.9, weight:2, dashArray:"3,3"}).addTo(layer);
+    marker.bindPopup(`<b>★备选 · ${s.name}</b><br>${s.intro||""}`);
+  });
+  const all = d.stops.map(s=>[s.lat,s.lng]);
+  if(all.length) map.fitBounds(all, {padding:[40,40], maxZoom:12});
+}
+
+function renderPanel(d){
+  const islandClass = d.island.indexOf("Oahu")>=0 && d.island.indexOf("Big")<0 ? "tag-Oahu" : "tag-Big";
+  let coreIdx = 0;
+  const html = `
+  <div class="daycard">
+    <h2>${d.date} · ${d.title}<span class="exbadge" style="background:${exColor(d.exert)}">${d.exert}</span></h2>
+    <div class="meta"><span class="${islandClass}">${d.island}</span> ｜ ${d.overnight}</div>
+    <ul class="schedule">
+      ${d.stops.map((s)=>{
+        let numLabel;
+        if(s.bonus){ numLabel = '★'; } else { coreIdx++; numLabel = `<span class="num">${coreIdx}</span>`; }
+        return `
+        <li>
+          <div class="time">${s.time}</div>
+          <div>
+            <div class="stopname">${numLabel} ${s.name}</div>
+            ${s.intro? `<div class="stopintro">${s.intro}</div>` : ""}
+            ${s.logi? `<div class="stoplogi">🚗 ${s.logi}</div>` : ""}
+            ${s.link? `<div class="stoplink">🔗 <a href="${s.link}" target="_blank">${s.linkText||'官网'}</a></div>` : ""}
+          </div>
+        </li>`;
+      }).join("")}
+    </ul>
+    ${d.returnNote? `<div class="returnbox">🏠 <b>回住处：</b>${d.returnNote}</div>` : ""}
+    ${d.bonusNote? `<div class="bonusbox"><h3>💡 提示 / 顺路备选</h3><p>${d.bonusNote}</p></div>` : ""}
+  </div>`;
+  document.getElementById("daypanel").innerHTML = html;
+}
+
+const tabsDiv = document.getElementById("tabs");
+DAYS.forEach((d,i)=>{
+  const b = document.createElement("button");
+  b.innerHTML = `<b>${d.date.split(' · ')[0]}</b><span>${d.date.split(' · ')[1]}</span>`;
+  b.addEventListener("click",()=>{
+    document.querySelectorAll(".daytabs button").forEach(x=>x.classList.remove("active"));
+    b.classList.add("active");
+    renderMap(d);
+    renderPanel(d);
+  });
+  tabsDiv.appendChild(b);
+});
+document.querySelectorAll(".daytabs button")[0].classList.add("active");
+renderMap(DAYS[0]);
+renderPanel(DAYS[0]);
+</script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>夏威夷之旅 · 9/26–10/3</title>
+<style>
+  :root{ --bg:#faf8f4; --card:#ffffff; --ink:#2b2620; --sub:#6b6255; --line:#e7e0d4; --accent:#c8632b; }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);}
+  .wrap{max-width:640px;margin:0 auto;padding:60px 20px;text-align:center;}
+  h1{font-size:26px;margin:0 0 8px;}
+  p.sub{color:var(--sub);font-size:14px;margin:0 0 40px;}
+  .cards{display:grid;gap:16px;}
+  a.card{display:block;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 24px;text-align:left;text-decoration:none;color:var(--ink);transition:transform .15s ease, box-shadow .15s ease;}
+  a.card:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(0,0,0,.06);border-color:var(--accent);}
+  a.card .emoji{font-size:22px;margin-right:10px;}
+  a.card .title{font-weight:700;font-size:16px;}
+  a.card .desc{color:var(--sub);font-size:13px;margin-top:6px;}
+  footer{margin-top:40px;color:var(--sub);font-size:12px;}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>🌺 夏威夷之旅</h1>
+    <p class="sub">9/25出发 – 10/3返程 · Oahu + 大岛</p>
+    <div class="cards">
+      <a class="card" href="itinerary.html">
+        <span class="emoji">🗓️</span><span class="title">行程规划</span>
+        <div class="desc">逐日路线、地图、每个景点的详细介绍</div>
+      </a>
+      <a class="card" href="budget.html">
+        <span class="emoji">💰</span><span class="title">总预算表</span>
+        <div class="desc">单人 / 2人拼 / 4人拼三档人均预算，含预订链接</div>
+      </a>
+      <a class="card" href="attractions.html">
+        <span class="emoji">📋</span><span class="title">景点候选清单</span>
+        <div class="desc">四岛景点评分对比与地图</div>
+      </a>
+    </div>
+    <footer>caotianyu · Hawaii Trip Planner</footer>
+  </div>
+</body>
+</html>

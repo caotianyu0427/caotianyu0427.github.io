@@ -25,15 +25,12 @@ zh:
       - name: 项目
         url: /zh/project/
         weight: 40
-      - name: 博客
-        url: /zh/blog/
+      - name: 生活
+        url: /zh/life/
         weight: 50
-      - name: 帆船资料
-        url: /zh/sailing/
-        weight: 60
       - name: 简历
         url: /zh/#cv
-        weight: 70
+        weight: 60
       - name: 联系方式
         url: /zh/#contact
-        weight: 80
+        weight: 70

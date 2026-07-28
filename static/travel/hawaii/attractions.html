@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>夏威夷七日行程 · 候选景点表格与地图</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<style>
+  :root{
+    --bg:#faf8f4; --card:#ffffff; --ink:#2b2620; --sub:#6b6255;
+    --line:#e7e0d4; --accent:#c8632b;
+    --big:#c0392b; --oahu:#2471a3; --maui:#1e8449; --kauai:#8e44ad;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5;}
+  .wrap{max-width:1180px;margin:0 auto;padding:28px 20px 60px;}
+  header h1{font-size:22px;margin:0 0 4px;}
+  header p{color:var(--sub);font-size:13.5px;margin:2px 0;}
+  .badge{display:inline-block;background:#fff3ea;color:var(--accent);border:1px solid #f0d3bd;border-radius:20px;padding:2px 10px;font-size:12px;margin-right:6px;}
+  .notice{background:#fff8ea;border:1px solid #f0e0b0;border-radius:10px;padding:12px 16px;margin:16px 0 24px;font-size:13px;color:#7a5b12;}
+  .notice b{color:#5c4306;}
+  .legend{display:flex;gap:14px;flex-wrap:wrap;margin:10px 0 18px;font-size:13px;}
+  .legend span{display:inline-flex;align-items:center;gap:6px;}
+  .dot{width:10px;height:10px;border-radius:50%;display:inline-block;}
+  .filters{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 16px;}
+  .filters button{border:1px solid var(--line);background:var(--card);color:var(--ink);padding:6px 14px;border-radius:20px;font-size:13px;cursor:pointer;}
+  .filters button.active{background:var(--ink);color:#fff;border-color:var(--ink);}
+  #map{height:460px;border-radius:12px;border:1px solid var(--line);margin-bottom:26px;}
+  table{width:100%;border-collapse:collapse;background:var(--card);border-radius:10px;overflow:hidden;font-size:13px;}
+  thead th{background:#f2ede2;text-align:left;padding:9px 8px;font-weight:600;cursor:pointer;white-space:nowrap;border-bottom:1px solid var(--line);}
+  thead th:hover{color:var(--accent);}
+  tbody td{padding:8px;border-bottom:1px solid var(--line);vertical-align:top;}
+  tbody tr:hover{background:#fbf6ee;}
+  .island-tag{font-size:11px;padding:2px 7px;border-radius:10px;color:#fff;white-space:nowrap;}
+  .tag-Big{background:var(--big);} .tag-Oahu{background:var(--oahu);} .tag-Maui{background:var(--maui);} .tag-Kauai{background:var(--kauai);}
+  .score{font-weight:700;color:var(--accent);}
+  .stars{color:#c8632b;letter-spacing:1px;}
+  .notes{color:var(--sub);font-size:12px;max-width:220px;}
+  .name{font-weight:600;}
+  .themes{font-size:11px;color:var(--sub);}
+  .rank{font-weight:700;color:var(--sub);}
+  footer{margin-top:30px;color:var(--sub);font-size:12px;}
+  .leaflet-popup-content{font-size:13px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>🌺 夏威夷七日行程 · 候选景点评估表</h1>
+    <p><span class="badge">4人（3男1女）</span><span class="badge">Baltimore 出发</span><span class="badge">大岛 + Oahu 为主，Maui / Kauai 候选</span><span class="badge">兴趣：本土文化・市井气息・水上运动・冲浪浮潜・日出・火山・星空・飞行</span></p>
+    <p>数据整理于 2026-07-27。点击表头可按该列排序，点击下方按钮可按岛屿筛选；地图上点击图钉可看详情。</p>
+  </header>
+
+  <div class="notice">
+    <b>⚠ 时效性提醒（出行前请再次确认）：</b>
+    Kilauea 火山目前处于间歇喷发期（下一轮约 7/28–8/1 附近，会浮动），出发前查 USGS 实时公告；
+    Mauna Kea 山顶日落后30分钟至日出前30分钟封闭，且租车公司禁止租车上山顶；
+    Hanauma Bay / Diamond Head 日出场次 / Haleakala 日出均需官方网站提前预约，热门时段秒空；
+    Waipio Valley 谷底自2022年起对外封闭，仅能通过付费 shuttle 团进入；
+    Lahaina 古镇 Front Street 计划于 2026/8/1 重新开放，仍属"重建中"状态，建议出行前一周向 Maui County 官方渠道二次确认。
+  </div>
+
+  <div class="notice" style="background:#eef6ee;border-color:#c9e2c9;color:#2c4a2c;">
+    <b>💡 少而精原则：</b>本表新增了「分组建议」列——同类型体验（浮潜/冲浪/黑沙滩/农夫市场/文化体验等）已标出 <b>★首选</b> 和「可选/与XX重复」，建议每类只深度体验一处，把省下的时间留给已选中的地方多停留、慢慢玩，而不是赶场打卡。带 <span style="color:#c8632b">♥朋友推荐</span> 标记的是你朋友特别提到的点。
+  </div>
+
+  <div class="legend">
+    <span><span class="dot" style="background:var(--big)"></span>大岛 Big Island</span>
+    <span><span class="dot" style="background:var(--oahu)"></span>Oahu</span>
+    <span><span class="dot" style="background:var(--maui)"></span>Maui（候选）</span>
+    <span><span class="dot" style="background:var(--kauai)"></span>Kauai（候选）</span>
+  </div>
+
+  <div id="map"></div>
+
+  <div class="filters" id="filters"></div>
+
+  <table id="tbl">
+    <thead>
+      <tr>
+        <th data-k="rank">#</th>
+        <th data-k="island">岛屿</th>
+        <th data-k="name">景点 / 体验</th>
+        <th data-k="themes">主题标签</th>
+        <th data-k="unique">独特性</th>
+        <th data-k="beauty">美丽度</th>
+        <th data-k="fame">知名度</th>
+        <th data-k="duration">建议时长</th>
+        <th data-k="price">人均价格</th>
+        <th data-k="location">位置 / 交通</th>
+        <th data-k="score">推荐指数</th>
+        <th data-k="group">分组建议</th>
+        <th data-k="notes">备注</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <footer>
+    独特性/美丽度/知名度为 1–5 分主观评级；推荐指数（1–10）综合考虑与你兴趣的契合度、体验稀缺性、性价比与时间成本；「分组建议」列标出同类项中的★首选与可替代项，帮助精简行程。信息来源含 NPS、DLNR、USGS、Maui County 官方及 hawaii-guide.com、lovebigisland.com 等专业向导站点，具体价格/预约政策请以官网实时信息为准。
+  </footer>
+</div>
+
+<script>
+const SPOTS = [
+// ---- Big Island ----
+{island:"Big Island",name:"Hawaii Volcanoes NP / Kilauea 火山口",themes:"火山・日出夜景",unique:5,beauty:5,fame:5,duration:"半天–1天（喷发期建议留夜）",price:"$30/车（7天通用）",location:"距Hilo 45分钟 / 距Kona 2.5小时",score:9.5,notes:"核心必去；当前间歇喷发期，出发前查USGS公告",lat:19.4194,lng:-155.2885},
+{island:"Big Island",name:"Mauna Kea 星空 / 日落",themes:"星空",unique:5,beauty:5,fame:4,duration:"半天/傍晚（4–6小时）",price:"游客中心望远镜活动免费(需抢约)；跟团$200–280/人",location:"距Hilo 1.5h / 距Kona 2h，山顶需4WD或跟团",score:9.3,notes:"日落后30min–日出前30min山顶封闭；租车公司禁止开租车上山顶",lat:19.8207,lng:-155.4681},
+{island:"Big Island",name:"Kona Manta Ray 夜间浮潜/潜水",themes:"水上运动・野生动物",unique:5,beauty:5,fame:4,duration:"2.5–3.5小时（傍晚出发）",price:"$90–170/人",location:"Kona / Keauhou港口出发",score:9.2,notes:"全球公认最佳野生蝠鲼夜观地之一",lat:19.567,lng:-155.973},
+{island:"Big Island",name:"直升机观火山之旅",themes:"飞行・火山",unique:5,beauty:5,fame:4,duration:"50min–1h45min飞行（含地面2–3h）",price:"$300–720/人",location:"Waikoloa 或 Hilo机场出发",score:9.0,group:"三岛直升机内容不同(火山/海岸城市/Na Pali)非重复，但预算体力有限，全程建议只选1–2次",notes:"喷发活跃期可空中看熔岩，视火山活动而定",lat:19.930,lng:-155.789},
+{island:"Big Island",name:"Kealakekua Bay 皮划艇浮潜/野生海豚",themes:"水上运动・浮潜",unique:4,beauty:5,fame:4,duration:"半天（4–5小时）",price:"$100–150/人（含皮划艇+浮潜+许可）",location:"距Kona 30–40分钟",score:8.7,group:"★浮潜首选（野生海豚+清澈度媲美Molokini，已在大岛行程内无需跳岛）",notes:"野生旋转海豚栖息地，仅两家公司持有登陆许可",lat:19.4763,lng:-155.9256},
+{island:"Big Island",name:"Maku'u Farmers Market",themes:"本土文化・市井",unique:4,beauty:3,fame:2,duration:"1–2小时（仅周日）",price:"免费",location:"Puna区(Pahoa)，距Hilo约40分钟",score:8.0,group:"★市集首选（本地手工艺+现场音乐，最不游客化）",notes:"近200摊位，非常本地化，游客很少",lat:19.4667,lng:-154.925},
+{island:"Big Island",name:"Hilo Farmers Market",themes:"本土文化・市井",unique:3,beauty:3,fame:3,duration:"1–2小时",price:"免费（消费自理）",location:"Hilo市中心",score:7.8,group:"可选，与Maku'u同类市集体验，二选一即可",notes:"周三/周六摊位最全（150+），本土市井气息强",lat:19.7241,lng:-155.0868},
+{island:"Big Island",name:"Makalawena Beach",themes:"水上运动・海滩",unique:4,beauty:5,fame:2,duration:"半天（需步行进入）",price:"免费",location:"距Kona约40分钟+步行",score:7.8,notes:"原生态白沙滩，公认大岛最美海滩之一，知名度较低",lat:19.7325,lng:-156.0367},
+{island:"Big Island",name:"Kona Coffee Farm 咖啡农场",themes:"本土文化",unique:4,beauty:3,fame:3,duration:"45分钟–1.5小时",price:"多数免费–$50/人",location:"南Kona，距Kona 20–40分钟",score:7.5,notes:"全球唯一Kona咖啡产区",lat:19.6,lng:-155.95},
+{island:"Big Island",name:"Pololu Valley 观景+徒步",themes:"自然风光",unique:3,beauty:5,fame:3,duration:"观景15分钟；下滩往返45分钟–2小时",price:"免费",location:"距Kona 2h / 距Waimea 45分钟",score:7.2,notes:"比Waipio人少，景观同样壮丽",lat:20.1897,lng:-155.7314},
+{island:"Big Island",name:"Papakolea Green Sand Beach 绿沙滩",themes:"自然风光・徒步",unique:5,beauty:4,fame:3,duration:"往返徒步5.5英里，约半天",price:"免费",location:"南角，距Kona 1.5–2h+徒步",score:7.0,group:"★特色沙滩首选（全球仅4处绿沙滩之一）",notes:"体力要求较高，建议清晨出发",lat:18.9647,lng:-155.6483},
+{island:"Big Island",name:"Punaluu Black Sand Beach 黑沙滩",themes:"海滩・野生动物",unique:3,beauty:4,fame:4,duration:"1–1.5小时",price:"免费",location:"Kona–Hilo南线途中",score:6.8,group:"可选，顺路看海龟即可，不必与绿沙滩都专程安排",notes:"黑沙+绿海龟，可作为去火山公园途中顺路点",lat:19.1361,lng:-155.5011},
+{island:"Big Island",name:"Waipio Valley Lookout",themes:"自然风光",unique:3,beauty:5,fame:4,duration:"观景台30–60分钟；shuttle团2–3小时",price:"观景台免费；shuttle团$70–100/人",location:"距Hilo 1h / 距Kona 2.5h",score:6.5,notes:"谷底自2022年起封闭，仅能通过付费shuttle进入",lat:20.1167,lng:-155.5833},
+{island:"Big Island",name:"Akaka Falls 瀑布",themes:"自然风光",unique:2,beauty:4,fame:4,duration:"30–45分钟",price:"$5/人+$10/车",location:"距Hilo约40分钟",score:6.0,notes:"轻松步道，适合与Hilo市集同一半天安排",lat:19.8531,lng:-155.1508},
+
+// ---- Oahu ----
+{island:"Oahu",name:"Oahu 直升机观光",themes:"飞行",unique:4,beauty:5,fame:4,duration:"50分钟飞行（含地面1.5–2小时）",price:"$300–420/人",location:"市区/机场附近出发",score:8.8,group:"三岛直升机内容不同(火山/海岸城市/Na Pali)非重复，但预算体力有限，全程建议只选1–2次",notes:"开门直升机(doors-off)可无阻挡拍摄",lat:21.33,lng:-157.92},
+{island:"Oahu",name:"North Shore 鲨鱼笼潜水",themes:"水上运动・野生动物",unique:5,beauty:4,fame:3,duration:"约2小时",price:"$100–125/人",location:"Haleiwa港口出发",score:8.6,notes:"野生鲨鱼近距离体验，无投喂驯化，建议清晨场次",lat:21.5928,lng:-158.1067},
+{island:"Oahu",name:"Hanauma Bay 浮潜",themes:"水上运动・浮潜",unique:3,beauty:5,fame:5,duration:"3–4小时",price:"$25/人+停车费",location:"距Waikiki 25–30分钟",score:8.5,group:"可选，与大岛Kealakekua Bay同类浮潜体验，若大岛已浮潜可跳过",notes:"必须网上提前2天7am(HST)抢约；周一二休园",lat:21.2690,lng:-157.6938},
+{island:"Oahu",name:"Diamond Head 日出徒步",themes:"日出・徒步",unique:3,beauty:4,fame:5,duration:"1.5–2小时",price:"$5/人+$10/车",location:"距Waikiki 15分钟",score:8.3,notes:"♥朋友推荐；必须DLNR官网预约，日出场次最难抢，提前30天开放",lat:21.2620,lng:-157.8056},
+{island:"Oahu",name:"Kailua / Lanikai 皮划艇",themes:"水上运动・本土生活",unique:3,beauty:5,fame:4,duration:"半天（3–4小时）",price:"$60–90/人",location:"距Waikiki 25–30分钟",score:8.2,group:"★休闲海滩首选（全美评选常客，最适合放松整个下午）",notes:"♥朋友推荐；本地人周末最爱，建议上午风浪小，下午可只躺沙滩不划船",lat:21.3971,lng:-157.7358},
+{island:"Oahu",name:"KCC Farmers Market",themes:"本土文化・市井",unique:3,beauty:2,fame:3,duration:"1–1.5小时（仅周六7:30–11am）",price:"免费",location:"距Waikiki 10分钟",score:7.8,group:"可选，与大岛/Kauai市集同类，整个行程选1个市集深逛即可",notes:"欧胡岛品质最高的本地农夫市场之一",lat:21.2807,lng:-157.8033},
+{island:"Oahu",name:"North Shore（Haleiwa小镇+冲浪+学冲浪）",themes:"冲浪文化・本土生活",unique:4,beauty:4,fame:5,duration:"半天–1天",price:"免费观景；学冲浪另计$70–130/人",location:"距Waikiki 1–1.5小时",score:8.0,group:"★冲浪/海岸首选（7月海况平静，可在此直接学冲浪，替代Waikiki冲浪课）",notes:"冬季(11–12月)才有职业大浪赛事，7月更适合悠闲学冲浪+逛小镇+吃刨冰",lat:21.6647,lng:-158.0531},
+{island:"Oahu",name:"Honolulu Chinatown 市井美食",themes:"本土文化・市井",unique:3,beauty:2,fame:3,duration:"2–3小时",price:"免费（美食团$65–120/人）",location:"距Waikiki 15–20分钟",score:7.6,notes:"本地移民文化生活场景，非典型游客路线",lat:21.3099,lng:-157.8626},
+{island:"Oahu",name:"Waikiki Beach 冲浪课",themes:"冲浪",unique:2,beauty:3,fame:5,duration:"1.5–2小时",price:"$70–175/人",location:"市中心",score:6.5,group:"可选，若North Shore已安排学冲浪可跳过；单纯散步看海可保留",notes:"♥朋友推荐；冲浪发源地但非常拥挤，适合清晨",lat:21.2761,lng:-157.8269},
+{island:"Oahu",name:"Polynesian Cultural Center",themes:"文化主题公园",unique:3,beauty:3,fame:5,duration:"全天（6–8小时）",price:"$65–500+/人",location:"距Waikiki 1.5小时(Laie)",score:5.5,group:"可选，较商业化；若想要更真实的本土文化体验优先选Waimea Valley或Mauka Warriors Luau",notes:"⚠偏商业化主题乐园，非原生态市井体验",lat:21.6392,lng:-157.9227},
+{island:"Oahu",name:"Waimea Valley 文化植物园+瀑布",themes:"本土文化・自然风光",unique:4,beauty:4,fame:3,duration:"2–3小时",price:"$26/人",location:"North Shore(Haleiwa附近)，可与鲨鱼笼潜水/学冲浪同一天",score:8.1,group:"★本土文化首选（非营利机构运营，hula/编织/石器等文化展示+瀑布，比PCC更真实不商业）",notes:"神圣的ahupua'a山谷，周五休园；可与North Shore行程合并",lat:21.6377,lng:-158.0625},
+{island:"Oahu",name:"Mauka Warriors Lūʻau（本地民俗luau）",themes:"本土文化・民俗表演",unique:5,beauty:4,fame:3,duration:"约3小时（傍晚）",price:"$79–199/人（含餐$139起）",location:"Kapolei，距Waikiki约45分钟",score:8.4,group:"★民俗文化首选（<100人小团，真实文化practitioner主持，非500人大型商业luau）",notes:"在山林间举行，夏威夷语吟唱+开场仪式，比Paradise Cove/Chief's Luau更沉浸真实",lat:21.3269,lng:-158.0858},
+{island:"Oahu",name:"平等院 Byodo-In Temple",themes:"人文景观",unique:3,beauty:5,fame:3,duration:"1–1.5小时",price:"$10/人+$6/车",location:"Valley of the Temples, Kaneohe，距Waikiki约30–40分钟",score:6.8,notes:"♥朋友推荐；日式佛教寺庙复刻建筑，非夏威夷本土文化，但依山傍水极其静谧上镜，适合安排在Kailua/Lanikai同一天顺路",lat:21.4227,lng:-157.8434},
+
+// ---- Maui (候选) ----
+{island:"Maui",name:"Haleakala 日出",themes:"日出・火山",unique:5,beauty:5,fame:5,duration:"凌晨2–3点出发，大半天",price:"自驾$1+$30/车；跟团$90–220/人",location:"距Kahului 1.5–2h盘山路",score:9.4,notes:"必须Recreation.gov预约车辆通行证，日出前60天/2天两窗口开放",lat:20.7097,lng:-156.2533},
+{island:"Maui",name:"Molokini 浮潜船",themes:"水上运动・浮潜",unique:4,beauty:5,fame:5,duration:"半天（4–5小时）",price:"$140–180/人",location:"Ma'alaea/Lahaina港口出发",score:8.4,group:"浮潜天花板(150英尺+能见度)，但与大岛Kealakekua Bay同类，若不加Maui可不遗憾跳过",notes:"半沉没火山口，能见度极高，建议选早班船",lat:20.6314,lng:-156.4972},
+{island:"Maui",name:"Road to Hana",themes:"自然风光・本土生活",unique:3,beauty:5,fame:5,duration:"全天（10–12小时）",price:"油费+门票（多免费，Wai'anapanapa $5–15/人）",location:"从Kahului/Paia出发",score:7.8,group:"⚠本质是一天连续打卡10+个瀑布/观景点，与你想要的'慢慢玩'原则有冲突，除非只精选3–4站",notes:"沿海崖公路串联瀑布、黑沙滩、水果摊，是体验而非单一景点；建议不走回头路住一晚Hana",lat:20.7584,lng:-155.9903},
+{island:"Maui",name:"Kaanapali Beach",themes:"海滩",unique:2,beauty:4,fame:4,duration:"半天–全天",price:"免费",location:"距Kahului 45分钟",score:6.5,group:"可选，与Lanikai/Poipu同类休闲海滩，非必须",notes:"Black Rock浮潜点可看海龟",lat:20.9235,lng:-156.6944},
+{island:"Maui",name:"当地冲浪课（Kihei/Lahaina）",themes:"冲浪",unique:2,beauty:3,fame:3,duration:"2小时",price:"$100–180/人",location:"西/南毛伊",score:6.3,group:"可选，与Oahu North Shore学冲浪同类，若已在Oahu学过可跳过",notes:"海况温和，适合初学者",lat:20.7644,lng:-156.4450},
+{island:"Maui",name:"Lahaina 古镇",themes:"本土生活（重建中）",unique:2,beauty:3,fame:4,duration:"2–3小时",price:"免费",location:"距Kahului 1小时",score:5.0,notes:"⚠2023年大火重建中，Front Street计划2026/8/1重开，出行前需二次确认",lat:20.8783,lng:-156.6825},
+{island:"Maui",name:"Old Lahaina Luau（本地民俗luau）",themes:"本土文化・民俗表演",unique:4,beauty:4,fame:4,duration:"约2.5–3小时（傍晚）",price:"约$230/人",location:"Lahaina北端(近Mala Wharf)",score:8.2,group:"若加Maui，是与Oahu Mauka Warriors同类的民俗luau首选，两者选一即可",notes:"公认毛伊岛最真实、家族经营式的luau；2023年大火后原址重建，2024年3月起已恢复营业，现为桌边服务",lat:20.8825,lng:-156.6805},
+
+// ---- Kauai (候选) ----
+{island:"Kauai",name:"Na Pali Coast 直升机",themes:"飞行・自然奇观",unique:5,beauty:5,fame:5,duration:"50–95分钟飞行（含地面约2小时）",price:"$155–449/人",location:"Lihue机场出发",score:9.6,group:"★飞行体验首选（三岛直升机中口碑最佳，若只做一次直升机选这个）",notes:"公认夏威夷四岛中最壮丽的直升机航线，唯一能看全Na Pali+Waimea Canyon的方式",lat:21.9760,lng:-159.3390},
+{island:"Kauai",name:"Na Pali Coast 游船",themes:"水上运动・自然奇观",unique:4,beauty:5,fame:4,duration:"3–7小时",price:"$194–339/人",location:"Port Allen/Waimea或Hanalei港口(视季节)",score:9.0,notes:"含浮潜/海豚观赏，Zodiac艇更刺激",lat:22.18,lng:-159.6},
+{island:"Kauai",name:"Kalalau Trail 日归徒步(Hanakapi'ai)",themes:"徒步・自然风光",unique:4,beauty:5,fame:4,duration:"约4小时",price:"免费（2英里内无需许可）",location:"Ke'e Beach北岸起点",score:8.3,notes:"超过2英里需申请许可；日归无需申请",lat:22.2214,lng:-159.5769},
+{island:"Kauai",name:"Hanalei 小镇",themes:"本土文化・市井",unique:4,beauty:3,fame:3,duration:"2–3小时",price:"免费",location:"距Lihue 1小时",score:8.0,notes:"北岸最具本地生活感的小镇，周六本地市集",lat:22.2044,lng:-159.5044},
+{island:"Kauai",name:"Waimea Canyon 峡谷",themes:"自然风光",unique:3,beauty:5,fame:4,duration:"2–3小时",price:"$10/车+$5/人",location:"距Poipu 1–1.5小时",score:7.8,notes:"'太平洋大峡谷'，主观景台2026年1月刚重新开放",lat:22.0728,lng:-159.6625},
+{island:"Kauai",name:"Poipu Beach 浮潜",themes:"水上运动・浮潜",unique:2,beauty:4,fame:4,duration:"2–4小时",price:"免费（向导团$70–100/人）",location:"距Lihue 30分钟",score:7.0,group:"可选，浮潜质量不及Kealakekua/Molokini，更适合当休闲海滩用",notes:"家庭友好型海滩，常年可见海龟",lat:21.8788,lng:-159.4530},
+].filter(s=>!s.skip);
+
+// rank by score desc initially
+let sortState = {key:"score", dir:-1};
+const colors = {"Big Island":"#c0392b","Oahu":"#2471a3","Maui":"#1e8449","Kauai":"#8e44ad"};
+const tagClass = {"Big Island":"tag-Big","Oahu":"tag-Oahu","Maui":"tag-Maui","Kauai":"tag-Kauai"};
+
+let activeFilter = "全部";
+
+function stars(n){ return "★".repeat(n)+"☆".repeat(5-n); }
+
+function render(){
+  let rows = SPOTS.slice();
+  if(activeFilter!=="全部") rows = rows.filter(r=>r.island===activeFilter || (activeFilter==="大岛"&&r.island==="Big Island"));
+  rows.sort((a,b)=>{
+    let k=sortState.key, d=sortState.dir;
+    let av=a[k], bv=b[k];
+    if(typeof av==="string" && typeof bv==="string" && k!=="duration" && k!=="price" && k!=="location" && k!=="notes"){
+      return d*av.localeCompare(bv,'zh');
+    }
+    if(typeof av==="number" && typeof bv==="number") return d*(av-bv);
+    return d*String(av).localeCompare(String(bv),'zh');
+  });
+  const tbody = document.querySelector("#tbl tbody");
+  tbody.innerHTML = rows.map((r,i)=>`
+    <tr>
+      <td class="rank">${i+1}</td>
+      <td><span class="island-tag ${tagClass[r.island]}">${r.island==="Big Island"?"大岛":r.island}</span></td>
+      <td class="name">${r.name}</td>
+      <td class="themes">${r.themes}</td>
+      <td class="stars" title="${r.unique}/5">${stars(r.unique)}</td>
+      <td class="stars" title="${r.beauty}/5">${stars(r.beauty)}</td>
+      <td class="stars" title="${r.fame}/5">${stars(r.fame)}</td>
+      <td>${r.duration}</td>
+      <td>${r.price}</td>
+      <td>${r.location}</td>
+      <td class="score">${r.score.toFixed(1)}</td>
+      <td class="notes" style="color:${r.group&&r.group.indexOf('首选')>=0?'#1e8449':'#a06a2c'};font-weight:${r.group&&r.group.indexOf('首选')>=0?'700':'400'}">${r.group||"—"}</td>
+      <td class="notes">${r.notes}</td>
+    </tr>`).join("");
+}
+
+document.querySelectorAll("#tbl thead th").forEach(th=>{
+  th.addEventListener("click",()=>{
+    const k = th.dataset.k;
+    if(sortState.key===k) sortState.dir *= -1; else {sortState.key=k; sortState.dir = (k==="score"||k==="unique"||k==="beauty"||k==="fame")? -1 : 1;}
+    render();
+  });
+});
+
+const filterNames = ["全部","Big Island","Oahu","Maui","Kauai"];
+const filterLabels = {"全部":"全部","Big Island":"大岛","Oahu":"Oahu","Maui":"Maui","Kauai":"Kauai"};
+const fdiv = document.getElementById("filters");
+filterNames.forEach(f=>{
+  const b=document.createElement("button");
+  b.textContent = filterLabels[f];
+  if(f==="全部") b.classList.add("active");
+  b.addEventListener("click",()=>{
+    activeFilter = f;
+    document.querySelectorAll("#filters button").forEach(x=>x.classList.remove("active"));
+    b.classList.add("active");
+    render();
+    updateMap();
+  });
+  fdiv.appendChild(b);
+});
+
+// Map
+const map = L.map('map').setView([20.6, -157.0], 7);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+  attribution:'&copy; OpenStreetMap contributors', maxZoom:12
+}).addTo(map);
+let markers = [];
+function updateMap(){
+  markers.forEach(m=>map.removeLayer(m));
+  markers = [];
+  let rows = SPOTS.slice();
+  if(activeFilter!=="全部") rows = rows.filter(r=>r.island===activeFilter);
+  rows.forEach(r=>{
+    const m = L.circleMarker([r.lat,r.lng],{
+      radius:6+r.score/2, color:colors[r.island], fillColor:colors[r.island], fillOpacity:0.75, weight:1.5
+    }).addTo(map);
+    m.bindPopup(`<b>${r.name}</b><br>${r.island==="Big Island"?"大岛":r.island} · 推荐指数 <b>${r.score.toFixed(1)}</b><br>${r.duration}<br>${r.price}<br><span style="color:#888">${r.notes}</span>`);
+    markers.push(m);
+  });
+}
+
+render();
+updateMap();
+</script>
+</body>
+</html>
