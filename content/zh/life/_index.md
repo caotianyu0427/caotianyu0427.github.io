@@ -11,27 +11,27 @@ sections:
         <style>.max-w-prose:has(.wide-grid){max-width:min(1200px,94vw)!important;}</style>
         <div class="wide-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;">
 
-          <a href="/blog/" style="display:block;background:var(--card,#fff);border:1px solid var(--line,#e7e0d4);border-radius:14px;padding:22px 24px;text-decoration:none;color:inherit;">
+          <a href="/zh/blog/" style="display:block;background:var(--card,#fff);border:1px solid var(--line,#e7e0d4);border-radius:14px;padding:22px 24px;text-decoration:none;color:inherit;">
             <div style="font-weight:700;font-size:16px;">✍️ 博客</div>
             <div style="color:#6b6255;font-size:13px;margin-top:6px;">科研随笔、技术笔记与生活记录</div>
           </a>
 
-          <a href="/travel/" style="display:block;background:var(--card,#fff);border:1px solid var(--line,#e7e0d4);border-radius:14px;padding:22px 24px;text-decoration:none;color:inherit;">
+          <a href="/zh/travel/" style="display:block;background:var(--card,#fff);border:1px solid var(--line,#e7e0d4);border-radius:14px;padding:22px 24px;text-decoration:none;color:inherit;">
             <div style="font-weight:700;font-size:16px;">✈️ 旅行计划</div>
             <div style="color:#6b6255;font-size:13px;margin-top:6px;">逐日行程、交互地图</div>
           </a>
 
-          <a href="/sailing/" style="display:block;background:var(--card,#fff);border:1px solid var(--line,#e7e0d4);border-radius:14px;padding:22px 24px;text-decoration:none;color:inherit;">
+          <a href="/zh/sailing/" style="display:block;background:var(--card,#fff);border:1px solid var(--line,#e7e0d4);border-radius:14px;padding:22px 24px;text-decoration:none;color:inherit;">
             <div style="font-weight:700;font-size:16px;">⛵ 帆船</div>
             <div style="color:#6b6255;font-size:13px;margin-top:6px;">Laser / ILCA 资料整理</div>
           </a>
 
-          <a href="/surfing/" style="display:block;background:var(--card,#fff);border:1px solid var(--line,#e7e0d4);border-radius:14px;padding:22px 24px;text-decoration:none;color:inherit;">
+          <a href="/zh/surfing/" style="display:block;background:var(--card,#fff);border:1px solid var(--line,#e7e0d4);border-radius:14px;padding:22px 24px;text-decoration:none;color:inherit;">
             <div style="font-weight:700;font-size:16px;">🏄 冲浪</div>
             <div style="color:#6b6255;font-size:13px;margin-top:6px;">建设中</div>
           </a>
 
-          <a href="/woodworking/" style="display:block;background:var(--card,#fff);border:1px solid var(--line,#e7e0d4);border-radius:14px;padding:22px 24px;text-decoration:none;color:inherit;">
+          <a href="/zh/woodworking/" style="display:block;background:var(--card,#fff);border:1px solid var(--line,#e7e0d4);border-radius:14px;padding:22px 24px;text-decoration:none;color:inherit;">
             <div style="font-weight:700;font-size:16px;">🪵 木工</div>
             <div style="color:#6b6255;font-size:13px;margin-top:6px;">建设中</div>
           </a>
