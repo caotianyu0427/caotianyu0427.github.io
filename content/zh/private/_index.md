@@ -9,6 +9,7 @@ sections:
       subtitle: ''
       text: |
         <style>
+          .max-w-prose:has(.priv-wrap){max-width:min(1100px,94vw)!important;}
           .priv-wrap{background:#14161c;color:#e7e5df;border-radius:16px;padding:32px;margin:-1rem 0 2rem 0;}
           .priv-wrap h2{color:#f2b56b;font-size:20px;margin:0 0 4px 0;}
           .priv-wrap .priv-sub{color:#9c9a92;font-size:13px;margin:0 0 24px 0;}

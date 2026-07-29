@@ -8,7 +8,8 @@ sections:
       title: '🌤️ 生活'
       subtitle: ''
       text: |
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;">
+        <style>.max-w-prose:has(.wide-grid){max-width:min(1200px,94vw)!important;}</style>
+        <div class="wide-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;">
 
           <a href="/blog/" style="display:block;background:var(--card,#fff);border:1px solid var(--line,#e7e0d4);border-radius:14px;padding:22px 24px;text-decoration:none;color:inherit;">
             <div style="font-weight:700;font-size:16px;">✍️ 博客</div>
