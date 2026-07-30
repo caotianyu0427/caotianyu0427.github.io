@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<title>夏威夷预算表 · 9/26–10/3 · 单人/拼车人均</title>
+<title>夏威夷预算表 · 9/26–10/2 · 两人行</title>
 <style>
   :root{
     --bg:#faf8f4; --card:#ffffff; --ink:#2b2620; --sub:#6b6255;
@@ -15,12 +15,11 @@
   header p{color:var(--sub);font-size:13.5px;margin:2px 0;}
   .badge{display:inline-block;background:#fff3ea;color:var(--accent);border:1px solid #f0d3bd;border-radius:20px;padding:2px 10px;font-size:12px;margin-right:6px;margin-bottom:4px;}
 
-  .scenario-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:18px 0 22px;}
+  .scenario-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:18px 0 22px;}
   @media(max-width:760px){.scenario-grid{grid-template-columns:1fr;}}
   .scard{border-radius:14px;padding:20px 20px;color:#fff;}
-  .scard.solo{background:linear-gradient(135deg,#5c3a2e,#8a5236);}
-  .scard.two{background:linear-gradient(135deg,#2c4a3e,#3f7a5f);}
-  .scard.four{background:linear-gradient(135deg,#2b2620,#463c30);}
+  .scard.total{background:linear-gradient(135deg,#2c4a3e,#3f7a5f);}
+  .scard.pp{background:linear-gradient(135deg,#5c3a2e,#8a5236);}
   .scard .label{font-size:12.5px;opacity:.85;margin-bottom:4px;}
   .scard .amount{font-size:23px;font-weight:800;line-height:1.3;}
   .scard .amount small{font-size:12px;font-weight:500;opacity:.85;display:block;}
@@ -57,40 +56,36 @@
 <body>
 <div class="wrap">
   <header>
-    <h1>💰 夏威夷预算表 · 单人 / 拼车人均</h1>
+    <h1>💰 夏威夷预算表 · 两人行</h1>
     <p>
-      <span class="badge">9/25出发 – 10/3返程</span>
-      <span class="badge">Oahu 4晚 + 大岛 3晚</span>
+      <span class="badge">9/25出发 – 10/2返程</span>
+      <span class="badge">Oahu 4晚 + 大岛 2晚</span>
+      <span class="badge">你 + 1位搭子</span>
     </p>
-    <p>核心价格：Waikiki青旅$100–150/晚、Kona青旅$70/晚、Hilo青旅$60/晚、往返机票$965(去$407+回$558)、Oahu租车$100/天、大岛租车$70/天。机票/门票/餐饮按人头算，不随人数变化；租车/停车/汽油/住宿会随人数摊薄，下面按1人/2人/4人给出人均总额。</p>
+    <p>核心价格：Waikiki住Hilton Hawaiian Village Waikiki Beach Resort $150/晚、火山公园小木屋$100/晚（按间不按人）、Hilo酒店约$145–185/晚、往返机票$965起(去$407+回$558，回程日期已改到10/2，需重新核实)、Oahu租车$100/天、大岛租车$70/天。你们已经确定是2人一起，这版预算就直接按2人算，不再区分1/2/4人假设。</p>
   </header>
 
   <div class="scenario-grid">
-    <div class="scard solo">
-      <div class="label">🧍 只有你一个人</div>
-      <div class="amount">$3,450 – $4,225</div>
-      <div class="desc">全程青旅床位，租车/停车/小木屋成本一个人扛</div>
+    <div class="scard total">
+      <div class="label">👫 两人合计</div>
+      <div class="amount">$4,725 – $5,595</div>
+      <div class="desc">7天全部花费（机票+住宿+租车+门票+餐饮+备用金）</div>
     </div>
-    <div class="scard two">
-      <div class="label">🧍🧍 找到1位搭子（2人，人均）</div>
-      <div class="amount">$2,970 – $3,720</div>
-      <div class="desc">租车/停车/汽油/小木屋两人平摊，住宿取青旅/Airbnb较优者</div>
-    </div>
-    <div class="scard four">
-      <div class="label">🧍🧍🧍🧍 凑满4人理想情况（人均）</div>
-      <div class="amount">$2,560 – $3,280</div>
-      <div class="desc">租车/停车/汽油/小木屋四人平摊，住宿换成2房Airbnb最划算</div>
+    <div class="scard pp">
+      <div class="label">🧍 人均</div>
+      <div class="amount">$2,363 – $2,798</div>
+      <div class="desc">住宿/租车/停车/油费两人平摊，机票/门票/餐饮按各自实际项目算</div>
     </div>
   </div>
 
-  <div class="notice green">
-    <b>🚗 关于Kona机场的取车流程：</b>Kona国际机场(KOA)的租车公司(Alamo/Avis/Budget/Enterprise/Hertz/National等)都不在航站楼里设柜台，而是在航站楼外的统一租车中心，从行李提取处外面的中央分隔带坐免费班车过去，几分钟一趟，是很多美国机场的标准做法。<span class="link"><a href="https://airports.hawaii.gov/koa/getting-to-from/ground-transportation/car-rentals/" target="_blank">来源：Hawaii机场官网</a></span>
+  <div class="notice">
+    <b>📌 这版和上一版比，结构上有个大变化：</b>Waikiki从青旅换成了Hilton Hawaiian Village Waikiki Beach Resort（$150/晚，整间房），这是可以两人分摊的房费，所以住宿从原来的「人头固定成本」整个挪到了下面的「可分摊成本池」里；大岛也从Kona改成了只飞Hilo（不再去Kona/绿沙滩/蝠鲼），租车从4天减到3天，油费也降了不少。综合下来这版人均总额比上一版明显更低。
   </div>
 
   <!-- 人头固定成本 -->
-  <h2 class="cat">① 人头固定成本（人均，1/2/4人都一样）</h2>
+  <h2 class="cat">① 人头固定成本（机票/门票/餐饮，按各自实际项目算）</h2>
 
-  <h3 class="sub">✈️ 机票</h3>
+  <h3 class="sub">✈️ 机票（每人）</h3>
   <table>
     <thead><tr><th>项目</th><th>单价/人</th><th>备注</th></tr></thead>
     <tbody>
@@ -100,73 +95,68 @@
         <td class="note">你查到的实际报价</td>
       </tr>
       <tr>
-        <td class="item">回程 ITO(Hilo) → BWI（10/3）</td>
-        <td class="amt good">$558</td>
-        <td class="note">你查到的实际报价；日期越近可能有小幅波动</td>
+        <td class="item">回程 ITO(Hilo) → BWI（10/2晚）</td>
+        <td class="amt">$558</td>
+        <td class="note">⚠️沿用上一版10/3的报价，返程日期已改到10/2，建议重新查一次实际价格</td>
       </tr>
       <tr>
-        <td class="item"><a href="https://www.southwest.com/en/flights/flights-from-honolulu-to-kona" target="_blank">岛内 HNL → KOA（9/30）</a><div class="link">Southwest Hawaii Interisland · Hawaiian Airlines</div></td>
+        <td class="item"><a href="https://www.hawaiianairlines.com/" target="_blank">岛内 HNL → ITO（9/30）</a><div class="link">Hawaiian Airlines · Southwest Hawaii Interisland</div></td>
         <td class="amt">$70–150</td>
-        <td class="note">9月底是淡季尾巴不愁订不到，出发前3–4周订价格较好（见下方说明）</td>
+        <td class="note">航线从原来的HNL→KOA改成HNL→ITO(Hilo)，价格区间接近；9月底不愁订不到，出发前3–4周订价格较好</td>
       </tr>
       <tr class="subtotal"><td>机票小计</td><td class="amt">$1,035–1,115</td><td></td></tr>
     </tbody>
   </table>
 
+  <h3 class="sub">🎟️ 门票 / 体验</h3>
+  <table>
+    <thead><tr><th>项目</th><th>单价</th><th>谁参加</th><th>备注</th></tr></thead>
+    <tbody>
+      <tr><td class="item"><a href="https://gostateparks.hawaii.gov/diamondhead/" target="_blank">Diamond Head 徒步</a></td><td class="amt">$5/人</td><td>两人都去</td><td class="note">另有$10/车停车费，算在下方「可分摊」部分</td></tr>
+      <tr><td class="item"><a href="https://www.kualoa.com/tours/" target="_blank">Kualoa Ranch 牧场之旅</a></td><td class="amt">$59.95/人</td><td>两人都去</td><td class="note">Movie Sites & Ranch Tour</td></tr>
+      <tr><td class="item"><a href="https://northshoreoahusurf.com/" target="_blank">North Shore 学冲浪</a></td><td class="amt">$70–130</td><td>只有你</td><td class="note">2小时团体课</td></tr>
+      <tr><td class="item"><a href="https://sharkscovesnorkelrental.com/" target="_blank">Shark's Cove 浮潜装备租赁</a></td><td class="amt">约$10</td><td>只有搭子</td><td class="note">半天装备租赁</td></tr>
+      <tr><td class="item">Ho'omaluhia Botanical Garden</td><td class="amt">$0</td><td>两人都去</td><td class="note">免费</td></tr>
+      <tr><td class="item">Rainbow Falls</td><td class="amt">$0</td><td>两人都去</td><td class="note">免费</td></tr>
+      <tr><td class="item">Liliuokalani Gardens + Coconut Island</td><td class="amt">$0</td><td>两人都去</td><td class="note">免费</td></tr>
+      <tr><td class="item"><a href="https://hilo.hawaii.edu/maunakea/" target="_blank">Mauna Kea VIS 星空</a></td><td class="amt">$0</td><td>两人都去</td><td class="note">免费；升级版见下方可选加项</td></tr>
+      <tr class="subtotal"><td colspan="3">门票小计（两人合计）</td><td class="amt">$210–270</td></tr>
+    </tbody>
+  </table>
   <div class="notice blue">
-    <b>🛫 岛内机票怎么订：</b>Hawaiian和Southwest两家每天在HNL↔KOA之间飞很多班，9月底不是感恩节/圣诞那种紧张档期，临近出发也大概率有位置，不用现在就抢。价格上，提前2–4周订通常$70–120/人，等到出发前一周内订容易涨到$150–250/人。建议住宿/搭子大致定下来后，出发前3–4周左右下手。
+    <b>💡 这几项不是必去，没算进小计：</b>平等院Byodo-In Temple($10/人+$6/车)、Kaka'ako壁画区(免费)、Mauka Warriors Lūʻau($139/人起)、Waimea Valley($26/人)——都是行程里标注"可选"的项目，具体价格和插入位置见下方「可选加项」。
   </div>
 
-  <h3 class="sub">🎟️ 门票 / 体验（人头票部分）</h3>
+  <h3 class="sub">🍽️ 餐饮（每人）</h3>
   <table>
-    <thead><tr><th>项目</th><th>单价/人</th><th>备注</th></tr></thead>
+    <thead><tr><th>项目</th><th>单价/人/天</th><th>天数</th><th>小计/人</th></tr></thead>
     <tbody>
-      <tr><td class="item"><a href="https://byodo-in.com/visit/" target="_blank">平等院 Byodo-In Temple</a></td><td class="amt">$10</td><td class="note">另有$6/车停车费，算在下方「可分摊」部分</td></tr>
-      <tr><td class="item"><a href="https://gostateparks.hawaii.gov/diamondhead/" target="_blank">Diamond Head 日出徒步</a></td><td class="amt">$5</td><td class="note">另有$10/车，算在「可分摊」部分</td></tr>
-      <tr><td class="item">Kaka'ako 街头壁画区</td><td class="amt">$0</td><td class="note">免费</td></tr>
-      <tr><td class="item"><a href="https://maukawarriorsluau.com/reservations/" target="_blank">Mauka Warriors Lūʻau</a></td><td class="amt">$139</td><td class="note">基础套餐；Show Only票$79起</td></tr>
-      <tr><td class="item"><a href="https://sharktourshawaii.com/" target="_blank">North Shore 鲨鱼笼潜水</a></td><td class="amt">$90–125</td><td class="note">官网标价"From $90"（已核实）</td></tr>
-      <tr><td class="item"><a href="https://www.waimeavalley.net/admission" target="_blank">Waimea Valley</a></td><td class="amt">$26</td><td class="note">成人票，官网已核实</td></tr>
-      <tr><td class="item"><a href="https://faithsurfschool.com/" target="_blank">Haleiwa 学冲浪</a></td><td class="amt">$70–130</td><td class="note"></td></tr>
-      <tr><td class="item"><a href="https://konamantaraysnorkeltours.com/" target="_blank">Kona Manta Ray 夜间浮潜</a></td><td class="amt">$99–149</td><td class="note"></td></tr>
-      <tr><td class="item">Papakolea 绿沙滩 / Punaluu 黑沙滩</td><td class="amt">$0</td><td class="note">免费</td></tr>
-      <tr><td class="item"><a href="https://hilo.hawaii.edu/maunakea/" target="_blank">Mauna Kea VIS 星空</a></td><td class="amt">$0</td><td class="note">免费；升级版见下方可选加项</td></tr>
-      <tr><td class="item">Hilo Farmers Market</td><td class="amt">$0</td><td class="note">消费自理</td></tr>
-      <tr class="subtotal"><td>门票小计</td><td class="amt">$449–584</td><td></td></tr>
+      <tr><td class="item">日常餐饮（早餐自理+午晚偶尔外食）</td><td>$40–60</td><td>7天</td><td class="amt">$280–420</td></tr>
     </tbody>
   </table>
 
-  <h3 class="sub">🍽️ 餐饮</h3>
+  <h3 class="sub">💵 备用金（每人）</h3>
   <table>
-    <thead><tr><th>项目</th><th>单价/人/天</th><th>天数</th><th>小计</th></tr></thead>
-    <tbody>
-      <tr><td class="item">日常餐饮（早餐自理+午晚偶尔外食）</td><td>$40–60</td><td>8天</td><td class="amt">$320–480</td></tr>
-    </tbody>
-  </table>
-
-  <h3 class="sub">🏨 青旅住宿（按人头算，不受人数影响）</h3>
-  <table>
-    <thead><tr><th>项目</th><th>单价</th><th>数量</th><th>小计</th></tr></thead>
-    <tbody>
-      <tr><td class="item">Waikiki（4晚，9/26–9/29）</td><td>$100–150/晚</td><td>4晚</td><td class="amt">$400–600</td></tr>
-      <tr><td class="item">Kailua-Kona（1晚，9/30）</td><td>$70/晚</td><td>1晚</td><td class="amt">$70</td></tr>
-      <tr><td class="item">Hilo（1晚，10/2）</td><td>$60/晚</td><td>1晚</td><td class="amt">$60</td></tr>
-      <tr class="subtotal"><td colspan="3">青旅住宿小计</td><td class="amt">$530–730</td></tr>
-    </tbody>
-  </table>
-
-  <h3 class="sub">💵 备用金</h3>
-  <table>
-    <thead><tr><th>项目</th><th>小计</th></tr></thead>
+    <thead><tr><th>项目</th><th>小计/人</th></tr></thead>
     <tbody><tr><td class="item">停车零钱、小费、突发状况（不含婚礼礼金）</td><td class="amt">$150–300</td></tr></tbody>
   </table>
 
-  <table style="margin-top:10px;">
-    <tbody><tr class="subtotal2"><td>① 人头固定成本合计（人均，含青旅住宿）</td><td class="amt">$2,484–3,209</td></tr></tbody>
-  </table>
-
   <!-- 可分摊成本 -->
-  <h2 class="cat">② 可分摊成本池（总额，除以1/2/4人）</h2>
+  <h2 class="cat">② 可分摊成本池（住宿/租车/停车/油费，总额÷2人）</h2>
+
+  <h3 class="sub">🏨 住宿</h3>
+  <table>
+    <thead><tr><th>项目</th><th>单价</th><th>数量</th><th>总额</th><th>备注</th></tr></thead>
+    <tbody>
+      <tr><td class="item"><a href="https://www.hiltonhawaiianvillage.com/" target="_blank">Hilton Hawaiian Village Waikiki Beach Resort</a></td><td>$150/晚</td><td>4晚（9/26–9/29）</td><td class="amt">$600</td><td class="note">你确认的实际价格；两人合住一间</td></tr>
+      <tr><td class="item"><a href="https://hawaiivolcanohouse.com/campground/" target="_blank">Nāmakanipaio Campground小木屋</a></td><td>$100/间</td><td>1晚（9/30）</td><td class="amt">$100</td><td class="note">按间不按床位，1–4人同价</td></tr>
+      <tr><td class="item"><a href="https://www.hilohawaiian.com/" target="_blank">Hilo Hawaiian Hotel</a> 或 Grand Naniloa Hotel Hilo</td><td>约$145 / 约$185+</td><td>1晚（10/1）</td><td class="amt">$145–185</td><td class="note">两家都可以，前者更便宜、后者更好一点</td></tr>
+      <tr class="subtotal"><td colspan="3">住宿小计（两人合计）</td><td class="amt">$845–885</td><td></td></tr>
+    </tbody>
+  </table>
+  <div class="notice blue">
+    <b>关于小木屋$100——按间还是按床位：</b>官网未直接列出小木屋价格，仅有帐篷营地费用；第三方住客评论多显示为按房间一口价（1–4人同价）。正式预订时请在页面选好入住人数后确认总价，若按床位单独收费，这项成本会相应上涨。
+  </div>
 
   <h3 class="sub">🚗 租车（两段）</h3>
   <table>
@@ -175,27 +165,16 @@
       <tr>
         <td class="item">Oahu 段（9/26取车 – 9/30还车）</td>
         <td class="amt good">$100/天</td><td>4天</td><td class="amt">$400</td>
-        <td class="note">用你查到的实际报价（含税费保险，比Kayak裸价更真实）</td>
+        <td class="note">你查到的实际报价（含税费保险）</td>
       </tr>
       <tr>
-        <td class="item"><a href="https://www.discounthawaiicarrental.com/big-island-jeep-rental/" target="_blank">大岛段（9/30取车 – 10/3还车）</a><div class="link">Discount Hawaii Car Rental · <a href="https://hilorentalcars.com/" target="_blank">Hilo Rental Cars</a></div></td>
-        <td class="amt good">$70/天</td><td>4天</td><td class="amt">$280</td>
-        <td class="note">按你确认的价格改成固定$70/天（不再是区间），实际下单前仍建议在官网按日期核对一次</td>
+        <td class="item"><a href="https://hilorentalcars.com/" target="_blank">大岛段（9/30取车 – 10/2还车，Hilo机场）</a></td>
+        <td class="amt good">$70/天</td><td>3天</td><td class="amt">$210</td>
+        <td class="note">天数从4天减到3天（原来到10/3还车，现在10/2就还车）；Hilo机场取还车都在航站楼内，比Kona方便</td>
       </tr>
-      <tr class="subtotal"><td colspan="3">租车小计</td><td class="amt">$680</td><td></td></tr>
+      <tr class="subtotal"><td colspan="3">租车小计</td><td class="amt">$610</td><td></td></tr>
     </tbody>
   </table>
-
-  <h3 class="sub">🏔️ 火山公园小木屋（1晚）</h3>
-  <table>
-    <thead><tr><th>项目</th><th>总额</th><th>备注</th></tr></thead>
-    <tbody>
-      <tr><td class="item"><a href="https://hawaiivolcanohouse.com/campground/" target="_blank">Nāmakanipaio Campground小木屋</a></td><td class="amt">$100</td><td class="note">按「间」计价（不是按床位），1–4人同价——见下方核实说明</td></tr>
-    </tbody>
-  </table>
-  <div class="notice blue">
-    <b>预订前请务必核实：</b>官网（hawaiivolcanohouse.com/campground）未直接列出小木屋价格，仅有帐篷营地费用；第三方住客评论多显示为按房间一口价（1–4人同价）。正式预订时请在页面选好入住人数后确认总价，若按床位单独收费，这项成本会相应上涨到$200–400。
-  </div>
 
   <h3 class="sub">🅿️ 按车收费的门票/停车</h3>
   <table>
@@ -203,8 +182,7 @@
     <tbody>
       <tr><td class="item"><a href="https://www.nps.gov/havo/planyourvisit/fees.htm" target="_blank">Hawaii Volcanoes NP 门票</a>（$30/车，7天通用）</td><td class="amt">$30</td></tr>
       <tr><td class="item">Diamond Head 停车（$10/车）</td><td class="amt">$10</td></tr>
-      <tr><td class="item">平等院 停车（$6/车）</td><td class="amt">$6</td></tr>
-      <tr class="subtotal"><td>小计</td><td class="amt">$46</td></tr>
+      <tr class="subtotal"><td>小计</td><td class="amt">$40</td></tr>
     </tbody>
   </table>
 
@@ -213,64 +191,61 @@
     <thead><tr><th>项目</th><th>预估里程</th><th>总额</th></tr></thead>
     <tbody>
       <tr><td class="item">Oahu 段</td><td>约150–200英里</td><td class="amt">$40–50</td></tr>
-      <tr><td class="item">大岛段</td><td>约400–500英里</td><td class="amt">$100–140</td></tr>
-      <tr class="subtotal"><td colspan="2">油费小计</td><td class="amt">$140–190</td></tr>
-    </tbody>
-  </table>
-
-  <table style="margin-top:10px;">
-    <tbody><tr class="subtotal2"><td>② 可分摊成本池合计（总额）</td><td class="amt">$966–1,016</td></tr></tbody>
-  </table>
-
-  <!-- 2/4人 Airbnb对比 -->
-  <h2 class="cat">🏡 2人 / 4人拼住宿：青旅 vs Airbnb 哪个更划算</h2>
-  <p class="note">用青旅床位价 vs 找一间够住的Airbnb（2人订1卧室、4人订2卧室）平摊后的人均价对比，Airbnb单价是市场估算区间，实际请在Airbnb上按9/26–10/3的真实日期查询确认。</p>
-  <table>
-    <thead><tr><th>地点(晚数)</th><th>青旅人均</th><th>2人拼1卧室Airbnb(人均)</th><th>4人拼2卧室Airbnb(人均)</th></tr></thead>
-    <tbody>
-      <tr><td class="item">Waikiki（4晚）</td><td>$400–600</td><td>约$360–560<br><span class="note">(1卧室约$180–280/晚)</span></td><td class="amt good">约$280–420<br><span class="note">(2卧室约$280–420/晚)</span></td></tr>
-      <tr><td class="item">Kailua-Kona（1晚）</td><td>$70</td><td>约$65–100<br><span class="note">(1卧室约$130–200/晚)</span></td><td>约$45–70<br><span class="note">(2卧室约$180–280/晚)</span></td></tr>
-      <tr><td class="item">Hilo（1晚）</td><td>$60</td><td>约$55–80<br><span class="note">(1卧室约$110–160/晚)</span></td><td>约$38–55<br><span class="note">(2卧室约$150–220/晚)</span></td></tr>
-      <tr class="subtotal"><td>合计(人均)</td><td>$530–730</td><td>$480–740</td><td class="amt good">$363–545</td></tr>
+      <tr><td class="item">大岛段（Hilo↔火山公园↔Mauna Kea）</td><td>约150–200英里</td><td class="amt">$50–70</td></tr>
+      <tr class="subtotal"><td colspan="2">油费小计</td><td class="amt">$90–120</td></tr>
     </tbody>
   </table>
   <div class="notice green">
-    <b>结论：</b>2人拼车的话，Airbnb和青旅基本打平（省不了太多，Waikiki那间1卧室能小省一点，Kona/Hilo两地反而可能略贵，取决于实际房源），<b>青旅更灵活也更省心</b>；4人拼满的话，换成2卧室Airbnb能省下大约<b>$170–185/人</b>（整趟下来），而且住得更舒服，这种情况下更推荐Airbnb。
+    <b>为什么油费降了这么多：</b>原来大岛段要开去Kona、南点、绿沙滩、黑沙滩，一趟下来400–500英里；现在只在Hilo/火山公园/Mauna Kea之间往返，里程少了一大半。
   </div>
 
-  <!-- 三档总览 -->
-  <h2 class="cat">📊 三档人均总额怎么算出来的</h2>
-  <table>
-    <thead><tr><th>方案</th><th>①人头固定成本</th><th>②可分摊成本÷N</th><th>人均总计</th></tr></thead>
-    <tbody>
-      <tr><td class="item">单人（青旅）</td><td>$2,484–3,209</td><td>$966–1,016 ÷1</td><td class="amt">$3,450–4,225</td></tr>
-      <tr><td class="item">2人拼（住宿用青旅，更省心）</td><td>$2,484–3,209</td><td>$966–1,016 ÷2 = $483–508</td><td class="amt">$2,967–3,717</td></tr>
-      <tr><td class="item">4人拼（住宿换2卧室Airbnb）</td><td>约$2,317–3,024<br><span class="note">(用Airbnb住宿替换青旅住宿后)</span></td><td>$966–1,016 ÷4 = $242–254</td><td class="amt good">$2,559–3,278</td></tr>
-    </tbody>
+  <table style="margin-top:10px;">
+    <tbody><tr class="subtotal2"><td>② 可分摊成本池合计（两人总额）</td><td class="amt">$1,585–1,655</td></tr></tbody>
   </table>
 
+  <!-- 总额怎么算出来的 -->
+  <h2 class="cat">📊 两人合计 / 人均怎么算出来的</h2>
+  <table>
+    <thead><tr><th></th><th>①人头固定成本（机票+门票+餐饮+备用金，每人）</th><th>②可分摊成本÷2（每人）</th><th>人均总计</th></tr></thead>
+    <tbody>
+      <tr><td class="item">每人</td><td>$1,570–1,970<br><span class="note">（机票$1,035–1,115 + 门票$105–135 + 餐饮$280–420 + 备用金$150–300；门票取$210–270合计的一半）</span></td><td>$1,585–1,655 ÷2 = $793–828</td><td class="amt">$2,363–2,798</td></tr>
+      <tr><td class="item">两人合计</td><td>约$3,140–3,940</td><td>$1,585–1,655</td><td class="amt good">$4,725–5,595</td></tr>
+    </tbody>
+  </table>
+  <div class="notice">
+    <b>提醒：</b>门票这一项两人做的不完全一样（你冲浪、搭子浮潜），所以「人均」是把两人实际花的门票总额除以2得到的平均数，不是每人各花一份冲浪+一份浮潜的钱；机票和餐饮是两人各自实际的花费，本来就一样多。
+  </div>
+
   <!-- 可选加项 -->
-  <h2 class="cat">🚁 可选加项：山顶团 / 直升机放在哪天</h2>
+  <h2 class="cat">🚁 可选加项：这些不是必去，想加可以参考</h2>
   <table>
     <thead><tr><th>项目</th><th>单价/人</th><th>建议插入位置</th></tr></thead>
     <tbody>
       <tr>
+        <td class="item"><a href="https://byodo-in.com/visit/" target="_blank">平等院 Byodo-In Temple</a></td><td class="amt">$10+$6/车</td>
+        <td class="note"><b>Day3（9/28）</b>下午——就在Ho'omaluhia植物园10分钟车程外，精力够的话可以顺路加进去。</td>
+      </tr>
+      <tr>
+        <td class="item">Kaka'ako 街头壁画区</td><td class="amt">$0</td>
+        <td class="note">原本Day3的备选内容，免费，市区随时可以顺路逛。</td>
+      </tr>
+      <tr>
+        <td class="item"><a href="https://maukawarriorsluau.com/reservations/" target="_blank">Mauka Warriors Lūʻau</a></td><td class="amt">$139起</td>
+        <td class="note"><b>Day3（9/28）</b>晚上——需提前1–2周订，17:00从Waikiki出发。</td>
+      </tr>
+      <tr>
+        <td class="item"><a href="https://www.waimeavalley.net/admission" target="_blank">Waimea Valley</a></td><td class="amt">$26</td>
+        <td class="note"><b>Day4（9/29）</b>——就在Shark's Cove马路对面，冲浪/浮潜结束后顺路可去。</td>
+      </tr>
+      <tr>
         <td class="item">Mauna Kea 山顶跟团日落+观星</td><td class="amt">$200–280</td>
-        <td class="note"><b>Day7（10/2）晚上</b>——不用额外挪一天，就是把当晚免费的VIS游客中心自驾观星，直接换成付费跟团上13,800英尺山顶，同一个时间段的"升级版"。</td>
-      </tr>
-      <tr>
-        <td class="item">Waikoloa直升机观火山之旅</td><td class="amt">$300–720</td>
-        <td class="note"><b>Day5（9/30）下午</b>——这天下午本来就是空档（Kona自由活动），插一段直升机（车程30–40分钟+飞行50min–1h45min）回来还赶得上18:00的蝠鲼船，是全程唯一现成的空档。</td>
-      </tr>
-      <tr>
-        <td class="item">Hilo直升机"Discover Hilo"（含火山+瀑布）</td><td class="amt">约$300</td>
-        <td class="note">备选：<b>Day7（10/2）上午</b>——如果不想选Waikoloa那趟，早上从火山公园退房去Hilo前可以顺路飞一趟，内容更聚焦火山本身，离住处也更近。</td>
+        <td class="note"><b>Day6（10/1）晚上</b>——把免费的VIS游客中心自驾观星，换成付费跟团上13,800英尺山顶，同一个晚上。</td>
       </tr>
     </tbody>
   </table>
 
   <footer>
-    价格为2026年7月时点参考价，实际预订前请以官网/Airbnb/Discount Hawaii Car Rental按真实日期查到的报价为准。行程细节见配套的《夏威夷行程规划》网页，景点候选与评分见《夏威夷景点候选清单》。
+    价格为2026年7月时点参考价，实际预订前请以官网按真实日期查到的报价为准；回程机票日期已从10/3改到10/2，价格务必重新核实。行程细节见配套的《夏威夷行程规划》网页，景点候选与评分见《夏威夷景点候选清单》。
   </footer>
 </div>
 </body>
