@@ -2,7 +2,8 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<title>夏威夷行程规划 最终版 · 9/26–10/2</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>夏威夷行程规划 最终版 · 9/25–10/3</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <style>
@@ -50,6 +51,8 @@
   .stopname{font-weight:600;font-size:14.5px;}
   .stopintro{color:#5c5346;font-size:12.8px;margin-top:3px;}
   .stoplogi{color:var(--sub);font-size:12.2px;margin-top:2px;}
+  .stopaddr{color:var(--sub);font-size:12.2px;margin-top:2px;}
+  .stopaddr a,.addr a{color:#2471a3;text-decoration:none;border-bottom:1px dashed #b7d2e3;margin-left:4px;}
   .stoplink{margin-top:3px;}
   .stoplink a{font-size:12px;color:#2471a3;text-decoration:none;border-bottom:1px dashed #b7d2e3;}
   .stoplink a:hover{text-decoration:underline;}
@@ -57,8 +60,28 @@
   .bonusbox{margin-top:14px;padding:12px 14px;background:#f7f2e8;border-radius:10px;border:1px dashed #d8c7a3;}
   .bonusbox h3{margin:0 0 8px;font-size:13px;color:#8a6d2f;}
   .bonusbox p{margin:0;font-size:13px;color:#5c4d2f;}
+  .sub{margin-top:16px;}
+  .sub h3{font-size:14px;margin:0 0 8px;}
+  .sub .note{font-size:12.5px;color:#5c5346;background:#f4f1ea;border-radius:8px;padding:8px 12px;margin-top:8px;}
+  .card2{border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin-bottom:8px;background:#fff;}
+  .card2 .n{font-weight:600;font-size:13.5px;}
+  .card2 .m{font-size:12.2px;color:var(--sub);margin-top:2px;}
+  .card2 .f{font-size:12.6px;color:#5c5346;margin-top:3px;}
+  .price{display:inline-block;background:#eef6ee;color:#2c4a2c;border-radius:10px;padding:0 8px;font-size:11.5px;margin-left:6px;font-weight:600;}
+  ul.plain{margin:6px 0 0 18px;padding:0;font-size:12.8px;color:#4f463a;}
+  ul.plain li{margin:3px 0;}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  @media (max-width:760px){ .grid2{grid-template-columns:1fr;} }
+  .shopgrp{margin-bottom:8px;}
+  .shopgrp b{font-size:12.8px;}
+  table.drive{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;font-size:13px;}
+  table.drive th,table.drive td{padding:8px 12px;text-align:left;border-bottom:1px solid var(--line);}
+  table.drive th{background:#f4f1ea;font-size:12.5px;color:var(--sub);}
+  table.drive tr:last-child td{border-bottom:none;}
+  .tblwrap{overflow-x:auto;}
   footer{margin-top:30px;color:var(--sub);font-size:12px;}
   .leaflet-popup-content{font-size:13px;}
+  @media (max-width:640px){ .time{flex-basis:76px;} }
 </style>
 </head>
 <body>
@@ -66,13 +89,16 @@
   <header>
     <h1>🌺 夏威夷行程规划 · 最终版</h1>
     <p>
-      <span class="badge">9/25(五)晚 Baltimore出发</span>
-      <span class="badge">9/26(六) 婚礼 @ Hilton Hawaiian Village</span>
+      <span class="badge">9/25(五)清晨 Baltimore出发</span>
+      <span class="badge">9/25 15:45 Rehearsal party</span>
+      <span class="badge">9/26(六) 13:00 婚礼 @ Kailana Chapel</span>
       <span class="badge">9/27(日) 搭子10:55抵达</span>
-      <span class="badge">Oahu 4晚 → 大岛 2晚</span>
-      <span class="badge">10/2(五)晚 返程</span>
+      <span class="badge">Oahu 5晚 → 大岛 2晚</span>
+      <span class="badge">10/2(五)晚 返程，10/3 17:46到家</span>
     </p>
-    <p>全程 <b>7天</b>，9/26抵达当天参加婚礼，9/27搭子中午落地后两人一起行动，10/2晚从Hilo返程。每天地图上的编号①②③...和下方时间表的编号一一对应。机票/住宿/租车的具体价格与预订链接见配套的《夏威夷总预算表》，这里只放景点本身的详细介绍。</p>
+    <p>全程 <b>9天</b>（9/25–10/3）。9/25早班机出发，下午落地后直接参加Rehearsal party；9/26中午在Waimanalo的Kailana Chapel参加婚礼；9/27搭子中午落地后两人一起行动；10/2晚从Hilo飞回，经Honolulu、LAX、Chicago，10/3傍晚到Baltimore。每天点开对应日期，可以看到：时间表、当天车程、附近餐厅、顺路备选地址、当天要带的衣服和装备。机票/住宿/租车的价格与预订链接见配套的《夏威夷总预算表》。</p>
+    <div class="notice blue"><b>🚗 用车提示：</b>9/25–9/27 没有租车，靠 Uber/Lyft 和婚礼班车；Oahu租车 9/28 08:00 起在 Hilton Hawaiian Village 取，9/29 22:00 前在同一处还；大岛租车 9/30 在Hilo机场取，10/2 17:00 在Hilo机场还。所有时间均为当地时间（夏威夷比巴尔的摩晚6小时）。</div>
+    <div class="notice"><b>⏰ 日历提醒：</b>9/29 08:55（HST）WN1842 选座/值机开放，同时预约 9/30 去机场的车；9/29 19:00 再确认一次；10/1 18:49 AA 返程航班值机开放。价格档位：$ ≤ $12/人，$$ $12–25，$$$ &gt; $25，均为估算；营业时间请出发前用地图核对。</div>
   </header>
 
   <h2 class="sec">🗓️ 逐日路线</h2>
@@ -85,93 +111,349 @@
   <div id="map"></div>
   <div id="daypanel"></div>
 
+  <h2 class="sec">📋 预订确认信息</h2>
+  <div class="tblwrap">
+  <table class="drive">
+    <thead><tr><th>项目</th><th>时间</th><th>确认信息</th></tr></thead>
+    <tbody>
+      <tr><td>Waikiki Beachside Hostel（2556 Lemon Rd）</td><td>9/25 15:00起 – 9/26 11:00</td><td>H-LD52FXFMRBJD · 808-923-9566 · 单人床位</td></tr>
+      <tr><td>Hilton Hawaiian Village Waikiki</td><td>9/26 – 9/30（4晚）</td><td>确认号待补</td></tr>
+      <tr><td>Diamond Head 预约</td><td>9/28 08:00–10:00，2人含停车</td><td>VISITOR-2026-09-03-DHSM-2209683</td></tr>
+      <tr><td>Oahu 租车（Hilton 内取还）</td><td>9/28 08:00 – 9/29 22:00</td><td>1498326974 · Full Size Nissan Altima</td></tr>
+      <tr><td>Kualoa Movie Sites &amp; Ranch Tour</td><td>9/28 11:55签到 · 12:40发车，2成人</td><td>1MQR1CX2</td></tr>
+      <tr><td>WN1842 HNL → ITO</td><td>9/30 08:55–09:55</td><td>飞猪订单 10011084793761</td></tr>
+      <tr><td>Big Island 租车（Hilo机场）</td><td>9/30 09:30 – 10/2 17:00</td><td>2133323461 · Full Size Nissan Altima</td></tr>
+      <tr><td>Volcano House Camper Cabin（Nāmakanipaio）</td><td>9/30 15:00起 – 10/1 12:00，2成人</td><td>8617SG192398 · 行程号 27829B0148624 · 808-756-9625</td></tr>
+      <tr><td>Grand Naniloa Hotel Hilo</td><td>10/1 16:00起 – 10/2 11:00</td><td>携程订单 1128150127488152 · 到店另付US$46.3</td></tr>
+      <tr><td>去程航班</td><td>9/25 DL2872 BWI 06:15 → MSP；DL312 MSP 10:05 → HNL 13:34</td><td>Delta Main Basic</td></tr>
+      <tr><td>返程航班</td><td>10/2 AA7866 ITO 18:49 → HNL；AA144 HNL 20:40 → LAX；10/3 AA383 LAX 06:00 → ORD；AA4758 ORD 14:34 → BWI 17:46</td><td>American Main Cabin</td></tr>
+    </tbody>
+  </table>
+  </div>
+
   <footer>
-    机票/住宿/租车的价格明细与预订链接见配套的《夏威夷总预算表》；更多候选景点的评分对比见《夏威夷景点候选清单》。以下景点介绍与链接均为2026年7月搜索时点信息，出行前请以官网实时公告为准（尤其Diamond Head/Kualoa Ranch/Mauna Kea等预约类项目）。
+    机票/住宿/租车的价格明细与预订链接见配套的《夏威夷总预算表》；更多候选景点的评分对比见《夏威夷景点候选清单》。景点介绍与链接为2026年7月搜索时点信息，出行前请以官网实时公告为准（尤其Diamond Head/Kualoa Ranch/Mauna Kea/火山公园等）。车程、距离和餐厅价格均为估算，营业时间可能变化，出发前请用地图App按实时路况和营业时间再核对。潮汐为NOAA对Honolulu的预报（英尺），北岸时间略有差异。9/24更新：按已确认的机票、住宿、租车、婚礼与Rehearsal安排重排时间，补充餐厅、备选去处、当天车程、当天携带物品，并把冲浪改为租板自己练。
   </footer>
 </div>
 
 <script>
 /* ---------- 逐日行程 ---------- */
-const EXCOLOR = {"轻松（社交/时差疲劳）":"#5a9e6f","轻松":"#5a9e6f","适中":"#c8632b","适中（转场+夜潜）":"#c8632b","较满":"#c0392b","较满（熬夜）":"#c0392b"};
+const EXCOLOR = {"轻松（社交/时差疲劳）":"#5a9e6f","轻松":"#5a9e6f","适中":"#c8632b","适中（转场+夜潜）":"#c8632b","较满":"#c0392b","较满（熬夜）":"#c0392b","较满（早班机+时差）":"#c0392b"};
 function exColor(e){ return EXCOLOR[e] || "#c8632b"; }
+function mapsUrl(q){ return "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(q); }
+const E=(name,addr,dist,price,feat)=>({name,addr,dist,price,feat});
+const A=(name,addr,dist,note)=>({name,addr,dist,note});
+const R=(route,dist,time,note)=>[route,dist,time,note||""];
 
 const DAYS = [
+/* ================= Day0 ================= */
 {
-  date:"Day1 · 9/26 周六", island:"Oahu", title:"抵达 + 婚礼 @ Hilton Hawaiian Village", exert:"轻松（社交/时差疲劳）", overnight:"住 Waikiki（近Hilton Hawaiian Village）",
+  date:"Day0 · 9/25 周五", island:"Baltimore → Oahu", title:"早班机 + 落地直奔 Rehearsal party", exert:"较满（早班机+时差）", overnight:"住 Waikiki Beachside Hostel（15:00后入住）",
   stops:[
-    {time:"上午", name:"抵达 Honolulu (HNL)", intro:"前一晚从Baltimore出发，转机1次，约12.5–13.5小时。", logi:"取车到Hilton Hawaiian Village一带约20分钟。", lat:21.3187,lng:-157.9224,bonus:false},
-    {time:"上午", name:"入住 + 补觉", intro:"长途飞行后建议眯一会儿。", logi:"婚礼就在同一酒店举行，走过去就行。", lat:21.2847,lng:-157.8378,bonus:false},
-    {time:"下午/傍晚", name:"婚礼 @ Hilton Hawaiian Village", intro:"夏威夷最大的海滨度假村之一，占地22英亩，1955年开业，是Waikiki最早的大型度假村之一。园区自带一片人工泻湖(Duke Kahanamoku Lagoon)和开阔沙滩，棕榈树+火烈鸟池塘+塔希提式建筑群，很多户外婚礼会选在这里的草坪或沙滩举行，周五晚固定有免费烟花表演。", logi:"具体流程时间以请柬为准；度假村很大，提前查好具体举办的塔楼/草坪位置。", link:"https://www.hiltonhawaiianvillage.com/", linkText:"度假村官网", lat:21.2830,lng:-157.8378,bonus:false},
+    {time:"03:30", name:"从家出发去 BWI", intro:"", logi:"提前预约打车，凌晨路上车少，约25分钟；建议4:00前到机场，6:15起飞。", addr:"Baltimore/Washington International Airport, 7035 Elm Rd, Baltimore, MD 21240", lat:39.1774,lng:-76.6684,bonus:false},
+    {time:"06:15–07:53", name:"DL2872：BWI → MSP（Minneapolis）", intro:"Delta Main Basic，不能选座，托运行李另收费，建议只带登机箱。", logi:"MSP转机约2小时12分钟，07:53落地(中部时间)。", addr:"Minneapolis–St Paul International Airport (MSP)", lat:44.8848,lng:-93.2223,bonus:false},
+    {time:"10:05–13:34", name:"DL312：MSP → Honolulu(HNL)", intro:"飞行约8.5小时，13:34夏威夷时间落地。", logi:"落地后如果只带登机箱，可省下取行李的约30分钟。", addr:"Daniel K. Inouye International Airport, 300 Rodgers Blvd, Honolulu, HI 96819", lat:21.3187,lng:-157.9224,bonus:false},
+    {time:"14:15–15:00", name:"打车去 Hostel，寄存/入住", intro:"住 Waikiki Beachside Hostel（15:00起入住，单人床位）。", logi:"HNL → Hostel 约25–30分钟，预计14:45–15:00到。如果15:00前不能入住，先在前台寄存行李。", addr:"2556 Lemon Rd, Honolulu, HI 96815", lat:21.2765,lng:-157.8265,bonus:false},
+    {time:"15:45", name:"Rehearsal party（彩排晚宴）", intro:"婚礼前一天的彩排聚会，结束时间以新人通知为准。", logi:"Hostel → 会场约10分钟，建议15:25出发，留出堵车余量。回程约10分钟。", addr:"2169 Kālia Rd Unit 111, Honolulu, HI 96815", lat:21.2782,lng:-157.8330,bonus:false},
   ],
-  returnNote:"婚礼结束就在住处附近，不需要额外交通。",
-  bonusNote:"KCC Farmers Market正好也是今天(周六7:30–11am)，但刚下红眼航班+要准备婚礼，大概率没精力赶，大岛后面的Hilo Farmers Market(周三/周六最全)可以补上这个体验。"
+  returnNote:"回Hostel休息，明早11:00前退房。今天从凌晨起床，晚上尽量早睡倒时差。",
+  bonusNote:"周五晚Hilton Hawaiian Village一般有免费烟花表演（具体时间以酒店公告为准），从Kālia Rd步行就能到。",
+  drive:[
+    R("家 → BWI","约15英里","约25分钟","凌晨3:30出发"),
+    R("HNL → Hostel(Lemon Rd)","约9英里","25–30分钟","Uber/Lyft，预计14:45–15:00到"),
+    R("Hostel → Rehearsal(Kālia Rd)","约1.5英里","10分钟","15:25出发，堵车时可能15分钟"),
+  ],
+  eat:[
+    E("Musubi Cafe Iyasume","2427 Kūhiō Ave, Honolulu, HI 96815","距Hostel约0.4英里，步行8分钟","$（$3–6/个）","现做Spam musubi和各式饭团，适合落地后当外带晚饭或第二天早餐。"),
+    E("Marukame Udon Waikiki","2310 Kūhiō Ave, Honolulu, HI 96815","距Hostel约0.5英里，步行10分钟","$（$8–14）","自助式现煮乌冬加天妇罗，出餐快；高峰会排队，但队伍走得快。"),
+    E("Eggs 'n Things","343 Saratoga Rd, Honolulu, HI 96815","距Rehearsal会场约0.3英里，步行7分钟","$$（$14–22）","夏威夷早餐名店，松饼和欧姆蛋，份量大，适合两人分吃。"),
+  ],
+  eatNote:"今天时间最紧：13:34落地到15:45彩排之间没有坐下吃饭的空档。请在MSP转机（2小时12分钟）时吃正餐，落地后只在车上吃随身的能量棒和坚果；彩排如果有餐就在那儿吃，散会后再去 Musubi Cafe 买夜宵。",
+  alt:[
+    A("Fort DeRussy Beach Park","2161 Kālia Rd, Honolulu, HI 96815","紧挨Rehearsal会场，步行2分钟","安静的沙滩，会场如果没排好可以先在这里等。"),
+    A("Kuhio Beach Park","2453 Kalākaua Ave, Honolulu, HI 96815","距Hostel约0.4英里，步行8分钟","Waikiki最方便的海滩，傍晚看落日。"),
+    A("International Market Place","2330 Kalākaua Ave, Honolulu, HI 96815","距Hostel约0.6英里","购物和餐饮广场，下雨天备选。"),
+    A("Waikiki Aquarium","2777 Kalākaua Ave, Honolulu, HI 96815","距Hostel约0.8英里","小型水族馆，票价和开放时间以官网为准。"),
+  ],
+  pack:["登机箱（Main Basic 只能带随身行李）、证件/REAL ID、信用卡","充电宝、耳机、颈枕、眼罩，飞机上冷，带薄外套","Rehearsal party 的衣服放在登机箱上层，落地直接能换","空水瓶，过安检后装满","拖鞋，落地后换下来","reef-safe 防晒霜（小瓶，100ml以内）","Hostel不一定提供毛巾和洗漱用品，自备","随身零食：能量棒、坚果，落地后当午饭"]
 },
+/* ================= Day1 ================= */
 {
-  date:"Day2 · 9/27 周日", island:"Oahu", title:"轻松日：接机 + Waikiki海滩", exert:"轻松", overnight:"住 Waikiki",
+  date:"Day1 · 9/26 周六", island:"Oahu", title:"早上Waikiki冲浪（可选）+ 婚礼 @ Kailana Chapel", exert:"轻松（社交/时差疲劳）", overnight:"住 Waikiki（Hilton Hawaiian Village）",
   stops:[
-    {time:"10:55", name:"接机：搭子抵达 HNL", intro:"", logi:"从Waikiki到机场约20–25分钟。", lat:21.3187,lng:-157.9224,bonus:false},
-    {time:"12:00", name:"回酒店 + 简单休整", intro:"长途飞行后先放下行李、洗把脸，不用赶时间。", logi:"", lat:21.2793,lng:-157.8294,bonus:false},
-    {time:"14:00–18:00", name:"Waikiki Beach 漫步 + 躺海滩", intro:"2英里长的新月形海滩，是全世界最知名的海滩之一，1900年代初就已是度假胜地，沙滩后方一整排历史悠久的海滨酒店（含前一天婚礼举办地Hilton Hawaiian Village）。海面常年温和平静，适合游泳、划独木舟、初学冲浪，傍晚还能看到当地冲浪手在Kuhio Beach一带练习传统outrigger独木舟冲浪。今天不排硬性行程，就在这一片走走、下水泡泡、躺着晒太阳，配合时差慢慢调整。", logi:"免费；沙滩沿线有不少海滩摊位/餐厅，随时可以补给。", lat:21.2761,lng:-157.8267,bonus:false},
+    {time:"07:15–09:30 可选", name:"Waikiki 租板冲浪（Canoes / Queens）", intro:"从Hostel走到Kuhio Beach约8分钟，海滩上有租板摊位。Canoes是Waikiki最受欢迎的新手浪点，浪长而温和；Queens在Queen Liliuokalani雕像前，也适合长板。租一块8–9英尺的长板或泡沫软板就行。", logi:"租借摊位一般约07:00–17:00营业，$10–25/小时，押金$50–200（信用卡）；板子通常要在Waikiki冲浪区内使用、并还到原摊位。当天潮汐：03:48高潮，09:49低潮（约0.3英尺），退潮时浪会偏软、礁石偏浅，07:00–08:30更合适。婚礼当天注意防晒，脸和肩膀别晒伤。", addr:"Kuhio Beach Park, 2453 Kalākaua Ave, Honolulu, HI 96815", lat:21.2739,lng:-157.8238,bonus:false},
+    {time:"09:45–11:00", name:"回 Hostel 冲澡、退房 → 去 Hilton 寄存行李", intro:"Hostel 11:00前退房；Hilton入住15:00起，先把行李交给前台/行李员寄存，回来再办入住。", logi:"Hostel → Hilton 约10分钟（打车）。", addr:"2005 Kalia Rd, Honolulu, HI 96815", lat:21.2847,lng:-157.8378,bonus:false},
+    {time:"约11:30–12:00", name:"乘婚礼班车去 Waimanalo", intro:"班车上车点和发车时间以新人通知为准。", logi:"Waikiki → Waimanalo 约35–45分钟。建议至少在12:30前到场，留出找位置和合影的时间。", addr:"Waimanalo, Oahu, HI（Kailana Chapel，具体位置以请柬为准）", lat:21.3340,lng:-157.7090,bonus:false},
+    {time:"13:00", name:"婚礼 @ Kailana Chapel", intro:"位于Oahu东南岸的Waimanalo，这一带以长长的白沙海滩和背后的Ko'olau山脉著称，比Waikiki安静得多，婚礼场地面朝海景。仪式13:00开始，之后的宴会安排以请柬为准。", logi:"海边风大、地面可能是草地或沙地，鞋子选好走的；带件薄外套。", lat:21.3340,lng:-157.7090,bonus:false},
+    {time:"傍晚", name:"班车回 Waikiki → Hilton 入住", intro:"入住 Hilton Hawaiian Village Waikiki Beach Resort（9/26–9/30，共4晚）。占地22英亩，有人工泻湖和沙滩，园区很大，行李寄存在前台。", logi:"回程同样约35–45分钟，班车时间以新人通知为准。", addr:"2005 Kalia Rd, Honolulu, HI 96815", link:"https://www.hiltonhawaiianvillage.com/", linkText:"度假村官网", lat:21.2830,lng:-157.8378,bonus:false},
   ],
-  returnNote:"就在住处附近，不需要额外交通。",
-  bonusNote:"如果搭子精神还不错，可以顺路走到Kapiolani Park或International Market Place逛逛；但今天主打恢复，不强求排满。"
+  returnNote:"今天没有租车，全程靠班车和步行，不需要开车。",
+  bonusNote:"冲浪部分：我没有查到Waikiki按时段限制冲浪的官方规定，但租板摊位有营业时间（约07:00–17:00），板子有区域限制；以海滩告示牌和救生员的指示为准。夏季南向涌浪常见（9/22–9/23 预报南岸3–5英尺），9/26的预报还没发布，出发前一晚看NWS或Surfline；浪超过3英尺、没有救生员，或者你觉得累，就跳过，别耽误婚礼。KCC Farmers Market每周六07:30–11:00，和婚礼时间冲突，跳过。",
+  drive:[
+    R("Hostel → Kuhio Beach 租板","约0.4英里","步行8分钟","07:00左右出发"),
+    R("Hostel → Hilton(寄存行李)","约2.5英里","10分钟","Uber/Lyft"),
+    R("Waikiki → Waimanalo(婚礼)","约15英里","35–45分钟","乘班车，上车点和时间以新人通知为准"),
+    R("Waimanalo → Waikiki/Hilton","约15英里","35–45分钟","回程班车"),
+  ],
+  eat:[
+    E("Musubi Cafe Iyasume","2427 Kūhiō Ave, Honolulu, HI 96815","距Hostel约0.4英里，步行8分钟","$（$3–6/个）","冲浪前带两个饭团上沙滩，简单快。"),
+    E("Marukame Udon Waikiki","2310 Kūhiō Ave, Honolulu, HI 96815","距Hostel约0.5英里，步行10分钟","$（$8–14）","冲完浪的热乌冬早午餐，不过要留时间，别耽误退房。"),
+    E("Ono Hawaiian Foods","726 Kapahulu Ave, Honolulu, HI 96816","距Hilton约4英里，打车约15分钟","$$（$15–22）","传统夏威夷菜：kalua pig、laulau、poi，如果婚礼后晚上还想吃，可去。"),
+  ],
+  eatNote:"早上冲浪前只吃香蕉和能量棒；冲完回Hostel冲澡、10:30–11:00退房，没时间坐下吃饭。婚礼场地通常有餐食；不确定的话，在班车上吃随身零食。",
+  alt:[
+    A("Kapiolani Park","3840 Paki Ave, Honolulu, HI 96815","距Hostel约1英里","早上没冲浪的话可以在公园散步。"),
+    A("Waikiki Aquarium","2777 Kalākaua Ave, Honolulu, HI 96815","距Hostel约0.8英里","小型水族馆，下雨天备选。"),
+    A("Waimanalo Beach Park","41-741 Kalaniana'ole Hwy, Waimanalo, HI 96795","婚礼场地附近，车程约5–10分钟","白沙长滩，如果婚礼后有空档并且班车时间允许。"),
+    A("Makapu'u Point Lookout","Kalaniana'ole Hwy, Waimanalo, HI 96795","距Waimanalo约10分钟","看东南海岸日落前后的海景，步道往返约2英里。"),
+    A("Kailua Beach Park","526 Kawailoa Rd, Kailua, HI 96734","距Waimanalo约15分钟","沙细水清，游客比Waikiki少。"),
+  ],
+  pack:["冲浪：泳衣、rash guard或T恤、速干短裤、reef-safe 防晒霜、防水手机袋、腕带钥匙包、毛巾、拖鞋","婚礼：正装、好走的鞋（Waimanalo海边风大、草地或沙地）、薄外套或披肩","红包或礼物","证件/信用卡，手机充满电","Hostel退房前检查充电线、充电宝是否带齐","行李已寄存，只带小包去婚礼"]
 },
+/* ================= Day2 ================= */
 {
-  date:"Day3 · 9/28 周一", island:"Oahu", title:"Diamond Head + Windward Oahu：古兰尼牧场 + 植物园", exert:"较满", overnight:"住 Waikiki",
+  date:"Day2 · 9/27 周日", island:"Oahu", title:"轻松日：接机 + 采购 + Waikiki海滩", exert:"轻松", overnight:"住 Waikiki（Hilton Hawaiian Village）",
   stops:[
-    {time:"08:00–09:30", name:"Diamond Head 徒步", intro:"30万年前一次单一喷发形成的凝灰岩火山口，夏威夷语名「Lēʻahi」（金枪鱼额头的意思，因山脊形状得名）。步道从火山口内部往上爬升约0.8英里到山脊顶端，途经99级台阶、一条实心黑暗的隧道和二战时期修建的Fire Control Station瞭望碉堡，最后视野豁然开朗——整条Waikiki海岸线、钻石头周边住宅区和远处的Ko'olau山脉尽收眼底。", logi:"$5/人+$10/车；须在gostateparks.hawaii.gov官网提前最多30天预约场次；考虑到搭子刚倒完时差，建议订8点左右稍晚的场次而不是日出场，不用摸黑早起；从Waikiki约10–15分钟；全程往返约1.5小时。", link:"https://gostateparks.hawaii.gov/diamondhead/", linkText:"官方预约系统", lat:21.2620,lng:-157.8056,bonus:false},
-    {time:"10:15–11:45", name:"Kualoa Ranch 电影取景地牧场之旅", intro:"牧场占地4,000英亩，横跨Ka'a'awa峡谷与Hakipu'u雨林，因为锯齿状火山山脊+开阔草场的独特地貌，从1950年代起就是好莱坞公认的'夏威夷外景基地'，累计超过250部电影/剧集在此取景，包括《侏罗纪公园》系列、《金刚：骷髅岛》、《幸情人》(50 First Dates)、《哥斯拉》等。经典的Movie Sites & Ranch Tour乘敞篷巴士穿行整个牧场，向导逐一指出取景地并讲述拍摄幕后故事，沿途还能看到放养的牛群与壮观的山谷全景。", logi:"$59.95/成人（约1.5小时）；官网可预订具体场次，check-in需提前约30分钟；从Diamond Head/Waikiki约40–45分钟（经H-3/Kaneohe）。牧场还有ATV、直升机吊索、骑马等付费升级项目，官网可查看全部tour。", link:"https://www.kualoa.com/tours/", linkText:"官网订票与场次", lat:21.5219,lng:-157.8395,bonus:false},
-    {time:"12:15–13:15", name:"Ho'omaluhia Botanical Garden", intro:"400英亩的免费市立植物园，1982年由美国陆军工程兵团为防洪而建，园区背靠Ko'olau山脉最陡峭的一段峭壁，一整片人工湖倒映着山景，是全岛拍照最出片的植物园之一。步道沿热带雨林、非洲/夏威夷/菲律宾等分区展示的植物群落展开，游客不多、氛围安静，很适合牧场之旅后放慢脚步走走。", logi:"免费；开放9am–4pm(圣诞/元旦休园)；从Kualoa Ranch约20分钟；步道多为平地，走走停停约1小时足够。", link:"https://www.honolulu.gov/parks/hbg", linkText:"官网信息", lat:21.3898,lng:-157.8093,bonus:false},
+    {time:"10:00", name:"从 Hilton 出发去机场", intro:"", logi:"Hilton → HNL 约20–25分钟（Uber/Lyft，今天没有租车）。10:30前到，接10:55的航班。", addr:"Daniel K. Inouye International Airport, 300 Rodgers Blvd, Honolulu, HI 96819", lat:21.3187,lng:-157.9224,bonus:false},
+    {time:"10:55", name:"接机：搭子抵达 HNL", intro:"", logi:"落地取行李后约11:30–11:45出机场；打车回酒店约20–25分钟。", addr:"Daniel K. Inouye International Airport, 300 Rodgers Blvd, Honolulu, HI 96819", lat:21.3187,lng:-157.9224,bonus:false},
+    {time:"12:15", name:"回酒店 + 简单休整", intro:"长途飞行后先放下行李、洗把脸，不用赶时间。", logi:"", addr:"2005 Kalia Rd, Honolulu, HI 96815", lat:21.2847,lng:-157.8378,bonus:false},
+    {time:"14:00–15:30", name:"Kapahulu Ave：Leonard's + 本地小吃", intro:"Uber去Kapahulu，一条街吃三家：Leonard's热malasada，Ono Seafood的poke，再看要不要加传统夏威夷菜。", logi:"Hilton → Kapahulu 约3.5英里，12分钟。", addr:"933 Kapahulu Ave, Honolulu, HI 96816", lat:21.2790,lng:-157.8130,bonus:false},
+    {time:"15:45–17:15", name:"采购：不需要冷藏的食物和补给", intro:"9/28起行程很紧，之后有几天没时间坐下吃饭，今天买好不需要冷藏的食物、水和补给。详细清单见下面「购物清单」。", logi:"Kapahulu → Don Quijote Waikiki 约2英里，打车10分钟；或者在Kapahulu上Uber去Walmart（700 Keeaumoku St，约3英里，便宜）。买完打车回Hilton约10分钟。", addr:"Don Quijote Waikiki, 2233 Kalākaua Ave, Honolulu, HI 96815", lat:21.2790,lng:-157.8293,bonus:false},
+    {time:"17:30–19:00", name:"Waikiki Beach 傍晚 + 落日", intro:"2英里长的新月形海滩，是全世界最知名的海滩之一。今天不排硬性行程，就在Hilton的泻湖和海滩玩一会儿，配合时差慢慢调整。", logi:"免费；沿线有海滩摊位和餐厅。", addr:"Waikiki Beach, Honolulu, HI 96815", lat:21.2761,lng:-157.8267,bonus:false},
   ],
-  returnNote:"返回Waikiki约40–45分钟。",
-  bonusNote:"平等院Byodo-In Temple就在植物园10分钟车程外，如果这天精力还够可以顺路加进去（$10/人+$6/车，8:30am–4:30pm）；Kaka'ako壁画区和Mauka Warriors Lūʻau民俗Luau都是可选项，都不是必须——想加Luau的话可以挪到今晚（需提前1–2周订，17:00从Waikiki出发）。"
+  returnNote:"就在住处附近，不需要开车。明天要早起，晚上把 Diamond Head 的二维码和租车确认存到手机里，物品分好类（一个包放明天徒步要用的）。",
+  bonusNote:"如果搭子精神还不错，可以顺路走到Kapiolani Park或International Market Place逛逛；但今天主打恢复，不强求排满。",
+  drive:[
+    R("Hilton → HNL(接机)","约8英里","20–25分钟","10:00出发，Uber/Lyft"),
+    R("HNL → Hilton","约8英里","20–25分钟","11:45出机场后"),
+    R("Hilton → Kapahulu Ave","约3.5英里","12分钟","Leonard's / Ono Seafood"),
+    R("Kapahulu → Don Quijote(Kalākaua Ave)","约2英里","10分钟",""),
+    R("Kapahulu → Walmart(Keeaumoku St)","约3英里","12分钟","更便宜，适合大量采购"),
+    R("Don Quijote → Hilton","约1.7英里","8分钟","买了较多东西，打车回"),
+  ],
+  eat:[
+    E("Leonard's Bakery","933 Kapahulu Ave, Honolulu, HI 96816","距Hilton约3.5英里，打车约12分钟","$（$2–4/个）","1952年开业的葡式炸面包malasada，趁热吃最好，也有原味和夹馅。"),
+    E("Ono Seafood","747 Kapahulu Ave, Honolulu, HI 96816","距Leonard's约0.3英里，步行5分钟","$$（$12–18/份）","本地人常去的poke外带小店，选shoyu ahi或spicy ahi；量小，两人可以点两种。"),
+    E("Ono Hawaiian Foods","726 Kapahulu Ave, Honolulu, HI 96816","距Ono Seafood约0.1英里","$$（$15–22）","传统夏威夷菜：kalua pig、laulau、poi、lomi salmon，想吃一顿正宗夏威夷餐就来这里。"),
+  ],
+  eatNote:"今天时间宽松，可以坐下好好吃。购物买的方便食品当作后面几天的零食储备，避免在景点吃贵价餐。",
+  shop:{
+    stores:[
+      E("Don Quijote Waikiki","2233 Kalākaua Ave, Honolulu, HI 96815","距Hilton约1.7英里，打车8分钟","$–$$","日系折扣超市，便宜的日本零食、饭团、泡面、水果，营业时间长，以地图为准。"),
+      E("Walmart Supercenter (Ala Moana)","700 Keeaumoku St, Honolulu, HI 96814","距Hilton约3英里，打车12分钟","$","最便宜，蛋白棒、坚果、罐头、水都比Waikiki便宜不少，适合一次买齐。"),
+      E("Foodland Farms Ala Moana","1450 Ala Moana Blvd, Honolulu, HI 96814","距Hilton约1.3英里，打车8分钟","$$–$$$","在Ala Moana Center里，品类全，有现成的poke和熟食，价格偏高。"),
+    ],
+    groups:[
+      ["饮水补给","饮用水（大瓶，每人至少3–4升备用：Diamond Head、火山、Mauna Kea、飞机上）、电解质冲剂或运动饮料粉"],
+      ["蛋白质（不需要冷藏，性价比优先）","蛋白棒（大盒）、金枪鱼/鲭鱼罐头（拉环款）、牛肉干、毛豆或鹰嘴豆零食、花生酱小罐或单包、杏仁/腰果/夏威夷果、乳清蛋白粉单包（如果有）"],
+      ["碳水","燕麦杯或即食燕麦、tortilla或全麦面包、苏打饼干、即食米饭、能量胶或干果"],
+      ["水果","香蕉、苹果、橘子、葡萄干、芒果干（当天到Hilo Farmers Market再买鲜果）"],
+      ["热饮","茶包、速溶咖啡、热可可（火山公园4,000英尺和Mauna Kea 9,200英尺夜里冷），杯面需要热水，Camper Cabin有没有热水没确认，别当主力"],
+      ["杂物","纸巾、湿巾、垃圾袋、一次性餐具、保鲜袋、AAA电池（头灯用）、reef-safe防晒霜、驱蚊液、防水手机袋"],
+    ],
+    note:"你目前在减脂阶段，选蛋白质时优先看每克蛋白的价格，口味放后面，所以这里优先列蛋白棒、罐头鱼、牛肉干、坚果。10/1 Mauna Kea 前和10/2 去机场前的补给，可以在Hilo再补：KTA Super Stores（321 Keawe St, Hilo）或 Walmart（325 E Makaala St, Hilo）。"
+  },
+  alt:[
+    A("Kapiolani Park","3840 Paki Ave, Honolulu, HI 96815","距Kapahulu约0.8英里","草地和树荫，适合散步、倒时差。"),
+    A("Waikiki Aquarium","2777 Kalākaua Ave, Honolulu, HI 96815","距Kapiolani Park约0.3英里","小型水族馆，票价和开放时间以官网为准。"),
+    A("Ala Moana Beach Park","1201 Ala Moana Blvd, Honolulu, HI 96814","距Hilton约2英里，打车10分钟","本地人常去的海滩，人比Waikiki少，有沙滩和泳道。"),
+    A("Royal Hawaiian Center","2201 Kalākaua Ave, Honolulu, HI 96815","距Hilton约1.5英里","购物中心，晚上有免费文化活动（时间以官网为准）。"),
+  ],
+  pack:["舒适的步行鞋、帽子、防晒霜","可折叠购物袋、信用卡和少量现金","泳衣和毛巾，傍晚去海滩","手机充满电，导航和叫车都要用","给搭子接机：写好航班信息、留好接机点"]
 },
+/* ================= Day3 ================= */
 {
-  date:"Day4 · 9/29 周二", island:"Oahu", title:"North Shore：冲浪 + 浮潜", exert:"适中", overnight:"住 Waikiki",
+  date:"Day3 · 9/28 周一", island:"Oahu", title:"Diamond Head + Windward Oahu：Kualoa牧场 + 植物园", exert:"较满", overnight:"住 Waikiki（Hilton Hawaiian Village）",
   stops:[
-    {time:"09:00–11:00", name:"Haleiwa 学冲浪", intro:"North Shore冬季(11月–次年2月)是全球职业冲浪圣地，浪高能到20英尺以上；但9月正处于夏季平静期，浪小、好上手，反而是最适合零基础入门的季节和地点。North Shore Oahu Surf School是本地老牌冲浪学校，教练会根据当天浪况选择Puaena Point或Chun's Reef两处海滩上课，都在Haleiwa镇几分钟车程内。", logi:"约$70–130/人（2小时团体课，视课程档次而定）；官网可预订，前一天会短信/邮件告知具体集合海滩；08:00从Waikiki出发(约50分钟–1小时)。", link:"https://northshoreoahusurf.com/", linkText:"North Shore Oahu Surf School官网", lat:21.5975,lng:-158.1140,bonus:false},
-    {time:"09:00–11:00", name:"Shark's Cove 浮潜", intro:"名字里带'鲨鱼'，但其实和鲨鱼没什么关系——得名于从空中俯瞰整片礁石轮廓神似鲨鱼头，是North Shore最知名的浮潜点之一，曾被Scuba Diving Magazine评为全球十二大岸潜点之一。礁石环抱出一片相对平静的水域，能见度高，常年能看到上百种热带鱼和绿海龟。9月正值北岸夏季'风平浪静期'，是全年最适合下水的时段，而且和冲浪课的海滩只隔几分钟车程，两人可以分头玩、中午碰头。", logi:"免费下水；现场Shark's Cove Rentals或Haleiwa的Surf N Sea租浮潜三件套(约$10/半天)；无救生员看守，下水前留意当天海况(北向涌浪超2–3英尺就不建议下水)。", link:"https://sharkscovesnorkelrental.com/", linkText:"装备租赁", lat:21.6396,lng:-158.0625,bonus:false},
-    {time:"11:30–12:30", name:"Haleiwa小镇午餐", intro:"20世纪初的老糖厂小镇，如今怀旧的种植园风格建筑里开满冲浪店、艺术画廊和刨冰摊，是北岸的生活与商业中心。Matsumoto's Shave Ice从1951年开到现在，是岛上最有名的刨冰地标之一，常年排队但翻台快。两人在这里碰头，正好交换一下今天的体验。", logi:"", lat:21.5944,lng:-158.1044,bonus:false},
+    {time:"07:45–08:15", name:"Hilton内租车柜台取车", intro:"Full Size Nissan Altima，预订08:00取车。取车点就在酒店内。", logi:"取车和开到Diamond Head之间几乎没有缓冲：08:00取车、08:15出发、08:30前入园。建议07:45就到柜台排队，并提前问柜台能否07:30起取。", addr:"Hilton Hawaiian Village, 2005 Kalia Rd, Honolulu, HI 96815", lat:21.2847,lng:-157.8378,bonus:false},
+    {time:"08:00–10:00", name:"Diamond Head 徒步（已预约，2人含停车）", intro:"30万年前一次单一喷发形成的凝灰岩火山口，夏威夷语名「Lēʻahi」（金枪鱼额头的意思，因山脊形状得名）。步道从火山口内部往上爬升约0.8英里到山脊顶端，途经99级台阶、一条黑暗的隧道和二战时期的Fire Control Station瞭望碉堡，山顶可以看到整条Waikiki海岸线和Ko'olau山脉。", logi:"$5/人+$10/车，已在gostateparks.hawaii.gov预约08:00–10:00时段；车辆必须在预约开始后30分钟内（08:30前）到达；二维码只能扫一次，手机出示即可；Hilton → 景区约15–20分钟；全程往返约1.5小时，预计09:45–10:00下山。", addr:"Diamond Head State Monument, 3300 Monsarrat Ave, Honolulu, HI 96815", link:"https://gostateparks.hawaii.gov/diamondhead/", linkText:"官方预约系统", lat:21.2620,lng:-157.8056,bonus:false},
+    {time:"10:15–11:15", name:"驱车前往 Kualoa Ranch（可顺路买午饭）", intro:"", logi:"Diamond Head → Kualoa 约50–60分钟（约35英里），预计11:15前后到；11:55前必须到售票处签到，不要卡点。想吃点热的，可以在Rainbow Drive-In（离Diamond Head约1.5英里）外带plate lunch，在车上吃，绕路约10分钟。", addr:"Kualoa Ranch, 49-560 Kamehameha Hwy, Kaneohe, HI 96744", lat:21.5219,lng:-157.8395,bonus:false},
+    {time:"11:55 签到 · 12:40 发车", name:"Kualoa Ranch 电影取景地牧场之旅（Movie Sites & Ranch Tour）", intro:"牧场占地4,000英亩，横跨Ka'a'awa峡谷与Hakipu'u雨林，从1950年代起就是好莱坞的'夏威夷外景基地'，累计超过250部电影/剧集在此取景，包括《侏罗纪公园》系列、《金刚：骷髅岛》、《50 First Dates》等。Movie Sites & Ranch Tour乘敞篷巴士穿行牧场，向导逐一指出取景地并讲述拍摄故事。", logi:"2位成人；11:55前到售票处签到，发车前15分钟到登车区，迟到不退不改；行程约1.5小时，预计14:10结束。", addr:"Kualoa Ranch, 49-560 Kamehameha Hwy, Kaneohe, HI 96744", link:"https://www.kualoa.com/tours/", linkText:"官网与场次", lat:21.5219,lng:-157.8395,bonus:false},
+    {time:"14:30–15:30", name:"Ho'omaluhia Botanical Garden", intro:"400英亩的免费市立植物园，园区背靠Ko'olau山脉最陡峭的一段峭壁，一整片人工湖倒映着山景，是全岛拍照最出片的植物园之一。游客不多、氛围安静，适合牧场之旅后放慢脚步。", logi:"免费；开放09:00–16:00；Kualoa → 植物园约20分钟，预计14:30到；步道多为平地，走走停停约1小时，16:00前离开。", addr:"Ho'omaluhia Botanical Garden, 45-680 Luluku Rd, Kaneohe, HI 96744", link:"https://www.honolulu.gov/parks/hbg", linkText:"官网信息", lat:21.3898,lng:-157.8093,bonus:false},
   ],
-  returnNote:"下午可自由活动或早点回Waikiki休息，晚上早点睡，明天要飞大岛。",
-  bonusNote:"顺路：Waimea Bay悬崖跳水点和Waimea Valley植物谷都在马路对面/2分钟车程，非必去，时间富余可以顺路看一眼；Pipeline(Ehukai Beach)、Sunset Beach也在同一条Kamehameha Hwy上。"
+  returnNote:"植物园 → Hilton 约30–40分钟，预计16:15–16:45回到。Hilton停车为收费，提前问好停车方式和费用。",
+  bonusNote:"Kualoa到Kaaawa、Waiahole一线沿海公路，路边有不少小摊和小店；想加Luau需提前1–2周订，今天不建议再加。",
+  drive:[
+    R("Hilton → Diamond Head","约5英里","15–20分钟","早上有通勤车流；停车须在08:00–08:30到达"),
+    R("Diamond Head → Rainbow Drive-In","约1.5英里","5分钟","可选，外带早午餐"),
+    R("Diamond Head/Rainbow Drive-In → Kualoa","约35英里","50–60分钟","经H-1 / Pali Hwy / Kamehameha Hwy；11:55前签到"),
+    R("Kualoa → Kaaawa Country Kitchen","约2英里","4分钟","牧场后补吃"),
+    R("Kualoa → Ho'omaluhia","约12英里","20分钟","植物园16:00关门"),
+    R("Ho'omaluhia → Hilton","约15英里","30–40分钟","晚高峰前出发"),
+  ],
+  eat:[
+    E("Rainbow Drive-In","3308 Kanaina Ave, Honolulu, HI 96815","距Diamond Head入口约1.5英里，车程5分钟","$（$10–13）","1961年开业的本地plate lunch，Loco Moco、Mixed Plate份量大，营业时间早，下山后顺路外带在车上吃。"),
+    E("Kaaawa Country Kitchen","51-480 Kamehameha Hwy, Kaaawa, HI 96730","距Kualoa约2英里，车程4分钟","$–$$（$10–16）","本地家庭式早午餐和plate lunch，牧场之旅后补吃；营业时间请提前核对。"),
+    E("Waiahole Poi Factory","48-140 Kamehameha Hwy, Kaneohe, HI 96744","距Kualoa约6英里，车程10分钟","$$（$14–22）","传统夏威夷菜，kalua pig、laulau、poi；营业到下午，赶在午后打烊前，在去Ho'omaluhia的路上。"),
+  ],
+  eatNote:"今天最紧：Diamond Head 10:00下山到Kualoa 11:55签到之间只有一小段空档，不想耽误就在车上吃前一天买的饭团和能量棒；牧场之旅14:10结束到植物园14:30之间，可以在Kaaawa Country Kitchen快速补吃，或者带到植物园野餐。",
+  alt:[
+    A("Diamond Head Lookout","Diamond Head Rd, Honolulu, HI 96815","距Diamond Head入口约1英里","不爬山也可以看到海边冲浪和Diamond Head，如果预约时间赶不上可以先来这里。"),
+    A("Kualoa Regional Park","49-479 Kamehameha Hwy, Kaneohe, HI 96744","距Kualoa Ranch约1英里，车程3分钟","沙滩正对Mokoli'i（中国人帽子岛），如果12:40前有空档，可以在这里休息。"),
+    A("Tropical Farms Macadamia Nut Farm","49-227 Kamehameha Hwy, Kaneohe, HI 96744","距Kualoa约4英里，车程8分钟","夏威夷果农场，有试吃，适合买伴手礼和零食。"),
+    A("Byodo-In Temple","47-200 Kahekili Hwy, Kaneohe, HI 96744","距Ho'omaluhia约5英里，车程10分钟","日本平等院的复刻寺庙，$5–10/人+停车（以官网为准），开放至16:30，今天时间偏紧，除非提前结束。"),
+  ],
+  pack:["徒步鞋或运动鞋（Diamond Head 99级台阶和碎石路）、速干上衣、帽子、墨镜、防晒霜","水：每人至少1升；能量棒、水果","轻便防雨外套（Kualoa和植物园常有阵雨）","驾照+信用卡（取车）、Diamond Head二维码、Kualoa确认号1MQR1CX2","车载手机支架、充电线、充电宝","备用T恤和毛巾，放车里","拖鞋，牧场之旅后换","垃圾袋、纸巾、湿巾","车上放：水、零食、太阳镜"]
 },
+/* ================= Day4 ================= */
 {
-  date:"Day5 · 9/30 周三", island:"Oahu → Big Island", title:"飞Hilo + 火山夜观", exert:"适中", overnight:"住 Nāmakanipaio 小木屋（火山公园内）",
+  date:"Day4 · 9/29 周二", island:"Oahu", title:"North Shore：租板冲浪 + 浮潜", exert:"适中", overnight:"住 Waikiki（Hilton Hawaiian Village）",
   stops:[
-    {time:"上午", name:"Honolulu(HNL) → Hilo(ITO)", intro:"", logi:"岛内航班约45分钟；建议订上午/中午的航班，留出下午活动时间。", lat:21.3187,lng:-157.9224,bonus:false},
-    {time:"中午", name:"抵达Hilo，取车", intro:"", logi:"Hilo机场租车柜台就在航站楼里，比Kona方便，不用坐班车；取车后往市区约10分钟。", lat:19.7203,lng:-155.0485,bonus:false},
-    {time:"13:30–14:30", name:"Rainbow Falls 彩虹瀑布", intro:"Wailuku River State Park内一处落差80英尺的瀑布，得名于清晨阳光角度合适时水雾中常出现彩虹。观景台就在停车场旁，几乎不用走路就能看到，是转场日插空的理想轻松景点。夏威夷传说中这里是月亮女神Hina的居所，瀑布后方有一个天然洞穴据说是她的家。", logi:"免费；从Hilo市区约5–10分钟；停留20–30分钟足够。", link:"https://dlnr.hawaii.gov/dsp/parks/hawaii/wailuku-river-state-park/", linkText:"州立公园信息", lat:19.7194,lng:-155.1069,bonus:false},
-    {time:"15:00–16:15", name:"驱车前往火山公园", intro:"", logi:"从Hilo约45分钟；16:15左右办理Nāmakanipaio小木屋入住。", lat:19.4194,lng:-155.2885,bonus:false},
-    {time:"19:30起", name:"步行去看火山口夜间辉光", intro:"Kilauea Overlook等观景台就在住处附近，晚上人少、天黑后视觉效果最好。Kilauea处于间歇喷发状态，若正逢活跃期能看到红色岩浆辉光映照云层，即使没有喷发，火山口本身持续冒出的蒸汽和硫磺味也很有临场感。", logi:"出发前查USGS官网实时火山活动公告。", link:"https://www.nps.gov/havo/", linkText:"公园官网", lat:19.4194,lng:-155.2885,bonus:false},
+    {time:"08:00", name:"从 Hilton 出发去 Haleiwa", intro:"", logi:"Hilton → Haleiwa 约50–60分钟（约32英里），预计08:55–09:00到，正好赶上冲浪店09:00开门。出发前在车上吃点香蕉和能量棒，或到Haleiwa后在Cafe Haleiwa吃早餐。", addr:"Haleiwa Surf Shop, 66-214 Hale'iwa Rd, Hale'iwa, HI 96712", lat:21.5944,lng:-158.1044,bonus:false},
+    {time:"09:00–09:15", name:"Haleiwa Surf Shop 租板", intro:"店在Haleiwa Ali'i Beach Park对面，长板、泡沫软板、中长板、短板都有，也租SUP、浮潜装备。你已经上过一节课了，选8–9英尺长板或软板最稳，练站起来和转向。", logi:"营业时间09:00–18:00，电话808-744-0401；价格官网没列，请电话问或到店看；押金和证件以店里要求为准。备选：Surf N Sea（62-595 Kamehameha Hwy，营业时间和价格我没核实到）。", addr:"Haleiwa Surf Shop, 66-214 Hale'iwa Rd, Hale'iwa, HI 96712", link:"https://www.haleiwasurfshop.com/", linkText:"Haleiwa Surf Shop官网", lat:21.5975,lng:-158.1140,bonus:false},
+    {time:"09:15–11:15", name:"冲浪：Haleiwa Ali'i Beach Park / Puaena Point", intro:"店对面就是Haleiwa Ali'i Beach Park，夏季浪小、走路就到，适合练习；Puaena Point在Haleiwa镇内，是当地教学常用的新手浪点；Chun's Reef是备选。North Shore冬季是全球职业冲浪圣地，浪高能到20英尺以上，但9月通常是平静期，反而适合入门。", logi:"最佳时间窗 09:15–11:15，见下面「冲浪时间安排」。太阳大，用rash guard和reef-safe防晒。", addr:"Haleiwa Ali'i Beach Park, 66-167 Hale'iwa Rd, Hale'iwa, HI 96712", lat:21.5960,lng:-158.1130,bonus:false},
+    {time:"09:15–11:00 同伴", name:"Shark's Cove 浮潜（搭子）", intro:"得名于从空中看整片礁石轮廓神似鲨鱼头，是North Shore最知名的浮潜点之一。礁石环抱出一片相对平静的水域，能见度高，常年能看到热带鱼和绿海龟。", logi:"免费下水；现场Shark's Cove Rentals或Haleiwa的Surf N Sea租浮潜三件套（约$10/半天）；无救生员，下水前看当天海况（北向涌浪超2–3英尺不建议下水）；最好在11:00前上岸，12:47低潮时水会变浅、礁石外露。Haleiwa → Shark's Cove 约10–15分钟。", addr:"Shark's Cove, 59-727 Kamehameha Hwy, Pupukea, HI 96712", link:"https://sharkscovesnorkelrental.com/", linkText:"装备租赁", lat:21.6396,lng:-158.0625,bonus:false},
+    {time:"11:30–12:30", name:"Haleiwa小镇午餐 + 还板", intro:"20世纪初的老糖厂小镇，如今满是冲浪店、艺术画廊和刨冰摊。Matsumoto's Shave Ice从1951年开到现在，是岛上最有名的刨冰地标之一，常年排队但翻台快。", logi:"11:15前后还板，两人在Haleiwa碰头。", addr:"Matsumoto Shave Ice, 66-111 Kamehameha Hwy, Haleiwa, HI 96712", lat:21.5944,lng:-158.1044,bonus:false},
   ],
-  returnNote:"晚上已经住在公园里，看完辉光走几步就能睡，不需要额外返程。",
-  bonusNote:"★今晚是「灵活机动」的一晚：如果当晚喷发活跃、辉光明显，可以多待一会儿甚至半夜再看一次；如果比较平静，看个大概意思就早点休息，把体力留给明晚的Mauna Kea。两晚的重点其实也可以互换，出发前看一下USGS火山活跃度公告和Mauna Kea当晚的云量/月相预报，哪晚条件更好就把「重头戏」留给哪晚。"
+  returnNote:"Haleiwa → Hilton 约50–60分钟，建议14:00–15:00出发回酒店休息。晚上收拾行李：明早6:15就要上车去机场，一定要提前打包。",
+  bonusNote:"⚠ 租车9/29 22:00前要在Hilton还车（after-hours还车），还车前加满油，建议19:00前就还掉，别拖到最后。⏰ 9/29 08:55（HST）是WN1842选座开放的时间，也是预约明早去机场的车的时间，日历里有提醒。",
+  surf:{
+    title:"🏄 冲浪时间安排（North Shore）",
+    items:[
+      "租板：Haleiwa Surf Shop 09:00才开门，所以最早09:15下水；Surf N Sea 的营业时间我没查到，去之前打电话。",
+      "潮汐（Honolulu预报，英尺）：05:55高潮 2.2，12:47低潮 0.6，17:19高潮 1.0。09:15–11:15 是退潮中段，礁石相对安全；12:00以后接近低潮，礁石变浅，不建议冲。",
+      "风：信风一般在上午10–11点后加强，浪面会变乱，所以早点下水更好。",
+      "浪况：9/22–9/23 北岸预报3–5英尺，对新手偏大，而且北岸海流强。9/29 的预报还没发布，9/28 晚上再看NWS或Surfline。如果 ≥4英尺、或有 High Surf Advisory，改成Shark's Cove浮潜，或者回Waikiki南岸冲。",
+      "时间限制：我没有查到北岸这些海滩按时段限制冲浪的官方规定；只在有救生员或告示允许的区域冲，看当天告示牌。",
+      "自己练的注意：一定要戴脚绳；不要离岸太远；搭子在岸上时约好碰头时间；防晒每小时补涂。"
+    ],
+    note:"备选：如果9/29北岸浪太大，Waikiki的Canoes和Queens租板更方便（租借摊位约07:00–17:00营业，板子要在Waikiki冲浪区内使用、原地归还），就在Hilton和Hostel附近，可以晚一点再安排。"
+  },
+  drive:[
+    R("Hilton → Haleiwa","约32英里","50–60分钟","经H-1 / H-2 / Wahiawa；08:00出发"),
+    R("Haleiwa → Haleiwa Ali'i Beach Park","约0.2英里","步行3分钟","店在公园对面"),
+    R("Haleiwa → Shark's Cove","约7英里","10–15分钟","沿Kamehameha Hwy"),
+    R("Shark's Cove → Ted's Bakery","约3英里","5分钟","回程顺路"),
+    R("Haleiwa → Hilton","约32英里","50–60分钟","14:00–15:00出发"),
+  ],
+  eat:[
+    E("Cafe Haleiwa","66-460 Kamehameha Hwy, Haleiwa, HI 96712","距Haleiwa Surf Shop约1英里，车程3分钟","$$（$12–18）","冲浪客早餐名店，breakfast burrito、Loco Moco；08:45到的话，15分钟外带在车上吃。"),
+    E("Matsumoto Shave Ice","66-111 Kamehameha Hwy, Haleiwa, HI 96712","距Haleiwa Surf Shop约0.3英里，步行5分钟","$（$5–8）","1951年开业，红豆(azuki)加冰淇淋底最受欢迎，排队大但翻台快。"),
+    E("Ted's Bakery","59-024 Kamehameha Hwy, Haleiwa, HI 96712","距Shark's Cove约3英里，车程5分钟","$（$10–14）","以chocolate haupia pie（巧克力椰奶派）出名，plate lunch也有，回程顺路。"),
+  ],
+  eatNote:"早上08:00出发前先吃香蕉和能量棒；租板后09:15–11:15没有空档，午饭放在11:30以后；赶时间就在Cafe Haleiwa外带早餐，在车上吃。",
+  alt:[
+    A("Waimea Bay Beach Park","61-031 Kamehameha Hwy, Haleiwa, HI 96712","距Shark's Cove约3英里，车程6分钟","夏季海面平静，可以游泳，悬崖跳水是本地人的传统。"),
+    A("Waimea Valley","59-864 Kamehameha Hwy, Haleiwa, HI 96712","在Waimea Bay对面","热带植物园和瀑布，票价和开放时间以官网为准。"),
+    A("Laniakea Beach（海龟滩）","Kamehameha Hwy, Haleiwa, HI 96712","距Haleiwa约3英里，车程6分钟","常有绿海龟上岸休息，保持距离，禁止触碰。"),
+    A("Sunset Beach Park","59-104 Kamehameha Hwy, Haleiwa, HI 96712","距Shark's Cove约2英里","冬季是大浪冲浪点，夏季沙滩很宽，适合散步。"),
+    A("Dole Plantation","64-1550 Kamehameha Hwy, Wahiawa, HI 96786","回程顺路，距Haleiwa约10英里，车程20分钟","菠萝迷宫和Dole Whip冰淇淋，适合回程休息，价格和时间以官网为准。"),
+  ],
+  pack:["冲浪：泳衣、rash guard、速干短裤、reef-safe防晒霜（每小时补涂）、防水手机袋、脚绳（租板时会给）、毛巾、拖鞋","浮潜：面镜/呼吸管自带或到Shark's Cove租，水鞋（礁石多）","干衣服和塑料袋，装湿衣服","帽子、墨镜、驱蚊液","水和零食，车上放冰袋没意义，选不需要冷藏的","驾照和信用卡；车上垃圾清理干净","晚上还车前把手机支架、充电线、垃圾清出来","今晚打包：明早6:15上车去机场"]
 },
+/* ================= Day5 ================= */
 {
-  date:"Day6 · 10/1 周四", island:"Big Island", title:"火山公园 → 转住Hilo → Mauna Kea星空", exert:"较满（熬夜）", overnight:"住 Hilo（Hilo Hawaiian Hotel 或 Grand Naniloa Hotel Hilo，二选一）",
+  date:"Day5 · 9/30 周三", island:"Oahu → Big Island", title:"飞Hilo + Hilo Farmers Market + 火山公园", exert:"适中", overnight:"住 Nāmakanipaio 小木屋（火山公园内，Volcano House 的 Camper Cabin）",
   stops:[
-    {time:"上午", name:"公园内轻松走走", intro:"体力允许可以看Steam Vents天然蒸汽口——地下水渗入滚烫岩层后化为蒸汽从地面裂缝冒出，免费、就在主环路边。视昨晚熬夜程度灵活决定要不要安排，睡饱同样重要。", logi:"11:00退房前往Hilo(约45分钟)。", lat:19.4194,lng:-155.2885,bonus:false},
-    {time:"中午–下午", name:"Hilo入住 + 休息", intro:"", logi:"两家都在Banyan Drive海湾边：Hilo Hawaiian Hotel性价比更高（Double Queen两床房约$139–149/晚）；Grand Naniloa Hotel Hilo档次更高、海景更好（约$184+/晚，King或Queen房型）。为晚上熬夜观星攒精神。", link:"https://www.hilohawaiian.com/", linkText:"Hilo Hawaiian Hotel官网", lat:19.7241,lng:-155.0868,bonus:false},
-    {time:"17:30–21:00", name:"Mauna Kea 日落 + 星空", intro:"从海底算起(约33,500英尺)是世界第一高山，山顶因为空气极度干燥、光污染极低、大气层稳定，聚集了13座全球顶尖天文台（包括凯克望远镜）。位于9,200英尺的Onizuka游客信息站(VIS)全年365天开放9am–9pm，站在观景台上通常已经身处云海之上，肉眼就能看到惊人密度的星空；每月还有一次限额预约的免费望远镜观星活动。想上到13,800英尺真正的山顶看日落，则须包车跟团（租车公司禁止自驾租车上山，且山顶道路在日落后30分钟到日出前30分钟封闭）。", logi:"16:00从Hilo出发(约1.5小时)；VIS平台免费开放无需预约，望远镜活动需另查当月场次。", link:"https://hilo.hawaii.edu/maunakea/", linkText:"游客信息站官网", lat:19.7719,lng:-155.4556,bonus:false},
+    {time:"06:15", name:"Hilton退房 → 打车去机场", intro:"今天没有租车，Uber/Lyft去机场。建议06:15上车，06:40前到HNL，离08:55起飞约2小时15分钟。", logi:"Hilton → HNL 约20–25分钟。9/29 09:00预约，9/29 19:00再确认一次。为什么是06:15：岛内航班早晨安检最长，留出2小时左右；再晚有排队和行李的风险，再早也没地方等。", addr:"Daniel K. Inouye International Airport, 300 Rodgers Blvd, Honolulu, HI 96819", lat:21.3187,lng:-157.9224,bonus:false},
+    {time:"08:55–09:55", name:"WN1842：Honolulu(HNL T2) → Hilo(ITO)", intro:"Southwest，经济舱，飞行约1小时。飞猪订单显示“信息变更”，出发前请核对最新起降时间。", logi:"飞猪选座预计9/29 08:55开放（HST）。", addr:"Hilo International Airport, 2450 Kekuanaoa St, Hilo, HI 96720", lat:19.7203,lng:-155.0485,bonus:false},
+    {time:"10:15–10:45", name:"Hilo机场取车", intro:"Full Size Nissan Altima，预订09:30取车，航班09:55才落地，取车时告诉柜台航班号，或提前把取车时间改到10:30。", logi:"Hilo机场租车柜台就在航站楼里，不用坐班车。", addr:"Hilo International Airport, 2450 Kekuanaoa St, Hilo, HI 96720", lat:19.7203,lng:-155.0485,bonus:false},
+    {time:"10:45–11:15", name:"Rainbow Falls 彩虹瀑布", intro:"Wailuku River State Park内一处落差80英尺的瀑布，清晨阳光角度合适时水雾中常出现彩虹。观景台就在停车场旁，几乎不用走路，是转场日插空的理想轻松景点。传说这里是月亮女神Hina的居所。", logi:"免费；机场 → 瀑布约10分钟；停留20–30分钟。", addr:"Rainbow Falls, Waiānuenue Ave, Hilo, HI 96720", link:"https://dlnr.hawaii.gov/dsp/parks/hawaii/wailuku-river-state-park/", linkText:"州立公园信息", lat:19.7194,lng:-155.1069,bonus:false},
+    {time:"11:30–12:30", name:"Hilo Farmers Market + 午餐", intro:"周三和周六是摊位最全、最热闹的日子，有热带水果、花、熟食和手工艺品；正好补上Oahu周六错过的KCC Farmers Market体验。", logi:"瀑布 → 市集约5分钟；补给一些水果和水，火山公园里没有超市。部分摊位只收现金。", addr:"Hilo Farmers Market, Mamo St & Kamehameha Ave, Hilo, HI 96720", lat:19.7256,lng:-155.0870,bonus:false},
+    {time:"12:30–13:15", name:"驱车前往火山公园", intro:"", logi:"Hilo → 火山公园入口约45分钟（约30英里），预计13:15到；入园费$30/车，7天有效，覆盖今明两天。不需要预约，也没有定时入园：可以到入口刷卡现买（只收信用卡/借记卡，不收现金），或提前在Recreation.gov买电子票、存在手机里，进园更快。以NPS官网为准。", addr:"Hawaii Volcanoes National Park, HI 96718", link:"https://www.nps.gov/havo/", linkText:"公园官网", lat:19.4300,lng:-155.2560,bonus:false},
+    {time:"13:15–15:00", name:"Kīlauea Visitor Center + Steam Vents / Sulphur Banks", intro:"先在访客中心查当天火山活动、步道和道路封闭信息。Steam Vents是地下水渗入滚烫岩层后化为蒸汽从地面裂缝冒出，Sulphur Banks有硫磺气味的黄色结晶，都免费、就在Crater Rim Drive边。", logi:"各景点之间开车5–10分钟。", addr:"Kīlauea Visitor Center, 1 Crater Rim Dr, Hawaii Volcanoes National Park, HI 96718", lat:19.4300,lng:-155.2560,bonus:false},
+    {time:"15:00–16:00", name:"入住 Nāmakanipaio 小木屋", intro:"Volcano House的Camper Cabin，海拔约4,000英尺，木屋约200平方英尺，公共浴室和卫生间。夜里气温明显偏低，带保暖衣物和头灯。", logi:"小木屋在Volcano House再往前约3英里，从Volcano House约5–8分钟。具体入住流程和被褥毛巾情况，出发前请再看确认邮件或电话Volcano House确认。", addr:"Nāmakanipaio Campground, Hawaii Volcanoes National Park, HI 96718", lat:19.4288,lng:-155.3117,bonus:false},
+    {time:"19:30起", name:"看火山口夜间辉光", intro:"Kilauea Overlook等观景台离住处很近，晚上人少、天黑后视觉效果最好。若逢活跃期能看到红色岩浆辉光映照云层，即使没有喷发，火山口冒出的蒸汽和硫磺味也很有临场感。", logi:"小木屋 → 观景台约8–10分钟；出发前查USGS官网实时火山活动公告。带头灯、外套。", addr:"Kīlauea Overlook, Crater Rim Dr, Hawaii Volcanoes National Park, HI 96718", link:"https://www.nps.gov/havo/", linkText:"公园官网", lat:19.4194,lng:-155.2885,bonus:false},
   ],
-  returnNote:"返回Hilo住处约1.5小时——建议轮流开车、注意休息。",
-  bonusNote:"★这天晚上也可以升级成付费的13,800英尺山顶日落+观星跟团（替换掉免费的VIS自驾观星，同一个晚上，不用额外挪日子）。今明两晚都是晚睡，后天(10/2)还要赶晚班机，建议这两晚别都熬到太晚。"
+  returnNote:"看完辉光开车回小木屋约8–10分钟，早点休息。",
+  bonusNote:"★今晚是「灵活机动」的一晚：如果喷发活跃、辉光明显，可以多待一会儿；如果比较平静，看个大概意思就早点休息，把体力留给明晚的Mauna Kea。出发前看USGS火山活跃度公告和Mauna Kea当晚的云量/月相预报，哪晚条件好就把「重头戏」留给哪晚。<br>🚦 <b>火山公园限行/停车：</b>没有限行，也不用预约入园；但Kīlauea自2024年12月起间歇性喷发（已超过50次，每次几小时，间隔几天到几周），喷发期间会堵车、停车位减少，停车场常在10:00前就满。Kīlauea Overlook、Uēkahuna和访客中心（走Crater Rim Drive西侧）通常车位相对多一些，准备好备选停车点。公园还有顶部设施的施工和局部道路/步道关闭，火山气体（vog）对呼吸道敏感者不友好。出发前查USGS每日更新、NPS路况页和空气质量，夜间去看辉光带头灯、外套、口罩和防雨衣。<br>⏰ 9/29 08:55 选座开放；9/29 09:00 预约今天06:15去机场的车；9/29 19:00 再确认。",
+  drive:[
+    R("Hilton → HNL","约8英里","20–25分钟","06:15上车，06:40前到"),
+    R("Hilo机场 → Rainbow Falls","约5英里","10分钟",""),
+    R("Rainbow Falls → Hilo Farmers Market","约2英里","5分钟",""),
+    R("Farmers Market → Cafe 100","约1.5英里","5分钟","可选午餐"),
+    R("Hilo → 火山公园入口","约30英里","45分钟","经Hwy 11"),
+    R("Volcano House → Nāmakanipaio小木屋","约3英里","5–8分钟",""),
+    R("小木屋 → Kīlauea Overlook","约4英里","8–10分钟","19:30后夜观"),
+    R("小木屋 → Volcano Village(晚餐)","约8英里","15分钟","20:00前后多数店打烊"),
+  ],
+  eat:[
+    E("Hilo Farmers Market","Mamo St & Kamehameha Ave, Hilo, HI 96720","距Rainbow Falls约5分钟","$（$3–10）","热带水果（香蕉、番木瓜、红毛丹）、poke、烧烤串、蛋糕；周三最全；部分摊位只收现金。"),
+    E("Cafe 100","969 Kilauea Ave, Hilo, HI 96720","距Farmers Market约1.5英里，车程5分钟","$（$8–12）","Hilo老牌loco moco名店，几十种实惠的loco moco，本地人爱去。"),
+    E("Kilauea Lodge Restaurant","19-3948 Old Volcano Rd, Volcano, HI 96785","距小木屋约8英里，车程15分钟","$$$（$25–40）","壁炉、欧式菜，适合想吃热的晚饭；需要提前订位，营业时间以官网为准。"),
+    E("Lava Rock Café","19-3972 Old Volcano Rd, Volcano, HI 96785","距小木屋约8英里，车程15分钟","$–$$（$10–16）","Volcano Village的休闲小馆，三明治、咖啡；营业时间偏早，请提前核对。"),
+  ],
+  eatNote:"今天最容易挨饿：09:55落地，12:30起进山，之后主要在火山公园里，园内餐饮少，Volcano Village的店20:00前后基本打烊。在Hilo Farmers Market买好水果和熟食，再去KTA或Walmart补方便食品，作为傍晚晚饭（小木屋没冰箱，选不需要冷藏的）。",
+  alt:[
+    A("Pe'epe'e Falls & Boiling Pots","Waiānuenue Ave, Hilo, HI 96720","距Rainbow Falls约2英里，车程5分钟","Wailuku River State Park上游，水量大时很壮观，不要下水（有危险）。"),
+    A("Kaumana Caves County Park","Kaumana Dr, Hilo, HI 96720","从Hilo去火山公园的路上，绕路约10分钟","熔岩洞，需要带头灯，进洞时注意脚下。"),
+    A("Hawaii Tropical Botanical Garden","27-717 Old Mamalahoa Hwy, Papaikou, HI 96781","距Hilo约9英里，车程20分钟","海边热带植物园，票价和开放时间以官网为准，需提前订。"),
+    A("Volcano Art Center Gallery","1 Crater Rim Dr, Hawaii Volcanoes National Park, HI 96718","距访客中心约0.2英里","本地艺术品，收入支持公园，适合等入住的时间。"),
+    A("Kīlauea Iki Overlook","Crater Rim Dr, Hawaii Volcanoes National Park, HI 96718","距访客中心约2英里，车程5分钟","看熔岩湖遗迹，步行几分钟即到，徒步下去往返约4英里、2–3小时。"),
+  ],
+  pack:["早班机：前一晚打包好，06:15前放好行李，退房","保暖外套/抓绒衣、长裤、厚袜、帽子、手套（Nāmakanipaio约4,000英尺，夜里偏冷）","头灯+备用电池（夜观、小木屋），带红光更好","轻便防雨外套","Farmers Market用：环保袋、现金（有些摊位只收现金）","入园费用信用卡；驾照（取车）","水果、方便食品、热饮，小木屋没冰箱","口罩（火山气体、灰）","洗漱用品、毛巾，Camper Cabin有没有被褥未确认，自备睡袋内胆更稳","前一晚检查WN1842起飞时间"]
 },
+/* ================= Day6 ================= */
 {
-  date:"Day7 · 10/2 周五", island:"Big Island", title:"Liliuokalani Gardens → 还车 → 飞回Baltimore", exert:"轻松", overnight:"—（返程）",
+  date:"Day6 · 10/1 周四", island:"Big Island", title:"火山公园 → 转住Hilo → Mauna Kea星空", exert:"较满（熬夜）", overnight:"住 Hilo · Grand Naniloa Hotel（16:00后入住）",
   stops:[
-    {time:"09:00–10:30", name:"Liliuokalani Gardens + Coconut Island", intro:"1917年为纪念夏威夷末代女王Lili'uokalani而建的日式庭院公园，占地30英亩，红色拱桥、石灯笼、锦鲤池和一座传统茶室散落在草坪与棕榈树间，是本地人晨跑、打太极的日常去处。穿过一座250英尺的步行桥可以到Coconut Island（Moku Ola），那里能游泳、跳台跳水、看绿海龟，节奏很适合当作行程收尾。", logi:"免费；就在Hilo市区，从住处几分钟车程；逛+散步约1–1.5小时。", link:"https://www.gohawaii.com/islands/hawaii-big-island/regions/hilo/liliuokalani-gardens", linkText:"景点介绍", lat:19.7256,lng:-155.0736,bonus:false},
-    {time:"11:00", name:"退房 + 整理行李", intro:"", logi:"", lat:19.7241,lng:-155.0868,bonus:false},
-    {time:"16:00左右", name:"还车", intro:"", logi:"Hilo机场还车很方便；具体时间以航班为准，也可能需要提前，别排太紧的上午行程。", lat:19.7203,lng:-155.0485,bonus:false},
-    {time:"晚上", name:"Hilo(ITO) → Baltimore(BWI)", intro:"", logi:"通常经Honolulu或西岸转机，请预留充足时间；具体航班和登机口以实际购票为准。", lat:19.721,lng:-155.048,bonus:false},
+    {time:"上午", name:"公园内轻松走走", intro:"体力允许可以看Thurston Lava Tube（Nāhuku，熔岩管步道，约20–30分钟）；视昨晚熬夜程度灵活决定，睡饱同样重要。", logi:"小木屋 → Thurston Lava Tube约10分钟。小木屋12:00前退房。开放状态以NPS路况页为准。", addr:"Nāhuku (Thurston Lava Tube), Crater Rim Dr, Hawaii Volcanoes National Park, HI 96718", lat:19.4140,lng:-155.2380,bonus:false},
+    {time:"12:00–13:15", name:"退房 → 回 Hilo", intro:"", logi:"小木屋 → Hilo约55分钟，预计13:15前后到。", addr:"Grand Naniloa Hotel Hilo, 93 Banyan Dr, Hilo, HI 96720", lat:19.7241,lng:-155.0868,bonus:false},
+    {time:"13:15–15:00", name:"Hilo午餐 + 寄存行李/休息", intro:"Grand Naniloa Hotel Hilo在Banyan Drive海湾边，16:00起入住；到得早的话先在前台寄存行李，问一下能不能提前入住。为晚上熬夜观星攒精神。", logi:"", addr:"Grand Naniloa Hotel Hilo, 93 Banyan Dr, Hilo, HI 96720", link:"https://www.grandnaniloahilo.com/", linkText:"酒店官网", lat:19.7241,lng:-155.0868,bonus:false},
+    {time:"15:15 出发", name:"驱车前往 Mauna Kea", intro:"", logi:"Hilo → Mauna Kea游客中心约1小时15分–1.5小时（约35英里，经Saddle Road），预计16:45–17:00到，赶在日落前；出发前加满油。", addr:"Onizuka Center for International Astronomy Visitor Information Station, Mauna Kea Access Rd, Hawaii", lat:19.7719,lng:-155.4556,bonus:false},
+    {time:"17:00–20:30", name:"Mauna Kea 日落 + 星空", intro:"从海底算起（约33,500英尺）是世界第一高山，山顶因为空气干燥、光污染极低、大气稳定，聚集了13座全球顶尖天文台。位于9,200英尺的Onizuka游客信息站(VIS)全年开放，站在观景台上通常已经身处云海之上，肉眼就能看到密度惊人的星空。想上到13,800英尺山顶看日落，须包车跟团（租车公司禁止自驾租车上山）。", logi:"VIS平台免费开放无需预约；海拔9,200英尺，夜里气温接近0℃，带厚外套、手套、帽子，注意高海拔反应；日落约18:05，建议看完星空20:30左右下山。", addr:"Onizuka Center for International Astronomy Visitor Information Station, Mauna Kea Access Rd, Hawaii", link:"https://hilo.hawaii.edu/maunakea/", linkText:"游客信息站官网", lat:19.7719,lng:-155.4556,bonus:false},
   ],
-  returnNote:"行程结束。",
-  bonusNote:"如果时间紧张，Liliuokalani Gardens可以缩短到半小时；这天核心是留够buffer给还车和赶飞机，不建议加更多硬性安排。"
+  returnNote:"返回Hilo约1小时15分–1.5小时，预计22:00左右到酒店办理入住，路上轮流开车、注意休息。",
+  bonusNote:"★这天晚上也可以升级成付费的13,800英尺山顶日落+观星跟团（替换掉免费的VIS自驾观星，不用额外挪日子）。今明两晚都晚睡，后天(10/2)要赶晚班机，建议别都熬到太晚。⏰ 10/1 18:49（HST）AA7866/AA144/AA383/AA4758 全程值机开放：在山上没信号的话，回酒店再办，不影响。",
+  drive:[
+    R("小木屋 → Thurston Lava Tube","约3英里","10分钟",""),
+    R("小木屋 → Hilo(Grand Naniloa)","约33英里","55分钟","12:00退房，13:15左右到"),
+    R("Grand Naniloa → Ken's House of Pancakes","约1.5英里","4分钟","午饭/夜宵"),
+    R("Hilo → Mauna Kea VIS","约35英里","1小时15分–1.5小时","经Saddle Road，15:15出发，加满油"),
+    R("VIS → Hilo","约35英里","1小时15分–1.5小时","20:30下山，22:00前后到"),
+  ],
+  eat:[
+    E("Ken's House of Pancakes","1730 Kamehameha Ave, Hilo, HI 96720","距Grand Naniloa约1.5英里，车程4分钟","$$（$12–20）","24小时营业，松饼和本地早餐，Mochiko chicken，份量很大；20:30下山后回来吃夜宵。"),
+    E("Hilo Bay Cafe","315 Makaala St, Hilo, HI 96720","距Grand Naniloa约3.5英里，车程10分钟","$$–$$$（$16–28）","本地食材，Hilo口碑好；作为上山前的正餐（14:00前后）。"),
+    E("Two Ladies Kitchen","274 Kilauea Ave, Hilo, HI 96720","距Grand Naniloa约1英里，车程3分钟","$（$3–8）","手工mochi，带上山当零食；营业日请提前核对。"),
+  ],
+  eatNote:"15:15出发上山后就没有餐厅了，Mauna Kea VIS也没有餐饮：13:30–14:30在Hilo吃饱，山上带热饮和零食；20:30下山回Hilo，可以到Ken's House of Pancakes（24小时）吃夜宵。",
+  alt:[
+    A("Thurston Lava Tube（Nāhuku）","Crater Rim Dr, Hawaii Volcanoes National Park, HI 96718","距小木屋约10分钟","熔岩管步道，开放状态以NPS路况页为准。"),
+    A("Devastation Trail","Crater Rim Dr, Hawaii Volcanoes National Park, HI 96718","距Thurston Lava Tube约2英里","平坦的铺装步道，走过被火山灰覆盖的森林，约1英里往返。"),
+    A("Pacific Tsunami Museum","319 Kamehameha Ave, Hilo, HI 96720","距Grand Naniloa约1.5英里","了解1946、1960年海啸，小型博物馆，室内，下雨天备选。"),
+    A("Lyman Museum","276 Haili St, Hilo, HI 96720","距Grand Naniloa约2英里","夏威夷历史和自然，小型博物馆。"),
+    A("Big Island Candies","585 Hinano St, Hilo, HI 96720","距Grand Naniloa约3英里，车程8分钟","夏威夷果巧克力和饼干，有试吃，适合买伴手礼。"),
+  ],
+  pack:["Mauna Kea：厚外套、手套、帽子、保暖长裤、厚袜，夜里接近0℃，高海拔UV强，带防晒","保温杯装热饮、零食","头灯，红光模式最好，不影响他人夜视","晕车药、高反应对（下山休息），慢慢走、多喝水","出发前加满油，Saddle Road上没有加油站","备用充电宝、车载手机支架","前一晚退房前：小木屋检查有没有落东西","返回Hilo后：AA返程值机、晒好的衣服"]
+},
+/* ================= Day7 ================= */
+{
+  date:"Day7 · 10/2 周五", island:"Big Island", title:"Liliuokalani Gardens → 还车 → 飞回Baltimore", exert:"轻松", overnight:"—（红眼返程）",
+  stops:[
+    {time:"09:00–10:30", name:"Liliuokalani Gardens + Coconut Island", intro:"1917年为纪念夏威夷末代女王Lili'uokalani而建的日式庭院公园，占地30英亩，红色拱桥、石灯笼、锦鲤池和传统茶室散落在草坪与棕榈树间，是本地人晨跑、打太极的日常去处。穿过一座步行桥可以到Coconut Island（Moku Ola），能游泳、看绿海龟。", logi:"免费；从Grand Naniloa过去约5分钟，散步约1–1.5小时。", addr:"Liliuokalani Gardens, 189 Lihiwai St, Hilo, HI 96720", link:"https://www.gohawaii.com/islands/hawaii-big-island/regions/hilo/liliuokalani-gardens", linkText:"景点介绍", lat:19.7256,lng:-155.0736,bonus:false},
+    {time:"11:00", name:"退房 + 整理行李", intro:"", logi:"退房后行李可寄存在酒店前台，或放在车里。", addr:"Grand Naniloa Hotel Hilo, 93 Banyan Dr, Hilo, HI 96720", lat:19.7241,lng:-155.0868,bonus:false},
+    {time:"12:00–15:30", name:"自由时间（Hilo市区 / 备选Akaka Falls）", intro:"可以在Hilo市区吃午饭、逛店，或者去Akaka Falls州立公园（约30分钟车程），看落差420英尺的瀑布，步道约0.4英里。", logi:"Hilo → Akaka Falls约25–30分钟；收费和开放时间以州立公园官网为准。别排太紧，保证15:30前回到市区。", addr:"Akaka Falls State Park, Honomū, HI 96728", lat:19.8547,lng:-155.1519,bonus:false},
+    {time:"16:00–17:00", name:"加油 + Hilo机场还车", intro:"预订还车时间17:00。", logi:"Hilo市区 → 机场约10分钟；还车前加满油；还车后有约1小时45分钟办登机和安检。", addr:"Hilo International Airport, 2450 Kekuanaoa St, Hilo, HI 96720", lat:19.7203,lng:-155.0485,bonus:false},
+    {time:"18:49 起飞", name:"Hilo(ITO) → Baltimore(BWI)，4段航班", intro:"AA7866 ITO 18:49 → HNL 19:43；AA144 HNL 20:40 → LAX 10/3 05:11（红眼）；AA383 LAX 06:00 → ORD 12:22；AA4758 ORD 14:34 → BWI 17:46。", logi:"HNL转机57分钟、LAX转机49分钟都很紧，若被改签也在可接受范围；10/3 17:46到BWI。带颈枕、眼罩、保暖外套。", addr:"Hilo International Airport, 2450 Kekuanaoa St, Hilo, HI 96720", lat:19.7210,lng:-155.0480,bonus:false},
+  ],
+  returnNote:"行程结束，10/3 17:46 到 Baltimore。",
+  bonusNote:"如果时间紧张，Liliuokalani Gardens可以缩短到半小时；这天核心是留够buffer给还车和赶飞机，不建议加更多硬性安排。",
+  drive:[
+    R("Grand Naniloa → Liliuokalani Gardens","约0.5英里","5分钟","也可步行"),
+    R("Grand Naniloa → Suisan Fish Market","约1英里","3分钟","早餐/午餐"),
+    R("Hilo → Akaka Falls","约15英里","25–30分钟","备选"),
+    R("Hilo → Big Island Candies","约3英里","8分钟","伴手礼"),
+    R("Hilo → Hilo机场","约4英里","10分钟","16:00–17:00 还车"),
+  ],
+  eat:[
+    E("Suisan Fish Market","93 Lihiwai St, Hilo, HI 96720","距Liliuokalani Gardens约0.5英里，步行10分钟","$（$8–14）","本地poke和鱼市，早上就有，走到Coconut Island边吃；营业时间请核对。"),
+    E("Miyo's","400 Hualalai St, Hilo, HI 96720","距Grand Naniloa约2英里，车程6分钟","$$（$14–24）","池塘边的日式定食，适合坐下来好好吃一顿午饭。"),
+    E("Cafe 100","969 Kilauea Ave, Hilo, HI 96720","距Grand Naniloa约2.5英里，车程7分钟","$（$8–12）","如果想再吃一次loco moco，就在这里。"),
+  ],
+  eatNote:"17:00还车后才有时间过安检，Hilo机场餐饮很少，15:30前吃完午饭；红眼航班和4段航班餐食有限，在Hilo买好饭团、三明治、坚果放包里；LAX凌晨06:00转机时间紧，在HNL转机时先买好早餐。",
+  alt:[
+    A("Akaka Falls State Park","Akaka Falls Rd, Honomū, HI 96728","距Hilo约15英里，车程25–30分钟","落差420英尺的瀑布，步道约0.4英里，收费和时间以官网为准。"),
+    A("Hawaii Tropical Botanical Garden","27-717 Old Mamalahoa Hwy, Papaikou, HI 96781","距Hilo约9英里，车程20分钟","海边热带植物园，需提前订，票价和时间以官网为准。"),
+    A("Big Island Candies","585 Hinano St, Hilo, HI 96720","距Hilo机场约2英里","伴手礼，有试吃，还车前顺路。"),
+    A("Pacific Tsunami Museum","319 Kamehameha Ave, Hilo, HI 96720","距Grand Naniloa约1.5英里","室内，小型博物馆。"),
+    A("Lyman Museum","276 Haili St, Hilo, HI 96720","距Grand Naniloa约2英里","夏威夷历史和自然，小型博物馆。"),
+  ],
+  pack:["登机：证件、机票、颈枕、眼罩、耳塞、保暖外套（红眼航班冷）","零食和空水瓶（过安检后装水）","还车前清空车里的垃圾和私人物品，加满油","泳衣和毛巾（Coconut Island 想游泳的话）","舒适的鞋，坐飞机","充电宝、充电线放在随身包","红眼航班：换洗内衣和洗漱包放在登机箱，LAX落地后能用"]
 },
 ];
 
-const colors = {"Oahu":"#2471a3","Big Island":"#c0392b","Oahu → Big Island":"#a06a2c"};
+const colors = {"Oahu":"#2471a3","Big Island":"#c0392b","Oahu → Big Island":"#a06a2c","Baltimore → Oahu":"#2471a3"};
 function colorFor(island){ return colors[island] || "#2471a3"; }
 
 const map = L.map('map');
@@ -180,23 +462,69 @@ let layer = L.layerGroup().addTo(map);
 
 function renderMap(d){
   layer.clearLayers();
-  const core = d.stops.filter(s=>!s.bonus);
-  const bonus = d.stops.filter(s=>s.bonus);
+  const inHI = d.stops.filter(s=>s.lng < -150);
+  const core = inHI.filter(s=>!s.bonus);
   const c = colorFor(d.island);
   if(core.length>1){
     L.polyline(core.map(s=>[s.lat,s.lng]), {color:c, weight:3, opacity:0.7}).addTo(layer);
   }
-  core.forEach((s,i)=>{
+  let idx = 0;
+  d.stops.forEach(s=>{ if(!s.bonus) idx++; if(s.lng < -150 && !s.bonus){
     const marker = L.circleMarker([s.lat,s.lng], {radius:10, color:c, fillColor:c, fillOpacity:0.9, weight:2}).addTo(layer);
-    marker.bindTooltip(String(i+1), {permanent:true, direction:"center", className:""});
-    marker.bindPopup(`<b>${i+1}. ${s.time} · ${s.name}</b><br>${s.intro||""}`);
-  });
-  bonus.forEach(s=>{
-    const marker = L.circleMarker([s.lat,s.lng], {radius:6, color:c, fillColor:"#fff", fillOpacity:0.9, weight:2, dashArray:"3,3"}).addTo(layer);
-    marker.bindPopup(`<b>★备选 · ${s.name}</b><br>${s.intro||""}`);
-  });
-  const all = d.stops.map(s=>[s.lat,s.lng]);
+    marker.bindTooltip(String(idx), {permanent:true, direction:"center", className:""});
+    marker.bindPopup(`<b>${idx}. ${s.time} · ${s.name}</b><br>${s.addr||""}`);
+  }});
+  const all = inHI.map(s=>[s.lat,s.lng]);
   if(all.length) map.fitBounds(all, {padding:[40,40], maxZoom:12});
+}
+
+function mapLink(addr){ return `<a href="${mapsUrl(addr)}" target="_blank" rel="noopener">在地图中打开</a>`; }
+
+function renderEat(d){
+  if(!d.eat) return "";
+  return `<div class="sub"><h3>🍜 附近餐厅推荐</h3>
+    ${d.eat.map(e=>`<div class="card2"><div class="n">${e.name}<span class="price">${e.price}</span></div>
+      <div class="m">📍 ${e.addr} ${mapLink(e.name+", "+e.addr)}</div>
+      <div class="m">🚗 ${e.dist}</div>
+      <div class="f">${e.feat}</div></div>`).join("")}
+    ${d.eatNote? `<div class="note">🥪 <b>时间紧的话：</b>${d.eatNote}</div>` : ""}</div>`;
+}
+function renderAlt(d){
+  if(!d.alt) return "";
+  return `<div class="sub"><h3>📍 顺路备选去处（行程有变时用）</h3>
+    ${d.alt.map(a=>`<div class="card2"><div class="n">${a.name}</div>
+      <div class="m">📍 ${a.addr} ${mapLink(a.name+", "+a.addr)}</div>
+      <div class="m">🚗 ${a.dist}</div>
+      <div class="f">${a.note}</div></div>`).join("")}</div>`;
+}
+function renderShop(d){
+  if(!d.shop) return "";
+  const s = d.shop;
+  return `<div class="sub"><h3>🛒 9/27 购物清单（不需要冷藏，够撑到10/2）</h3>
+    <div class="grid2">${s.groups.map(g=>`<div class="shopgrp card2"><b>${g[0]}</b><div class="f">${g[1]}</div></div>`).join("")}</div>
+    <h3 style="margin-top:12px">去哪里买</h3>
+    ${s.stores.map(e=>`<div class="card2"><div class="n">${e.name}<span class="price">${e.price}</span></div>
+      <div class="m">📍 ${e.addr} ${mapLink(e.name+", "+e.addr)}</div>
+      <div class="m">🚗 ${e.dist}</div>
+      <div class="f">${e.feat}</div></div>`).join("")}
+    <div class="note">${s.note}</div></div>`;
+}
+function renderSurf(d){
+  if(!d.surf) return "";
+  return `<div class="sub"><h3>${d.surf.title}</h3>
+    <ul class="plain">${d.surf.items.map(x=>`<li>${x}</li>`).join("")}</ul>
+    ${d.surf.note? `<div class="note">${d.surf.note}</div>` : ""}</div>`;
+}
+function renderPack(d){
+  if(!d.pack) return "";
+  return `<div class="sub"><h3>🎒 今天要带的衣服和装备</h3>
+    <ul class="plain">${d.pack.map(x=>`<li>${x}</li>`).join("")}</ul></div>`;
+}
+function renderDrive(d){
+  if(!d.drive) return "";
+  return `<div class="sub"><h3>🚗 今天的车程</h3><div class="tblwrap"><table class="drive">
+    <thead><tr><th>路段</th><th>距离</th><th>车程</th><th>备注</th></tr></thead>
+    <tbody>${d.drive.map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td><td>${r[3]}</td></tr>`).join("")}</tbody></table></div></div>`;
 }
 
 function renderPanel(d){
@@ -216,14 +544,21 @@ function renderPanel(d){
           <div>
             <div class="stopname">${numLabel} ${s.name}</div>
             ${s.intro? `<div class="stopintro">${s.intro}</div>` : ""}
-            ${s.logi? `<div class="stoplogi">🚗 ${s.logi}</div>` : ""}
-            ${s.link? `<div class="stoplink">🔗 <a href="${s.link}" target="_blank">${s.linkText||'官网'}</a></div>` : ""}
+            ${s.addr? `<div class="stopaddr">📍 ${s.addr}<a href="${mapsUrl(s.addr)}" target="_blank" rel="noopener">在地图中打开</a></div>` : ""}
+            ${s.logi? `<div class="stoplogi">🚗 ${s.logi.replace(/^🚗\s*/,"")}</div>` : ""}
+            ${s.link && s.linkText? `<div class="stoplink">🔗 <a href="${s.link}" target="_blank" rel="noopener">${s.linkText||'官网'}</a></div>` : ""}
           </div>
         </li>`;
       }).join("")}
     </ul>
     ${d.returnNote? `<div class="returnbox">🏠 <b>回住处：</b>${d.returnNote}</div>` : ""}
-    ${d.bonusNote? `<div class="bonusbox"><h3>💡 提示 / 顺路备选</h3><p>${d.bonusNote}</p></div>` : ""}
+    ${renderDrive(d)}
+    ${renderShop(d)}
+    ${renderSurf(d)}
+    ${renderEat(d)}
+    ${renderAlt(d)}
+    ${renderPack(d)}
+    ${d.bonusNote? `<div class="bonusbox"><h3>💡 提示</h3><p>${d.bonusNote}</p></div>` : ""}
   </div>`;
   document.getElementById("daypanel").innerHTML = html;
 }
